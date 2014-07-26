@@ -36,7 +36,9 @@ namespace GCGL_Client
     {
         #region 全局变量
 
-        //当前用户编码
+        //在这里，我又增加了一行哟。--fjw
+
+        //当前用户编码  呵呵，此行是修改吧？
         public static string LoginUserCode="999";
         //当前用户名称
         public static string LoginUserName="999";
