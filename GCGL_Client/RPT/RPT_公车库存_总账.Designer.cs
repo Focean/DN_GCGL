@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlQuery = new System.Windows.Forms.Panel();
+            this.btn预算单位 = new System.Windows.Forms.Button();
+            this.txt单位编码 = new System.Windows.Forms.TextBox();
             this.dtp结束时间 = new System.Windows.Forms.DateTimePicker();
             this.dtp开始时间 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,7 +42,6 @@
             this.btn导出 = new System.Windows.Forms.Button();
             this.btn关闭 = new System.Windows.Forms.Button();
             this.tyGridView = new TY.Grids.TyGridView(this.components);
-            this.cbx单位编码 = new System.Windows.Forms.ComboBox();
             this.pnlQuery.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tyGridView)).BeginInit();
@@ -49,7 +50,8 @@
             // pnlQuery
             // 
             this.pnlQuery.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pnlQuery.Controls.Add(this.cbx单位编码);
+            this.pnlQuery.Controls.Add(this.btn预算单位);
+            this.pnlQuery.Controls.Add(this.txt单位编码);
             this.pnlQuery.Controls.Add(this.dtp结束时间);
             this.pnlQuery.Controls.Add(this.dtp开始时间);
             this.pnlQuery.Controls.Add(this.label2);
@@ -62,11 +64,30 @@
             this.pnlQuery.Size = new System.Drawing.Size(1017, 30);
             this.pnlQuery.TabIndex = 132;
             // 
+            // btn预算单位
+            // 
+            this.btn预算单位.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn预算单位.Location = new System.Drawing.Point(293, 6);
+            this.btn预算单位.Name = "btn预算单位";
+            this.btn预算单位.Size = new System.Drawing.Size(21, 19);
+            this.btn预算单位.TabIndex = 147;
+            this.btn预算单位.Text = "…";
+            this.btn预算单位.UseVisualStyleBackColor = true;
+            this.btn预算单位.Click += new System.EventHandler(this.btn预算单位_Click);
+            // 
+            // txt单位编码
+            // 
+            this.txt单位编码.Location = new System.Drawing.Point(65, 4);
+            this.txt单位编码.Name = "txt单位编码";
+            this.txt单位编码.ReadOnly = true;
+            this.txt单位编码.Size = new System.Drawing.Size(249, 21);
+            this.txt单位编码.TabIndex = 148;
+            // 
             // dtp结束时间
             // 
             this.dtp结束时间.CustomFormat = "yyyy年MM月dd日";
             this.dtp结束时间.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp结束时间.Location = new System.Drawing.Point(571, 5);
+            this.dtp结束时间.Location = new System.Drawing.Point(571, 4);
             this.dtp结束时间.Name = "dtp结束时间";
             this.dtp结束时间.Size = new System.Drawing.Size(121, 21);
             this.dtp结束时间.TabIndex = 143;
@@ -75,7 +96,7 @@
             // 
             this.dtp开始时间.CustomFormat = "yyyy年MM月dd日";
             this.dtp开始时间.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp开始时间.Location = new System.Drawing.Point(382, 5);
+            this.dtp开始时间.Location = new System.Drawing.Point(382, 4);
             this.dtp开始时间.Name = "dtp开始时间";
             this.dtp开始时间.Size = new System.Drawing.Size(122, 21);
             this.dtp开始时间.TabIndex = 142;
@@ -83,7 +104,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(325, 9);
+            this.label2.Location = new System.Drawing.Point(325, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(245, 12);
             this.label2.TabIndex = 141;
@@ -92,7 +113,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 9);
+            this.label4.Location = new System.Drawing.Point(6, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 138;
@@ -119,7 +140,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(1017, 40);
             this.lblTitle.TabIndex = 131;
-            this.lblTitle.Text = "公务用车总账列表";
+            this.lblTitle.Text = "车辆总账列表";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
@@ -142,6 +163,7 @@
             this.btn导出.TabIndex = 5;
             this.btn导出.Text = "导出（&E)";
             this.btn导出.UseVisualStyleBackColor = true;
+            this.btn导出.Click += new System.EventHandler(this.btn导出_Click);
             // 
             // btn关闭
             // 
@@ -166,14 +188,6 @@
             this.tyGridView.Size = new System.Drawing.Size(1017, 333);
             this.tyGridView.TabIndex = 10;
             // 
-            // cbx单位编码
-            // 
-            this.cbx单位编码.FormattingEnabled = true;
-            this.cbx单位编码.Location = new System.Drawing.Point(69, 5);
-            this.cbx单位编码.Name = "cbx单位编码";
-            this.cbx单位编码.Size = new System.Drawing.Size(256, 20);
-            this.cbx单位编码.TabIndex = 144;
-            // 
             // RPT_公车库存_总账
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -184,7 +198,6 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.panel1);
             this.Name = "RPT_公车库存_总账";
-            this.Text = "OCC_公车库存_总账";
             this.pnlQuery.ResumeLayout(false);
             this.pnlQuery.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -206,6 +219,7 @@
         private System.Windows.Forms.DateTimePicker dtp开始时间;
         private System.Windows.Forms.Label label2;
         private TY.Grids.TyGridView tyGridView;
-        private System.Windows.Forms.ComboBox cbx单位编码;
+        private System.Windows.Forms.Button btn预算单位;
+        private System.Windows.Forms.TextBox txt单位编码;
     }
 }

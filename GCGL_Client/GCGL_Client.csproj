@@ -16,7 +16,7 @@
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <PublishUrl>D:\DN_GCGL\Publish\Client\</PublishUrl>
-    <Install>true</Install>
+    <Install>false</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://202.102.238.46/dnsoft/gcgl/client/</InstallUrl>
+    <InstallUrl>http://10.8.4.146/dnsoft/gcgl/client/</InstallUrl>
     <SupportUrl>http://www.dnsoft.cn</SupportUrl>
     <ProductName>河南省行政事业单位公务用车管理信息系统</ProductName>
     <PublisherName>郑州鼎诺电子科技有限公司</PublisherName>
@@ -34,8 +34,8 @@
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>1205</ApplicationRevision>
-    <ApplicationVersion>1.5.2013.%2a</ApplicationVersion>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>2.7.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -89,24 +89,35 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CNPOPSOFT.Controls">
-      <HintPath>bin\Release\CNPOPSOFT.Controls.dll</HintPath>
-    </Reference>
     <Reference Include="DingnuoControlLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\DingnuoControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="DN_HtmlEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DN_HtmlEditor.dll</HintPath>
     </Reference>
     <Reference Include="GemBox.ExcelLite, Version=25.1.5000.1000, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\GemBox.ExcelLite.dll</HintPath>
     </Reference>
-    <Reference Include="GLG.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\GLG.Library.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\Microsoft.NET\Primary Interop Assemblies\Microsoft.mshtml.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Sonic.HtmlEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Sonic.HtmlEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetGear, Version=6.0.3.151, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SpreadsheetGear.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetGear.Design, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SpreadsheetGear.Design.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -115,9 +126,12 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -126,11 +140,11 @@
     <Reference Include="System.Xml" />
     <Reference Include="TY.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TY_Library\bin\Debug\TY.Library.dll</HintPath>
+      <HintPath>bin\Debug\TY.Library.dll</HintPath>
     </Reference>
-    <Reference Include="WindowsFormsControlLibrary1, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="TY.PrintCard, Version=1.1.13.1230, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\WindowsFormsControlLibrary1.dll</HintPath>
+      <HintPath>bin\Debug\TY.PrintCard.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +184,24 @@
     <Compile Include="COS\COS_计提折旧_Editor.Designer.cs">
       <DependentUpon>COS_计提折旧_Editor.cs</DependentUpon>
     </Compile>
+    <Compile Include="COS\COS_超编车辆_处置.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="COS\COS_超编车辆_处置.Designer.cs">
+      <DependentUpon>COS_超编车辆_处置.cs</DependentUpon>
+    </Compile>
+    <Compile Include="COS\COS_超编车辆_导入.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="COS\COS_超编车辆_导入.Designer.cs">
+      <DependentUpon>COS_超编车辆_导入.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FZB\FZB_公车编制数_导入.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FZB\FZB_公车编制数_导入.Designer.cs">
+      <DependentUpon>FZB_公车编制数_导入.cs</DependentUpon>
+    </Compile>
     <Compile Include="FZB\FZB_公车编制数.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +213,12 @@
     </Compile>
     <Compile Include="FZB\FZB_单位设置.Designer.cs">
       <DependentUpon>FZB_单位设置.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FZB\FZB_基础数据.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FZB\FZB_基础数据.Designer.cs">
+      <DependentUpon>FZB_基础数据.cs</DependentUpon>
     </Compile>
     <Compile Include="FZB\FZB_处置形式.cs">
       <SubType>Form</SubType>
@@ -224,17 +262,11 @@
     <Compile Include="FZB\FZB_行政区划_Editor.designer.cs">
       <DependentUpon>FZB_行政区划_Editor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FZB\FZB_资产类别.cs">
+    <Compile Include="FZB\FZB_资产分类_Editor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FZB\FZB_资产类别.Designer.cs">
-      <DependentUpon>FZB_资产类别.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FZB\FZB_资产类别_Editor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FZB\FZB_资产类别_Editor.Designer.cs">
-      <DependentUpon>FZB_资产类别_Editor.cs</DependentUpon>
+    <Compile Include="FZB\FZB_资产分类_Editor.designer.cs">
+      <DependentUpon>FZB_资产分类_Editor.cs</DependentUpon>
     </Compile>
     <Compile Include="FZB\FZB_车辆类型.cs">
       <SubType>Form</SubType>
@@ -247,6 +279,18 @@
     </Compile>
     <Compile Include="FZB\FZB_车辆类型_Editor.Designer.cs">
       <DependentUpon>FZB_车辆类型_Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FZB\FZB_资产类别.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FZB\FZB_资产类别.Designer.cs">
+      <DependentUpon>FZB_资产类别.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FZB\FZB_资产类别_Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FZB\FZB_资产类别_Editor.Designer.cs">
+      <DependentUpon>FZB_资产类别_Editor.cs</DependentUpon>
     </Compile>
     <Compile Include="FZB\FZB_配置标准.cs">
       <SubType>Form</SubType>
@@ -293,11 +337,23 @@
     <Compile Include="FZB\FZB_公车编制数_Editor.designer.cs">
       <DependentUpon>FZB_公车编制数_Editor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FZB\FZB_基础数据_Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FZB\FZB_基础数据_Editor.Designer.cs">
+      <DependentUpon>FZB_基础数据_Editor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\Man_About.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main\Man_About.designer.cs">
       <DependentUpon>Man_About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Man_Entrust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Man_Entrust.Designer.cs">
+      <DependentUpon>Man_Entrust.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Man_Login.cs">
       <SubType>Form</SubType>
@@ -316,6 +372,24 @@
     </Compile>
     <Compile Include="Main\Man_Param.Designer.cs">
       <DependentUpon>Man_Param.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Man_UserDep_Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Man_UserDep_Editor.Designer.cs">
+      <DependentUpon>Man_UserDep_Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Man_UserEnt_Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Man_UserEnt_Editor.designer.cs">
+      <DependentUpon>Man_UserEnt_Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\Man_UserLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\Man_UserLog.Designer.cs">
+      <DependentUpon>Man_UserLog.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\Man_UserMngr.cs">
       <SubType>Form</SubType>
@@ -419,11 +493,41 @@
     <Compile Include="NET\NET_公文法规_法规.designer.cs">
       <DependentUpon>NET_公文法规_法规.cs</DependentUpon>
     </Compile>
+    <Compile Include="NET\NET_审批中心_Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NET\NET_审批中心_Edit.Designer.cs">
+      <DependentUpon>NET_审批中心_Edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="NET\NET_审批中心_Flow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NET\NET_审批中心_Flow.Designer.cs">
       <DependentUpon>NET_审批中心_Flow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="COS\COS_超编车辆.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="COS\COS_超编车辆.Designer.cs">
+      <DependentUpon>COS_超编车辆.cs</DependentUpon>
+    </Compile>
+    <Compile Include="COS\COS_超编车辆_Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="COS\COS_超编车辆_Editor.Designer.cs">
+      <DependentUpon>COS_超编车辆_Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NET\NET_审批中心_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NET\NET_审批中心_List.Designer.cs">
+      <DependentUpon>NET_审批中心_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NET\NET_审批中心_List_不通过.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NET\NET_审批中心_List_不通过.Designer.cs">
+      <DependentUpon>NET_审批中心_List_不通过.cs</DependentUpon>
     </Compile>
     <Compile Include="NET\NET_附件管理.cs">
       <SubType>Form</SubType>
@@ -431,17 +535,35 @@
     <Compile Include="NET\NET_附件管理.Designer.cs">
       <DependentUpon>NET_附件管理.cs</DependentUpon>
     </Compile>
-    <Compile Include="OCC\EXCELtoSQL.cs">
+    <Compile Include="NET\NET_代办事项.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OCC\EXCELtoSQL.Designer.cs">
-      <DependentUpon>EXCELtoSQL.cs</DependentUpon>
+    <Compile Include="NET\NET_代办事项.Designer.cs">
+      <DependentUpon>NET_代办事项.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_公车入户_Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_公车入户_Print.Designer.cs">
+      <DependentUpon>OCC_公车入户_Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_公车入户_Prt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_公车入户_Prt.Designer.cs">
+      <DependentUpon>OCC_公车入户_Prt.cs</DependentUpon>
     </Compile>
     <Compile Include="OCC\OCC_公车入库_Editor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OCC\OCC_公车入库_Editor.Designer.cs">
       <DependentUpon>OCC_公车入库_Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_公车入库_对比.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_公车入库_对比.Designer.cs">
+      <DependentUpon>OCC_公车入库_对比.cs</DependentUpon>
     </Compile>
     <Compile Include="OCC\OCC_公车入库_调拨.cs">
       <SubType>Form</SubType>
@@ -455,17 +577,71 @@
     <Compile Include="OCC\OCC_公车出库_出售.Designer.cs">
       <DependentUpon>OCC_公车出库_出售.cs</DependentUpon>
     </Compile>
+    <Compile Include="OCC\OCC_公车库存_List.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_公车库存_List.Designer.cs">
+      <DependentUpon>OCC_公车库存_List.cs</DependentUpon>
+    </Compile>
     <Compile Include="OCC\OCC_公车库存_Select.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OCC\OCC_公车库存_Select.designer.cs">
       <DependentUpon>OCC_公车库存_Select.cs</DependentUpon>
     </Compile>
-    <Compile Include="OCC\OCC_批量配置申请_Editor.cs">
+    <Compile Include="OCC\OCC_处置备案_Print.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OCC\OCC_批量配置申请_Editor.Designer.cs">
-      <DependentUpon>OCC_批量配置申请_Editor.cs</DependentUpon>
+    <Compile Include="OCC\OCC_处置备案_Print.Designer.cs">
+      <DependentUpon>OCC_处置备案_Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_处置申请_Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_处置申请_Print.Designer.cs">
+      <DependentUpon>OCC_处置申请_Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_处置申请_XG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_处置申请_XG.Designer.cs">
+      <DependentUpon>OCC_处置申请_XG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请.designer.cs">
+      <DependentUpon>OCC_批量申请.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请_Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请_Editor.Designer.cs">
+      <DependentUpon>OCC_批量申请_Editor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请_Editor_FP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请_Editor_FP.designer.cs">
+      <DependentUpon>OCC_批量申请_Editor_FP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请_接收.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请_接收.designer.cs">
+      <DependentUpon>OCC_批量申请_接收.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请_接收_UD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_批量申请_接收_UD.designer.cs">
+      <DependentUpon>OCC_批量申请_接收_UD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OCC\OCC_配置申请_Prt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OCC\OCC_配置申请_Prt.Designer.cs">
+      <DependentUpon>OCC_配置申请_Prt.cs</DependentUpon>
     </Compile>
     <Compile Include="RPT\RPT_公车库存_台账.cs">
       <SubType>Form</SubType>
@@ -514,12 +690,6 @@
     </Compile>
     <Compile Include="OCC\OCC_更新计划_Editor.designer.cs">
       <DependentUpon>OCC_更新计划_Editor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NET\NET_审批中心_Editor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NET\NET_审批中心_Editor.Designer.cs">
-      <DependentUpon>NET_审批中心_Editor.cs</DependentUpon>
     </Compile>
     <Compile Include="NET\NET_审批中心.cs">
       <SubType>Form</SubType>
@@ -595,11 +765,41 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RPT\RPT_单位编制_统计.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RPT\RPT_单位编制_统计.Designer.cs">
+      <DependentUpon>RPT_单位编制_统计.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPT\RPT_显示信息.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RPT\RPT_显示信息.Designer.cs">
+      <DependentUpon>RPT_显示信息.cs</DependentUpon>
+    </Compile>
     <Compile Include="RPT\RPT_条件组合.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RPT\RPT_条件组合.Designer.cs">
       <DependentUpon>RPT_条件组合.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPT\RPT_查询方案.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RPT\RPT_查询方案.Designer.cs">
+      <DependentUpon>RPT_查询方案.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPT\RPT_查询方案_重命名.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RPT\RPT_查询方案_重命名.Designer.cs">
+      <DependentUpon>RPT_查询方案_重命名.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RPT\RPT_超编车辆_统计.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RPT\RPT_超编车辆_统计.Designer.cs">
+      <DependentUpon>RPT_超编车辆_统计.cs</DependentUpon>
     </Compile>
     <Compile Include="WcfService\Ref_WS_GCGL\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -629,12 +829,28 @@
     <EmbeddedResource Include="COS\COS_计提折旧_Editor.resx">
       <DependentUpon>COS_计提折旧_Editor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="COS\COS_超编车辆_Editor.resx">
+      <DependentUpon>COS_超编车辆_Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="COS\COS_超编车辆_处置.resx">
+      <DependentUpon>COS_超编车辆_处置.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="COS\COS_超编车辆_导入.resx">
+      <DependentUpon>COS_超编车辆_导入.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FZB\FZB_公车编制数_导入.resx">
+      <DependentUpon>FZB_公车编制数_导入.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FZB\FZB_公车编制数.resx">
       <DependentUpon>FZB_公车编制数.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FZB\FZB_单位设置.resx">
       <DependentUpon>FZB_单位设置.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FZB\FZB_基础数据.resx">
+      <DependentUpon>FZB_基础数据.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FZB\FZB_处置形式.resx">
       <DependentUpon>FZB_处置形式.cs</DependentUpon>
@@ -657,17 +873,20 @@
     <EmbeddedResource Include="FZB\FZB_行政区划_Editor.resx">
       <DependentUpon>FZB_行政区划_Editor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FZB\FZB_资产类别.resx">
-      <DependentUpon>FZB_资产类别.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FZB\FZB_资产类别_Editor.resx">
-      <DependentUpon>FZB_资产类别_Editor.cs</DependentUpon>
+    <EmbeddedResource Include="FZB\FZB_资产分类_Editor.resx">
+      <DependentUpon>FZB_资产分类_Editor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FZB\FZB_车辆类型.resx">
       <DependentUpon>FZB_车辆类型.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FZB\FZB_车辆类型_Editor.resx">
       <DependentUpon>FZB_车辆类型_Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FZB\FZB_资产类别.resx">
+      <DependentUpon>FZB_资产类别.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FZB\FZB_资产类别_Editor.resx">
+      <DependentUpon>FZB_资产类别_Editor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FZB\FZB_配置标准.resx">
       <DependentUpon>FZB_配置标准.cs</DependentUpon>
@@ -690,8 +909,14 @@
     <EmbeddedResource Include="FZB\FZB_公车编制数_Editor.resx">
       <DependentUpon>FZB_公车编制数_Editor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FZB\FZB_基础数据_Editor.resx">
+      <DependentUpon>FZB_基础数据_Editor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\Man_About.resx">
       <DependentUpon>Man_About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Man_Entrust.resx">
+      <DependentUpon>Man_Entrust.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Man_Login.resx">
       <DependentUpon>Man_Login.cs</DependentUpon>
@@ -701,6 +926,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Man_Param.resx">
       <DependentUpon>Man_Param.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Man_UserDep_Editor.resx">
+      <DependentUpon>Man_UserDep_Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Man_UserEnt_Editor.resx">
+      <DependentUpon>Man_UserEnt_Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\Man_UserLog.resx">
+      <DependentUpon>Man_UserLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Man_UserMngr.resx">
       <DependentUpon>Man_UserMngr.cs</DependentUpon>
@@ -753,17 +987,38 @@
     <EmbeddedResource Include="NET\NET_公文法规_法规.resx">
       <DependentUpon>NET_公文法规_法规.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NET\NET_代办事项.resx">
+      <DependentUpon>NET_代办事项.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NET\NET_审批中心_Edit.resx">
+      <DependentUpon>NET_审批中心_Edit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NET\NET_审批中心_Flow.resx">
       <DependentUpon>NET_审批中心_Flow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="COS\COS_超编车辆.resx">
+      <DependentUpon>COS_超编车辆.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NET\NET_审批中心_List.resx">
+      <DependentUpon>NET_审批中心_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NET\NET_审批中心_List_不通过.resx">
+      <DependentUpon>NET_审批中心_List_不通过.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NET\NET_附件管理.resx">
       <DependentUpon>NET_附件管理.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OCC\EXCELtoSQL.resx">
-      <DependentUpon>EXCELtoSQL.cs</DependentUpon>
+    <EmbeddedResource Include="OCC\OCC_公车入户_Print.resx">
+      <DependentUpon>OCC_公车入户_Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_公车入户_Prt.resx">
+      <DependentUpon>OCC_公车入户_Prt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OCC\OCC_公车入库_Editor.resx">
       <DependentUpon>OCC_公车入库_Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_公车入库_对比.resx">
+      <DependentUpon>OCC_公车入库_对比.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OCC\OCC_公车入库_调拨.resx">
       <DependentUpon>OCC_公车入库_调拨.cs</DependentUpon>
@@ -771,11 +1026,38 @@
     <EmbeddedResource Include="OCC\OCC_公车出库_出售.resx">
       <DependentUpon>OCC_公车出库_出售.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_公车库存_List.resx">
+      <DependentUpon>OCC_公车库存_List.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OCC\OCC_公车库存_Select.resx">
       <DependentUpon>OCC_公车库存_Select.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OCC\OCC_批量配置申请_Editor.resx">
-      <DependentUpon>OCC_批量配置申请_Editor.cs</DependentUpon>
+    <EmbeddedResource Include="OCC\OCC_处置备案_Print.resx">
+      <DependentUpon>OCC_处置备案_Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_处置申请_Print.resx">
+      <DependentUpon>OCC_处置申请_Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_处置申请_XG.resx">
+      <DependentUpon>OCC_处置申请_XG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_批量申请.resx">
+      <DependentUpon>OCC_批量申请.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_批量申请_Editor.resx">
+      <DependentUpon>OCC_批量申请_Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_批量申请_Editor_FP.resx">
+      <DependentUpon>OCC_批量申请_Editor_FP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_批量申请_接收.resx">
+      <DependentUpon>OCC_批量申请_接收.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_批量申请_接收_UD.resx">
+      <DependentUpon>OCC_批量申请_接收_UD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OCC\OCC_配置申请_Prt.resx">
+      <DependentUpon>OCC_配置申请_Prt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RPT\RPT_公车库存_变化.resx">
       <DependentUpon>RPT_公车库存_变化.cs</DependentUpon>
@@ -803,9 +1085,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OCC\OCC_更新计划_Editor.resx">
       <DependentUpon>OCC_更新计划_Editor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NET\NET_审批中心_Editor.resx">
-      <DependentUpon>NET_审批中心_Editor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NET\NET_审批中心.resx">
       <DependentUpon>NET_审批中心.cs</DependentUpon>
@@ -852,11 +1131,24 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RPT\RPT_单位编制_统计.resx">
+      <DependentUpon>RPT_单位编制_统计.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RPT_显示信息.resx">
+      <DependentUpon>RPT_显示信息.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RPT\RPT_条件组合.resx">
       <DependentUpon>RPT_条件组合.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RPT\配置申请_Print.rdlc" />
-    <EmbeddedResource Include="RPT\备案申请_Print.rdlc" />
+    <EmbeddedResource Include="RPT\RPT_查询方案.resx">
+      <DependentUpon>RPT_查询方案.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RPT_查询方案_重命名.resx">
+      <DependentUpon>RPT_查询方案_重命名.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RPT\RPT_超编车辆_统计.resx">
+      <DependentUpon>RPT_超编车辆_统计.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
@@ -895,6 +1187,9 @@
     <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_COS_计提折旧.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_FZB_查询方案.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_FZB_编码.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -925,6 +1220,9 @@
     <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_OCC_处置申请.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_OCC_批量申请.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_OCC_更新计划.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -937,13 +1235,19 @@
     <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_Role.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_SYS_委托.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="WcfService\Ref_WS_GCGL\GCGL_Client.Ref_WS_GCGL.DataType_User_log.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="WcfService\Ref_WS_GCGL\WS_GCGL.wsdl" />
     <None Include="WcfService\Ref_WS_GCGL\WS_GCGL.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="WcfService\Ref_WS_GCGL\WS_GCGL1.wsdl" />
     <None Include="WcfService\Ref_WS_GCGL\WS_GCGL1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -959,10 +1263,23 @@
     <None Include="WcfService\Ref_WS_GCGL\WS_GCGL5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="WcfService\WcfFileTransfer\Message.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="WcfService\WcfFileTransfer\Message1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="WcfService\WcfFileTransfer\service.wsdl" />
     <None Include="WcfService\WcfFileTransfer\service1.wsdl" />
+    <None Include="WcfService\WcfFileTransfer\service21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WcfService\WcfFileTransfer\service22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WcfService\WcfFileTransfer\service23.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="WcfService\WcfFileTransfer\service3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -1023,19 +1340,29 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OfficeCar.ico" />
-    <None Include="WcfService\Ref_WS_GCGL\WS_GCGL1.disco" />
-    <None Include="WcfService\WcfFileTransfer\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="WcfService\WcfFileTransfer\configuration.svcinfo" />
-    <None Include="WcfService\WcfFileTransfer\configuration91.svcinfo" />
     <None Include="WcfService\Ref_WS_GCGL\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="WcfService\Ref_WS_GCGL\configuration.svcinfo" />
     <None Include="WcfService\Ref_WS_GCGL\configuration91.svcinfo" />
+    <None Include="WcfService\Ref_WS_GCGL\WS_GCGL.disco" />
+    <None Include="Resources\GCGL_lc.gif" />
+    <None Include="Resources\back_lc.gif" />
+    <None Include="Resources\back_lc副本.gif" />
+    <None Include="Resources\GCGL_back_lc.gif" />
+    <None Include="Resources\back_lc.jpg" />
+    <None Include="Resources\GCGL_back.gif" />
+    <None Include="Resources\GCGL_back副本.gif" />
+    <None Include="Resources\GCGL_back11.jpg" />
+    <None Include="Resources\GCGL_back.jpg" />
+    <None Include="Resources\GCGL_back_top.gif" />
+    <None Include="WcfService\WcfFileTransfer\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="WcfService\WcfFileTransfer\configuration.svcinfo" />
+    <None Include="WcfService\WcfFileTransfer\configuration91.svcinfo" />
     <None Include="Resources\table_edit.png" />
   </ItemGroup>
   <ItemGroup>

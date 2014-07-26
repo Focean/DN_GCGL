@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GLG.Common;
+using TY.Common;
 using TY.Helper;
 namespace GCGL_Client.FZB
 {
@@ -15,6 +15,12 @@ namespace GCGL_Client.FZB
         public FZB_处置形式()
         {
             InitializeComponent();
+            if (AppServer.UserQxMenuList.Rows.Contains("011402"))
+            {
+                this.Btn删除.Visible = true;
+                this.Btn修改.Visible = true;
+                this.Btn增加.Visible = true;
+            }
             //设置表格样式
             AppServer.SetGridViewStyle(this.dgvList);
             DataBinding_GridView(0);
@@ -24,7 +30,7 @@ namespace GCGL_Client.FZB
             try
             {
                 if (!AppServer.WcfService_Open()) return;
-                this.dgvList.DataSource = AppServer.wcfClient.FZB_编码_List("处置形式").Tables[0];
+                this.dgvList.DataSource = AppServer.wcfClient.FZB_编码_List("处置形式", AppServer.LoginAreaCode).Tables[0];
                 //行定位
                 this.dgvList.GoToRowByIndex(ACurrRowIndex);
             }

@@ -109,6 +109,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "选择单位";
+            this.Load += new System.EventHandler(this.Man_单位_Select_Load);
             this.ResumeLayout(false);
 
         }

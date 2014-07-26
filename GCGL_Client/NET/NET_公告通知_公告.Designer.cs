@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.txt公文标题 = new System.Windows.Forms.TextBox();
-            this.txt公文内容 = new System.Windows.Forms.TextBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.dN_HtmlEditor1 = new DN_HtmlEditor.DN_HtmlEditor();
             this.SuspendLayout();
             // 
             // txt公文标题
@@ -45,19 +46,6 @@
             this.txt公文标题.Size = new System.Drawing.Size(643, 46);
             this.txt公文标题.TabIndex = 0;
             this.txt公文标题.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txt公文内容
-            // 
-            this.txt公文内容.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt公文内容.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt公文内容.ForeColor = System.Drawing.Color.Blue;
-            this.txt公文内容.Location = new System.Drawing.Point(7, 58);
-            this.txt公文内容.Multiline = true;
-            this.txt公文内容.Name = "txt公文内容";
-            this.txt公文内容.Size = new System.Drawing.Size(643, 354);
-            this.txt公文内容.TabIndex = 1;
             // 
             // btnOk
             // 
@@ -84,14 +72,40 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(7, 74);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(643, 338);
+            this.webBrowser1.TabIndex = 17;
+            // 
+            // dN_HtmlEditor1
+            // 
+            this.dN_HtmlEditor1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dN_HtmlEditor1.BodyText = null;
+            this.dN_HtmlEditor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dN_HtmlEditor1.HtmlText = "<HTML></HTML>\0";
+            this.dN_HtmlEditor1.Location = new System.Drawing.Point(7, 74);
+            this.dN_HtmlEditor1.Name = "dN_HtmlEditor1";
+            this.dN_HtmlEditor1.Size = new System.Drawing.Size(643, 338);
+            this.dN_HtmlEditor1.TabIndex = 18;
+            // 
             // NET_公告通知_公告
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(658, 463);
+            this.Controls.Add(this.dN_HtmlEditor1);
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.txt公文内容);
             this.Controls.Add(this.txt公文标题);
             this.MinimizeBox = false;
             this.Name = "NET_公告通知_公告";
@@ -106,8 +120,9 @@
         #endregion
 
         private System.Windows.Forms.TextBox txt公文标题;
-        private System.Windows.Forms.TextBox txt公文内容;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.WebBrowser webBrowser1;
+        private DN_HtmlEditor.DN_HtmlEditor dN_HtmlEditor1;
     }
 }

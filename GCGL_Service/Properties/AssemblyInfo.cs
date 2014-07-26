@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过下列特性集
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("DN_BZFB_WS")]
+[assembly: AssemblyTitle("DN_GCGL_WS")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("DnSoft")]
-[assembly: AssemblyProduct("DN_BZFB_WS")]
-[assembly: AssemblyCopyright("Copyright © DnSoft 2012")]
+[assembly: AssemblyProduct("DN_GCGL_WS")]
+[assembly: AssemblyCopyright("Copyright © DnSoft 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.0.0.0")]
 [assembly: AssemblyFileVersion("2.0.0.0")]
-[assembly: log4net.Config.XmlConfigurator()]
+

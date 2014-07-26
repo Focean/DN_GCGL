@@ -41,10 +41,6 @@
             this.btn关闭 = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
             this.dgvList = new System.Windows.Forms.DataGridView();
-            this.pnlQuery = new System.Windows.Forms.Panel();
-            this.cbx版块名称 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.版块名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.贴子编码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.贴子标题 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +48,10 @@
             this.发贴时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.回贴数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.最后回贴时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlQuery = new System.Windows.Forms.Panel();
+            this.cbx版块名称 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.pnlTool.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.pnlQuery.SuspendLayout();
@@ -80,6 +80,7 @@
             this.btn版块管理.TabIndex = 8;
             this.btn版块管理.Text = "版块管理(&G)";
             this.btn版块管理.UseVisualStyleBackColor = true;
+            this.btn版块管理.Visible = false;
             this.btn版块管理.Click += new System.EventHandler(this.btn版块管理_Click);
             // 
             // btn浏览
@@ -168,7 +169,7 @@
             this.dgvList.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvList.EnableHeadersVisualStyles = false;
-            this.dgvList.Location = new System.Drawing.Point(0, 105);
+            this.dgvList.Location = new System.Drawing.Point(0, 98);
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
             this.dgvList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -184,57 +185,9 @@
             this.dgvList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvList.RowTemplate.Height = 23;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(880, 471);
+            this.dgvList.Size = new System.Drawing.Size(880, 478);
             this.dgvList.TabIndex = 125;
             this.dgvList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvList_MouseDoubleClick);
-            // 
-            // pnlQuery
-            // 
-            this.pnlQuery.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pnlQuery.Controls.Add(this.cbx版块名称);
-            this.pnlQuery.Controls.Add(this.label1);
-            this.pnlQuery.Controls.Add(this.btnQuery);
-            this.pnlQuery.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlQuery.Location = new System.Drawing.Point(0, 75);
-            this.pnlQuery.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlQuery.Name = "pnlQuery";
-            this.pnlQuery.Size = new System.Drawing.Size(880, 30);
-            this.pnlQuery.TabIndex = 128;
-            // 
-            // cbx版块名称
-            // 
-            this.cbx版块名称.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbx版块名称.FormattingEnabled = true;
-            this.cbx版块名称.Items.AddRange(new object[] {
-            "全部",
-            "购车指南",
-            "养车之家",
-            "娱乐频道"});
-            this.cbx版块名称.Location = new System.Drawing.Point(43, 5);
-            this.cbx版块名称.Name = "cbx版块名称";
-            this.cbx版块名称.Size = new System.Drawing.Size(172, 20);
-            this.cbx版块名称.TabIndex = 14;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "版块：";
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitle.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblTitle.Location = new System.Drawing.Point(0, 30);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(880, 45);
-            this.lblTitle.TabIndex = 127;
-            this.lblTitle.Text = "业务学习论坛列表";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // 版块名称
             // 
@@ -306,6 +259,54 @@
             this.最后回贴时间.ReadOnly = true;
             this.最后回贴时间.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.最后回贴时间.Width = 110;
+            // 
+            // pnlQuery
+            // 
+            this.pnlQuery.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.pnlQuery.Controls.Add(this.cbx版块名称);
+            this.pnlQuery.Controls.Add(this.label1);
+            this.pnlQuery.Controls.Add(this.btnQuery);
+            this.pnlQuery.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlQuery.Location = new System.Drawing.Point(0, 68);
+            this.pnlQuery.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlQuery.Name = "pnlQuery";
+            this.pnlQuery.Size = new System.Drawing.Size(880, 30);
+            this.pnlQuery.TabIndex = 128;
+            // 
+            // cbx版块名称
+            // 
+            this.cbx版块名称.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx版块名称.FormattingEnabled = true;
+            this.cbx版块名称.Items.AddRange(new object[] {
+            "全部",
+            "购车指南",
+            "养车之家",
+            "娱乐频道"});
+            this.cbx版块名称.Location = new System.Drawing.Point(43, 5);
+            this.cbx版块名称.Name = "cbx版块名称";
+            this.cbx版块名称.Size = new System.Drawing.Size(172, 20);
+            this.cbx版块名称.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "版块：";
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitle.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblTitle.Location = new System.Drawing.Point(0, 30);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(880, 38);
+            this.lblTitle.TabIndex = 127;
+            this.lblTitle.Text = "论坛列表";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NET_业务论坛
             // 

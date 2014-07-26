@@ -66,6 +66,7 @@
             this.txt车牌号.Size = new System.Drawing.Size(180, 21);
             this.txt车牌号.TabIndex = 143;
             this.txt车牌号.Text = "豫";
+            this.txt车牌号.TextChanged += new System.EventHandler(this.txt车牌号_TextChanged);
             // 
             // label1
             // 
@@ -98,7 +99,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(810, 40);
             this.lblTitle.TabIndex = 131;
-            this.lblTitle.Text = "公车状况统计列表";
+            this.lblTitle.Text = "车辆状况统计列表";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
@@ -190,7 +191,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.panel1);
             this.Name = "RPT_公车库存_状况";
-            this.Text = "公车库存_状况";
+            this.Load += new System.EventHandler(this.RPT_公车库存_状况_Load);
             this.pnlQuery.ResumeLayout(false);
             this.pnlQuery.PerformLayout();
             this.panel1.ResumeLayout(false);

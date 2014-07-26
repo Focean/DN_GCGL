@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TY.Helper;
+using DingnuoControlLibrary;
+using GCGL_Client.Common;
 
 namespace GCGL_Client
 {
@@ -114,17 +116,40 @@ namespace GCGL_Client
                 this.DialogResult = DialogResult.None;
                 return;
             }
+
+            if (this.Login(this.txtLoginName.Text, this.txtLoginPswd.Text))
+            {
+                //登录成功了
+                if (this.chkRemember.Checked)
+                {
+                    Properties.Settings.Default.LoginName = this.txtLoginName.Text;
+                    Properties.Settings.Default.LoginPswd = Cmn_DataProtection.ProtectData(txtLoginPswd.Text, "GCGL_Password");
+                    Properties.Settings.Default.LoginRemb = this.chkRemember.Checked;
+                }
+                else
+                {
+                    Properties.Settings.Default.LoginName = string.Empty;
+                    Properties.Settings.Default.LoginPswd = string.Empty;
+                    Properties.Settings.Default.LoginRemb = this.chkRemember.Checked;
+                }
+                Properties.Settings.Default.Save();
+
+                this.DialogResult = DialogResult.OK;
+            }
+        }
+
+        public bool Login(string LoginName, string LoginPswd)
+        {
             //开始验证登录
             base.Cursor = Cursors.WaitCursor;
             try
             {
                 //1.打开连接
-                if (!AppServer.WcfService_Open()) return;
+                if (!AppServer.WcfService_Open()) return false;
                 //2.读取登录参数
                 var model = new Ref_WS_GCGL.DataType_User();
-                model.LoginName = this.txtLoginName.Text;
-                model.LoginPswd = this.txtLoginPswd.Text;
-                //model.LoginDate = this.dtpLoginDate.Value;
+                model.LoginName = LoginName;
+                model.LoginPswd = LoginPswd;
                 model.LoginAddr = TY.Common.NetWork.GetLocalIP();
                 //3.开始登录
                 DataSet ds = AppServer.wcfClient.SYS_Login(ref model);
@@ -136,72 +161,89 @@ namespace GCGL_Client
                     {
                         case 1: this.txtLoginName.Focus(); break;
                         case 2: this.txtLoginPswd.Focus(); break;
-                        //case 3: this.dtpLoginDate.Focus(); break;
-                    }                    
-                    return;
+                    }
+                    return false;
                 }
                 if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
                 {
                     AppServer.ShowMsg_Error("登录时服务端返回空的登录数据，请与系统管理员联系解决！", "登录失败了！");
-                    return;
+                    return false;
                 }
                 //5.读取登录返回数据
-                AppServer.LoginUserCode = ds.Tables[0].Rows[0]["UserCode"].ToString();
-                AppServer.LoginUserName = ds.Tables[0].Rows[0]["UserName"].ToString();
-                AppServer.LoginUserType = ds.Tables[0].Rows[0]["UserType"].ToIntegerDef();
-                AppServer.LoginUnitCode = ds.Tables[0].Rows[0]["UnitCode"].ToString();
-                AppServer.LoginUnitName = ds.Tables[0].Rows[0]["UnitName"].ToString();
-                AppServer.LoginUnitType = ds.Tables[0].Rows[0]["UnitType"].ToIntegerDef();
-                AppServer.LoginUnitJC = ds.Tables[0].Rows[0]["UnitJC"].ToIntegerDef(0);
-                AppServer.LoginDeptCode = ds.Tables[0].Rows[0]["DeptCode"].ToString();
-                AppServer.LoginDeptName = ds.Tables[0].Rows[0]["DeptName"].ToString();
-                AppServer.LoginAreaCode = ds.Tables[0].Rows[0]["AreaCode"].ToString();
-                AppServer.LoginAreaName = ds.Tables[0].Rows[0]["AreaName"].ToString();
-
-                AppServer.LoginGovCars = ds.Tables[0].Rows[0]["GovCars"].ToIntegerDef();
-                AppServer.LoginLawCars = ds.Tables[0].Rows[0]["LawCars"].ToIntegerDef();
-                AppServer.LoginSkillCars = ds.Tables[0].Rows[0]["SkillCars"].ToIntegerDef();
+                AppServer.LoginUserCode = ds.Tables[0].Rows[0]["UserCode"].ToString();//用户账号
+                AppServer.LoginUserName = ds.Tables[0].Rows[0]["UserName"].ToString();//用户名称
                 
-                AppServer.LoginWorkDate = DateTime.Today;
+                AppServer.LoginUserType = ds.Tables[0].Rows[0]["UserType"].ToIntegerDef();//用户类型
+                AppServer.LoginUnitCode = ds.Tables[0].Rows[0]["UnitCode"].ToString();//单位编码
+                AppServer.LoginUnitName = ds.Tables[0].Rows[0]["UnitName"].ToString();//单位名称
+                AppServer.LoginUnitType = ds.Tables[0].Rows[0]["UnitType"].ToIntegerDef();//单位类型
+                AppServer.LoginUnitJC = ds.Tables[0].Rows[0]["UnitJC"].ToIntegerDef(0);//单位级次
+                AppServer.LoginDeptCode = ds.Tables[0].Rows[0]["DeptCode"].ToString();//处室编码
+                AppServer.LoginDeptName = ds.Tables[0].Rows[0]["DeptName"].ToString();//处室名称
+                AppServer.LoginAreaCode = ds.Tables[0].Rows[0]["AreaCode"].ToString();//区划编码
+                AppServer.LoginAreaName = ds.Tables[0].Rows[0]["AreaName"].ToString();//区划名称
+
+                AppServer.LoginGovCars = ds.Tables[0].Rows[0]["GovCars"].ToIntegerDef();//公务用车编制数
+                AppServer.LoginLawCars = ds.Tables[0].Rows[0]["LawCars"].ToIntegerDef();//一般执法执勤用车编制数
+                AppServer.LoginSkillCars = ds.Tables[0].Rows[0]["SkillCars"].ToIntegerDef();//特种专业用车编制数
+                
+                AppServer.LoginDataType=ds.Tables[0].Rows[0]["DataType"].ToString();//用户数据类型
+                AppServer.LoginWorkDate = DateTime.Today;//登录时间
                 //6.获取用户菜单列表
                 model.UserCode = AppServer.LoginUserCode;
-                AppServer.UserQxMenuList = AppServer.wcfClient.SYS_Login_Menu(ref model).Tables[0];
+                DataSet dbb = AppServer.wcfClient.SYS_Login_Menu(ref model);
                 if (model.ExResult != 0)
                 {
                     AppServer.ShowMsg_Error(model.ErrorMsg, "登录失败了！");
-                    return;
+                    return false;
                 }
+                if (dbb.Tables.Count == 0)
+                {
+                    AppServer.ShowMsg_Error("登录时没有发现用户权限，请与您的上级管理员联系！", "登录失败了！");
+                    return false;
+                }
+                AppServer.UserQxMenuList = dbb.Tables[0];
                 AppServer.UserQxMenuList.PrimaryKey = new DataColumn[1] { AppServer.UserQxMenuList.Columns["MenuCode"] };
                 //7.获取系统参数
                 AppServer.wcfClient.SYS_Param_Get(ref AppServer.Sys_Param);
+
+                var mdl = new Ref_WS_GCGL.DataType_CMN_单位();
+                mdl.LoginUserCode = AppServer.LoginUserCode;
+                if (AppServer.LoginUnitIsCZT())
+                {
+                    mdl.ExAction = "GetGUnit";
+                }
+                else
+                {
+                    mdl.ExAction = "UnitMngrTree";
+                    mdl.区划编码 = AppServer.LoginAreaCode;
+                    mdl.单位编码 = AppServer.LoginUnitCode;
+                    mdl.单位类型编码 = AppServer.LoginUnitType;
+                }
+                DataSet dset = AppServer.wcfClient.CMN_单位_List(ref mdl);
+                AppServer.UdataTable = dset.Tables[0];
+               
+                //
+                AppServer.ChangeTime = AppServer.wcfClient.CMN_单位_更新_List();
+                AppServer.EndChange = AppServer.ChangeTime;
+                //
+                AppServer.Frm单位信息 = new Cmn_TreeBox();
+                AppServer.Frm单位信息.BuildTree("单位信息", AppServer.UdataTable, "单位编码", "上级编码", "单位名称");
+                //
+                AppServer.LoginSuccess = true;
+                return true;
             }
             catch (Exception ex)
             {
                 AppServer.ShowMsg_Error("系统登录时出现异常，请确认您的网络连接是否有问题！\n错误信息：" + ex.Message, "登录失败了！");
-                return;
+                return false;
             }
             finally
             {
                 AppServer.WcfService_Close();
                 base.Cursor = Cursors.Arrow;            
             }
-
-            //登录成功了
-            if (this.chkRemember.Checked)
-            {
-                Properties.Settings.Default.LoginName = this.txtLoginName.Text;
-                Properties.Settings.Default.LoginPswd = Cmn_DataProtection.ProtectData(txtLoginPswd.Text, "GLG_JXC_Password");
-                Properties.Settings.Default.LoginRemb = this.chkRemember.Checked;
-            }
-            else
-            {
-                Properties.Settings.Default.LoginName = string.Empty;
-                Properties.Settings.Default.LoginPswd = string.Empty;
-                Properties.Settings.Default.LoginRemb = this.chkRemember.Checked;
-            }
-            Properties.Settings.Default.Save();
-
-            this.DialogResult = DialogResult.OK;
+           
         }
 
     }

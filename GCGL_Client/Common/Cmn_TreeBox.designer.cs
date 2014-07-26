@@ -53,6 +53,7 @@
             this.dbTreeView.SelectedNode = null;
             this.dbTreeView.Size = new System.Drawing.Size(306, 290);
             this.dbTreeView.TabIndex = 7;
+            this.dbTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.dbTreeView_AfterSelect);
             this.dbTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.dbTreeView_NodeMouseDoubleClick);
             // 
             // Cmn_TreeBox

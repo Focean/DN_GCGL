@@ -16,48 +16,28 @@ namespace GCGL_Client.Main
         public Man_单位_Select()
         {
             InitializeComponent();
+          
+        }
+        private void Man_单位_Select_Load(object sender, EventArgs e)
+        {
             Select_查询单位();
         }
-
         public void Select_查询单位()
         {
             this.Text = "查询单位选择";
             this.Tag = "查询单位";
-            //
-            base.Cursor = Cursors.WaitCursor;
-            try
+            ////
+            this.dbTreeView.NodeID = "单位编码";
+            this.dbTreeView.NodePID = "上级编码";
+            this.dbTreeView.NodeTitle = "单位名称";
+            this.dbTreeView.DataSource = AppServer.UdataTable;
+            this.dbTreeView.BuildTrees();
+            if (this.dbTreeView.Nodes.Count > 0)
             {
-                if (!AppServer.WcfService_Open()) return;
-                //
-                var model = new Ref_WS_GCGL.DataType_CMN_单位();
-                model.ExAction = "GetSubList";
-                if (AppServer.LoginUnitType == 1 || AppServer.LoginUnitType == 2)
-                {
-                    model.单位编码 = AppServer.LoginUnitCode;
-                }
-                DataTable table = AppServer.wcfClient.CMN_单位_List(ref model).Tables[0];
-                //
-                this.dbTreeView.NodeID = "单位编码";
-                this.dbTreeView.NodePID = "上级编码";
-                this.dbTreeView.NodeTitle = "单位名称";
-                this.dbTreeView.DataSource = AppServer.wcfClient.CMN_单位_List(ref model).Tables[0];
-                this.dbTreeView.BuildTrees();
-                if (this.dbTreeView.Nodes.Count > 0)
-                {
-                    this.dbTreeView.Nodes[0].Expand();
-                    this.dbTreeView.SelectedNode = (DBTreeNode)this.dbTreeView.Nodes[0];
-                }
-            }
-            catch (Exception ex)
-            {
-                AppServer.ShowMsg_ExceptError(ex.Message);
-                return;
-            }
-            finally
-            {
-                AppServer.WcfService_Close();
-                base.Cursor = Cursors.Arrow;
-            }
+                this.dbTreeView.Nodes[0].Expand();
+                this.dbTreeView.SelectedNode = (DBTreeNode)this.dbTreeView.Nodes[0];
+            }    
+            //this.dbTreeView = AppServer.dbTreeView;
         }
 
         public string SelectUnitCode { get; set; }
@@ -105,5 +85,7 @@ namespace GCGL_Client.Main
         {
             this.btn选择.PerformClick();
         }
+
+       
     }
 }

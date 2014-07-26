@@ -34,7 +34,7 @@ namespace GCGL_Client.NET
             this.btn取消.Visible = true;          
             this.btn提交.Visible = false;
             this.btn清空.Visible = false;
-            this.htmlEditor1.Visible = false;
+            this.dN_HtmlEditor1.Visible = false;
             this.pnl菜单栏.Dock = DockStyle.Bottom;
             this.webBrowser1.Dock = DockStyle.Fill;   
         }
@@ -90,17 +90,17 @@ namespace GCGL_Client.NET
         {
             this.webBrowser1.Dock = DockStyle.Top;
             this.pnl菜单栏.Dock = DockStyle.None;
-            this.htmlEditor1.Visible = true;
+            this.dN_HtmlEditor1.Visible = true;
             this.btn提交.Visible = true;
             this.btn清空.Visible = true;
-            this.htmlEditor1.Focus();
+            this.dN_HtmlEditor1.Focus();
             this.btn发帖.Enabled = false;
         }
 
         private void btn清空_Click(object sender, EventArgs e)
         {
-            this.htmlEditor1.BodyInnerText = "";
-            this.htmlEditor1.Focus();
+            this.dN_HtmlEditor1.BodyText = "";
+            this.dN_HtmlEditor1.Focus();
         }
 
         private void btn取消_Click(object sender, EventArgs e)
@@ -112,7 +112,7 @@ namespace GCGL_Client.NET
         {
             try
             {
-                if (this.htmlEditor1.BodyInnerText == null)
+                if (this.dN_HtmlEditor1.BodyText == null)
                 {
                     AppServer.ShowMsg("帖子内容不能为空！");
                     return;
@@ -122,7 +122,7 @@ namespace GCGL_Client.NET
                 model.ExAction = this.Tag.ToString();
                 model.版块编码 = this.btn提交.Tag.ToString();
                 model.贴子编码 = this.btn发帖.Tag.ToString();
-                model.贴子内容 = GetHtmlImageUrlList(this.htmlEditor1.BodyInnerText);
+                model.贴子内容 = GetHtmlImageUrlList(this.dN_HtmlEditor1.HtmlText);
                 model.LoginUserCode = AppServer.LoginUserCode;
                 AppServer.wcfClient.NET_论坛_Edit(ref model);
                 //

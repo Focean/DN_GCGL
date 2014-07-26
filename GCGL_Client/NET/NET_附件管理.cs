@@ -15,13 +15,16 @@ namespace GCGL_Client.NET
 {
     public partial class NET_附件管理 : Form
     {
-        int WorkState = 0; // 1-上传 2-下载
+        int WorkState = 0; // 1-上传   2-下载
 
         WcfFileTransfer.FileTransferClient client;
 
         //附件编码
         public string FileCode { get; set; }
         public string FileInfo { get; set; }
+
+        //
+        private bool AutoOpenFile = false;
 
 
         private DataTable filetable;
@@ -61,7 +64,6 @@ namespace GCGL_Client.NET
             this.btnSendFile.Text = "下载文件(&D)";
             this.btnOK.Text = "返回(&X)";
             this.btnChooseFile.Enabled = false;
-            this.btnClearList.Enabled = false;
             this.btnRemoveFile.Enabled = false;
         }
 
@@ -69,15 +71,13 @@ namespace GCGL_Client.NET
         {
             filetable = new DataTable();
             filetable.Columns.Add(new DataColumn("序号", typeof(Int32)));
-            filetable.Columns.Add(new DataColumn("文件", typeof(string)));
-            filetable.Columns.Add(new DataColumn("文件标识", typeof(string)));
-            filetable.Columns.Add(new DataColumn("文件路径", typeof(string)));
+            filetable.Columns.Add(new DataColumn("文件名称", typeof(string)));
+            filetable.Columns.Add(new DataColumn("文件大小", typeof(long)));
             filetable.Columns.Add(new DataColumn("路径", typeof(string)));
-            filetable.Columns.Add(new DataColumn("大小", typeof(long)));
             filetable.Columns.Add(new DataColumn("进度", typeof(Int32)));
             filetable.Columns.Add(new DataColumn("状态", typeof(Int32)));     // 1-等待上传 2-正在上传 3-传输成功 4-传输失败
             filetable.Columns.Add(new DataColumn("操作", typeof(Int32)));     // 1-等待上传 2-正在上传 3-传输成功 4-传输失败
-            filetable.PrimaryKey = new DataColumn[] { filetable.Columns["文件标识"] };
+            filetable.PrimaryKey = new DataColumn[] { filetable.Columns["文件名称"] };
 
             //AppServer.ShowMsg(AFJCode);
             if (!string.IsNullOrEmpty(AFJCode))
@@ -88,7 +88,7 @@ namespace GCGL_Client.NET
                     if (!AppServer.WcfService_Open()) return;
                     //
                     var model = new Ref_WS_GCGL.DataType_NET_附件管理();
-                    model.ExAction = "List";
+                    model.ExAction = "FileList";
                     model.附件编码 = AFJCode;
 
                     DataTable file = AppServer.wcfClient.NET_附件管理_List(ref model).Tables[0];
@@ -99,21 +99,21 @@ namespace GCGL_Client.NET
                     {
                         if (WorkState == 1)
                         {
-                            filetable.Rows.Add(new object[] { ++index, 
+                            filetable.Rows.Add(new object[] { 
+                                ++index, 
                                 dr["文件名称"].ToString(), 
-                                dr["文件标识"].ToString(),
-                                dr["文件路径"].ToString(),
-                                dr["路径"].ToString(),
-                                (long)dr["文件大小"] , 100, 3, 3 });
+                                int.Parse(dr["文件大小"].ToString()),
+                                "",
+                                100, 3, 3 });
                         }
                         else
                         {
-                            filetable.Rows.Add(new object[] { ++index, 
+                            filetable.Rows.Add(new object[] { 
+                                ++index, 
                                 dr["文件名称"].ToString(), 
-                                dr["文件标识"].ToString(),
-                                dr["文件路径"].ToString(),
-                                dr["路径"].ToString(),
-                                (long)dr["文件大小"] , 0, 1, 1 });
+                                int.Parse(dr["文件大小"].ToString()),
+                                "",
+                                0, 1, 1 });
                         }
                     }
                 }
@@ -145,10 +145,10 @@ namespace GCGL_Client.NET
             //如何更新主线程中的组件
             this.dataGridView1.Rows[e.Index].Cells["进度"].Value = 0;
 
+            string fileName = this.txtSavePath.Text + this.dataGridView1.Rows[e.Index].Cells["文件名称"].Value;
             try
             {
                 //文件流传输
-                string fileName = this.txtSavePath.Text + this.dataGridView1.Rows[e.Index].Cells["文件"].Value;
                 using (FileStream targetStream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None))
                 {
 
@@ -191,6 +191,7 @@ namespace GCGL_Client.NET
             }
 
             this.dataGridView1.Rows[e.Index].Cells["状态"].Value = 3;
+            if (this.AutoOpenFile) System.Diagnostics.Process.Start(fileName);
         }
 
         public void client_DownloadFileCompleted(object sender, WcfFileTransfer.DownloadFileCompletedEventArgs e)
@@ -212,12 +213,10 @@ namespace GCGL_Client.NET
 
         private void DownloadFile(DataGridViewRow dr)
         {
-            string fileName = dr.Cells["文件"].Value.ToString();
-            string Path = dr.Cells["路径"].Value.ToString();
-            string filePath = dr.Cells["文件路径"].Value.ToString();
+            string fileName = dr.Cells["文件名称"].Value.ToString();
             dr.Cells["状态"].Value = 2;
 
-            client.DownloadFileAsync(fileName, filePath, dr.Index, Path);
+            client.DownloadFileAsync(fileName, this.FileCode, dr.Index, "");
         }
 
         // 保证线程安全访问DataGridView1
@@ -225,15 +224,30 @@ namespace GCGL_Client.NET
         {
             FileTransTimer t = sender as FileTransTimer;
 
-            float f = (((float)t.CopySize / (float)t.FileSize)) * 100;
-            int i = Convert.ToInt32(f);
+            int iBL = 0;
+            if (t.FileSize > 0)
+            {
+                float f = (((float)t.CopySize / (float)t.FileSize)) * 100;
+                iBL = Convert.ToInt32(f);
+            }
+            else
+            {
+                iBL = 100;
+            }
 
             // 线程安全
             //if ((Int32)this.dataGridView1.Rows[t.Index].Cells["进度"].Value != i)
             //    this.dataGridView1.Rows[t.Index].Cells["进度"].Value = i;
-            UpdateDataGridView(t.Index, i);
+            try
+            {
+                UpdateDataGridView(t.Index, iBL);
+            }
+            catch
+            {
 
-            if (i < 100)
+            }
+
+            if (iBL < 100)
                 t.ReStart();
             else
             {
@@ -284,7 +298,8 @@ namespace GCGL_Client.NET
 
         private void UploadFile(DataGridViewRow dr)
         {
-            string fileName = dr.Cells["文件"].Value.ToString();
+            string fileName = dr.Cells["路径"].Value.ToString();
+            if (string.IsNullOrWhiteSpace(fileName) || !File.Exists(fileName)) return;
 
             UpdateDataGridViewState(dr.Index, 2);
 
@@ -295,6 +310,7 @@ namespace GCGL_Client.NET
             timerFileTrans.Tick += FileTransTimer_Tick;
             timerFileTrans.Start();
 
+            //以this.FileCode为存储的相对子目录下
             client.UploadFileAsync(Path.GetFileName(fileName), dr.Index, this.FileCode, fs);
         }
 
@@ -303,6 +319,7 @@ namespace GCGL_Client.NET
         delegate void DoUploadFileCompletedCallback(int Index, string FilePath, string Path, string Stream_ID);
         private void DoUploadFileCompleted(int Index, string FilePath, string Path, string Stream_ID)
         {
+           
             if (this.dataGridView1.InvokeRequired)
             {
                 DoUploadFileCompletedCallback d = new DoUploadFileCompletedCallback(DoUploadFileCompleted);
@@ -311,9 +328,9 @@ namespace GCGL_Client.NET
             else
             {
                 this.dataGridView1.Rows[Index].Tag = null;
-                this.dataGridView1.Rows[Index].Cells["路径"].Value = Path;
-                this.dataGridView1.Rows[Index].Cells["文件路径"].Value = FilePath;
-                this.dataGridView1.Rows[Index].Cells["文件标识"].Value = Stream_ID;
+                //this.dataGridView1.Rows[Index].Cells["路径"].Value = Path;
+                //this.dataGridView1.Rows[Index].Cells["文件路径"].Value = FilePath;
+                //this.dataGridView1.Rows[Index].Cells["文件标识"].Value = Stream_ID;
             }          
         }
 
@@ -394,14 +411,15 @@ namespace GCGL_Client.NET
                 {
                     for (int i = 0; i < dialog.FileNames.Length; i++)
                     {
+                        //AppServer.ShowMsg(dialog.FileNames[i].ToString());
                         DataRow type = filetable.NewRow();
                         type["序号"] = 1;
-                        type["文件标识"] = Guid.NewGuid().ToString();
-                        type["文件"] = dialog.FileNames[i];
-                        type["进度"] = 0;
+                        type["文件名称"] = Path.GetFileName(dialog.FileNames[i]);
                         System.IO.FileInfo fi = new System.IO.FileInfo(dialog.FileNames[i]);
                         fi.OpenRead();
-                        type["大小"] = fi.Length;
+                        type["文件大小"] = fi.Length;
+                        type["路径"] = dialog.FileNames[i];
+                        type["进度"] = 0;
                         type["状态"] = 1;
                         try
                         {
@@ -411,11 +429,6 @@ namespace GCGL_Client.NET
                     }
                 }
             }
-        }
-
-        private void btnClearList_Click(object sender, EventArgs e)
-        {
-            (this.dataGridView1.DataSource as DataTable).Rows.Clear();
         }
 
         private void btnSendFile_Click(object sender, EventArgs e)
@@ -459,7 +472,43 @@ namespace GCGL_Client.NET
             }
             else
             {
+                this.AutoOpenFile = false;
                 this.DownloadFiles();
+            }
+        }
+
+        private void DeleteFile(string sFileName)
+        {
+            if (string.IsNullOrWhiteSpace(this.FileCode)) return;
+            //
+            base.Cursor = Cursors.WaitCursor;
+            try
+            {
+                if (!AppServer.WcfService_Open()) return;
+                //
+                var model = new Ref_WS_GCGL.DataType_NET_附件管理();
+                model.ExAction = "DelFile";
+                model.附件编码 = this.FileCode;
+                model.LoginUserCode = AppServer.LoginUnitCode;
+                model.文件名称 = sFileName;
+                //
+                AppServer.wcfClient.NET_附件管理_Edit(ref model);
+                //
+                if (model.ExResult != 0)
+                {
+                    AppServer.ShowMsg_SubmitError(model.ErrorMsg);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                AppServer.ShowMsg_ExceptError(ex.Message);
+                return;
+            }
+            finally
+            {
+                AppServer.WcfService_Close();
+                base.Cursor = Cursors.Arrow;
             }
         }
 
@@ -470,14 +519,21 @@ namespace GCGL_Client.NET
                 if (dr.Cells["状态"].Value.ToString() == "3")
                 {
                     // 从服务器删除
-                    client.DeleteFile(dr.Cells["文件路径"].Value.ToString());
+                    client.DeleteFile(this.FileCode + @"\" + dr.Cells["文件名称"].Value.ToString());
                 };
 
-                this.label1.Text = dr.Cells["状态"].Value.ToString();
+                //this.label1.Text = dr.Cells["状态"].Value.ToString();
 
                 if (dr.Cells["状态"].Value.ToString() == "1" || dr.Cells["状态"].Value.ToString() == "3")
-                     this.dataGridView1.Rows.Remove(dr);
+                {
+                    this.DeleteFile(dr.Cells["文件名称"].Value.ToString());
+                    this.dataGridView1.Rows.Remove(dr);
+                }
             }
+        }
+
+        private void btnClearList_Click(object sender, EventArgs e)
+        {
         }
 
         public int FileCount { get; set; }
@@ -505,10 +561,11 @@ namespace GCGL_Client.NET
                 {
                     if ((int)dr["状态"] == 3)
                     {
-                        model.文件标识 = dr["文件标识"].ToString();
+                        model.文件名称 = dr["文件名称"].ToString();
+                        model.文件大小 = (long)(dr["文件大小"]); 
 
                         if (this.FileInfo != "") this.FileInfo = this.FileInfo + "、";
-                        this.FileInfo = this.FileInfo + Path.GetFileName(dr["文件"].ToString());
+                        this.FileInfo = this.FileInfo + dr["文件名称"].ToString();
                         //
                         AppServer.wcfClient.NET_附件管理_Edit(ref model);
                         //
@@ -525,7 +582,7 @@ namespace GCGL_Client.NET
                 //AppServer.ShowMsg("aaaa");
                 //if (this.FileInfo.Length > 75) this.FileInfo = this.FileInfo.Substring(1, 70) + "...";
                 //AppServer.ShowMsg("bbbb");
-                this.FileInfo = string.Format("共 {0} 个文件：{1}", filetable.Rows.Count, this.FileInfo);
+                if (this.FileInfo != "") this.FileInfo = string.Format("共 {0} 个文件：{1}", filetable.Rows.Count, this.FileInfo);
                 model.附件摘要 = this.FileInfo;
                 model.附件备注 = "";
                 model.LoginUserCode = AppServer.LoginUnitCode;
@@ -551,6 +608,12 @@ namespace GCGL_Client.NET
                 AppServer.WcfService_Close();
                 base.Cursor = Cursors.Arrow;
             }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.AutoOpenFile = true;
+            DownloadFile(this.dataGridView1.Rows[e.RowIndex]);
         }
     }
 

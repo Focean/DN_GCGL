@@ -21,9 +21,19 @@ namespace GCGL_Client
             try
             {
                 if (!AppServer.WcfService_Open()) return;
-                this.cbx处室类型.DataSource = AppServer.wcfClient.FZB_编码_List("普通处室").Tables[0];
-                this.cbx处室类型.DisplayMember = "名称";
-                this.cbx处室类型.ValueMember = "编码";
+
+                if (AppServer.LoginUnitIsYSDW()||AppServer.LoginUnitIsZGDW())
+                {
+                    this.cbx处室类型.DataSource = AppServer.wcfClient.FZB_编码_List("普通处室", AppServer.LoginAreaCode).Tables[0];
+                    this.cbx处室类型.DisplayMember = "名称";
+                    this.cbx处室类型.ValueMember = "编码";
+                }
+                else if (AppServer.LoginUnitIsCZT())
+                {
+                    this.cbx处室类型.DataSource = AppServer.wcfClient.FZB_编码_List("财政处室", AppServer.LoginAreaCode).Tables[0];
+                    this.cbx处室类型.DisplayMember = "名称";
+                    this.cbx处室类型.ValueMember = "编码";
+                }
                 //
             }
             catch (Exception ex)
@@ -70,8 +80,11 @@ namespace GCGL_Client
             this.Text = "新建处室";
             this.Tag = "Add";
             //
-            this.txt单位编码.Text = NUnitCode;
-            this.txt单位编码.Tag = AUnitCode;
+            if (AppServer.LoginUnitType < 4)
+            {
+                this.txt单位编码.Text = NUnitCode;
+                this.txt单位编码.Tag = AUnitCode;
+            }
             //
             this.GetCode();
          }
@@ -86,7 +99,7 @@ namespace GCGL_Client
             TY.Helper.FormHelper.DataBinding_DataSourceToUI(row, this);
             this.txt单位编码.Tag=row["单位编码"].ToString();
             this.txt单位编码.Text=row["单位名称"].ToString();
-            if (row["有效"].ToString() == "True")
+            if (row["有效"].ToString() == "有效")
                 this.chk有效.Checked = true;
             else
                 this.chk有效.Checked = false;
@@ -111,12 +124,12 @@ namespace GCGL_Client
             this.DialogResult = DialogResult.None;
             try
             {
+                if (!AppServer.WcfService_Open()) return false;
                 var dtm = new Ref_WS_GCGL.DataType_CMN_单位_处室();
                 TY.Helper.FormHelper.DataBinding_DataSourceToModel(this, dtm);
                 dtm.ExAction = this.Tag.ToString();
                 dtm.单位编码 = this.txt单位编码.Tag.ToString();
-                dtm.LoginUserCode = AppServer.LoginUserCode;
-                if (!AppServer.WcfService_Open()) return false;
+                dtm.LoginUserCode = AppServer.LoginUserCode; 
                 AppServer.wcfClient.CMN_单位_处室_Edit(ref dtm);
                 //
                 if (dtm.ExResult != 0)
@@ -164,6 +177,34 @@ namespace GCGL_Client
             if (this.OnUpdateGrid != null) this.OnUpdateGrid(this.txt单位编码.Tag.ToString());
             this.Editor_Add(this.txt单位编码.Tag.ToString(), this.txt单位编码.Text); 
         }
+
+        private void txt处室编码_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == 8)
+                e.Handled = false;
+            else e.Handled = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
        
+        private void FZB_单位_处室_Editor_KeyDown(object sender, KeyEventArgs e)
+        {
+            //单键 
+            switch (e.KeyCode)
+            {
+                case Keys.Escape:
+                    btnCancel_Click(this, EventArgs.Empty);
+                    break;
+            }
+
+            // 组合键
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)         //Ctrl+s
+            {
+                btnOK_Click(this, EventArgs.Empty);
+            }
+        }       
     }
 }

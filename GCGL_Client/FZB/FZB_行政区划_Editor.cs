@@ -11,54 +11,40 @@ namespace GCGL_Client.FZB
 {
     public partial class FZB_行政区划_Editor : Form
     {
-        #region PrivateProperty
-        private string Option;
-        private object Object;
-        private string PCode;
-        
-
-        #endregion
 
         public FZB_行政区划_Editor()
         {
             InitializeComponent();
         }
-         public FZB_行政区划_Editor(string option, string pCode, object objtmp = null)
+
+        private DataRow FDataRow;
+        public void Editor_Add(DataRow row, DataRow dr)
         {
-            InitializeComponent();
-            Option = option;
-            PCode = pCode;
-            Object = objtmp;
+            this.Text = "行政区划(新增)";
+            this.Tag = "Add";            
+            txt上级编码.Text = row["编码"].ToString();
+            txt上级编码.ReadOnly = true;
+            txt区划编码.Text = row["编码"].ToString();
+            txt区划编码.Focus();
+            //       
+            FDataRow = dr;
         }
-
-
-        private void BZ_行政区划_Edit_Load(object sender, EventArgs e)
+        public void Editor_Mod(DataRow row, DataRow dr)
         {
-            switch (Option)
-            {
-                case "Add":
-                    Text = "新增行政区划";
-                    txt上级编码.Text = PCode;
-                    txt上级编码.ReadOnly = true;
-                    txt区划编码.Text = PCode;
-                    txt区划编码.Focus();
-                    break;
-                case "Mod":
-                    Text = "修改行政区划";
-                    txt区划编码.Enabled = false;
-                    txt上级编码.ReadOnly = true;
-                    txt区划编码.Text = (Object as DataRow)["编码"].ToString();
-                    txt区划名称.Text = (Object as DataRow)["名称"].ToString();
-                    nud区划级次.Value = Convert.ToDecimal((Object as DataRow)["区划级次"]);
-                    chk是否本级.Checked =Convert.ToBoolean((Object as DataRow)["是否本级"]);
-                    chk是否行政省管县.Checked=Convert.ToBoolean((Object as DataRow)["是否行政省管县"]);
-                    chk是否财政省管县.Checked = Convert.ToBoolean((Object as DataRow)["是否财政省管县"]);
-                    chk是否有效.Checked = Convert.ToBoolean((Object as DataRow)["是否有效"]);
-                    PCode = (Object as DataRow)["上级编码"].ToString();
-                    txt上级编码.Text = (Object as DataRow)["上级编码"].ToString();
-                    txt区划名称.Focus();
-                    break;
-            }
+            this.Text = "行政区划(修改)";
+            this.Tag = "Mod";
+            txt区划编码.Enabled = false;
+            txt上级编码.ReadOnly = true;
+            txt区划编码.Text = row["编码"].ToString();
+            txt区划名称.Text = row["名称"].ToString();
+            txt上级编码.Text = row["上级编码"].ToString();
+            nud区划级次.Value = Convert.ToDecimal(row["区划级次"]);
+            chk是否本级.Checked = Convert.ToBoolean(row["是否本级"]);
+            chk是否行政省管县.Checked = Convert.ToBoolean(row["是否行政省管县"]);
+            chk是否财政省管县.Checked = Convert.ToBoolean(row["是否财政省管县"]);
+            chk是否有效.Checked = Convert.ToBoolean(row["是否有效"]);                     
+            //  
+            FDataRow = dr;
         }
 
         private void Btn确定_Click(object sender, EventArgs e)
@@ -69,6 +55,8 @@ namespace GCGL_Client.FZB
                 txt区划编码.Focus();
                 return;
             }
+
+
 
             if (txt区划名称.Text.Trim() == "")
             {
@@ -83,7 +71,7 @@ namespace GCGL_Client.FZB
                 if (!AppServer.WcfService_Open()) return;
                 var model = new Ref_WS_GCGL.DataType_CMN_行政区划();
                 TY.Helper.FormHelper.DataBinding_DataSourceToModel(this, model);
-                model.ExAction =Option;
+                model.ExAction =this.Tag.ToString();
                 if (model.ExAction == "Mod")
                 {
                     model.区划编码 = this.txt区划编码.Text.ToString();
@@ -94,8 +82,15 @@ namespace GCGL_Client.FZB
                     AppServer.ShowMsg_Error(model.ErrorMsg);
                     return;
                 }
-                if (Option == "Add")
-                    AppServer.ShowMsg("增加成功！");
+                FDataRow["编码"] = this.txt区划编码.Text.ToString();
+                FDataRow["名称"] = this.txt区划名称.Text.ToString();
+                FDataRow["上级编码"] = this.txt上级编码.Text.ToString();
+                FDataRow["全名"] = "(" + this.txt区划编码.Text.ToString() + ")" + this.txt区划名称.Text.ToString();
+                FDataRow["区划级次"] = this.nud区划级次.Value;
+                FDataRow["是否本级"] = this.chk是否本级.Checked;
+                FDataRow["是否行政省管县"] = this.chk是否行政省管县.Checked;
+                FDataRow["是否财政省管县"] = this.chk是否财政省管县.Checked;
+                FDataRow["是否有效"] = this.chk是否有效.Checked;
                 DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
@@ -118,6 +113,27 @@ namespace GCGL_Client.FZB
                 return;
             }
             e.Handled = true;
+        }
+
+        private void Btn取消_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void FZB_行政区划_Editor_KeyDown(object sender, KeyEventArgs e)
+        {
+            // 组合键
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)         //Ctrl+s
+            {
+                Btn确定_Click(this, EventArgs.Empty);
+            }
+        }
+
+        private void txt区划编码_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9')|| e.KeyChar == 8)//退格键是8
+                e.Handled = false;
+            else e.Handled = true;
         }
     }
 }

@@ -22,6 +22,7 @@ namespace GCGL_Client.Main
         public Man_UserRole_Editor()
         {
             InitializeComponent();
+            //
             this.DataBinding_DbTreeView();
         }
 
@@ -32,12 +33,16 @@ namespace GCGL_Client.Main
             {
                 if (!AppServer.WcfService_Open()) return;
 
+                var model = new Ref_WS_GCGL.DataType_Role();
+                model.ExAction = "List";
+                model.LoginUserCode = AppServer.LoginUserCode;
+
                 this.dbTreeView.CheckBoxs = true;
                 this.dbTreeView.MultiSelect = true;
                 this.dbTreeView.NodeID = "MenuCode";
                 this.dbTreeView.NodePID = "MenuPCode";
                 this.dbTreeView.NodeTitle = "MenuName";
-                this.dbTreeView.DataSource = AppServer.wcfClient.Sys_Menu_List(0).Tables[0];
+                this.dbTreeView.DataSource = AppServer.wcfClient.Sys_Menu_List(model).Tables[0];
                 this.dbTreeView.BuildTrees();
                 this.dbTreeView.ExpandAll();
                 //选中首节点
@@ -73,8 +78,11 @@ namespace GCGL_Client.Main
             try
             {
                 if (!AppServer.WcfService_Open()) return;
+                var model = new Ref_WS_GCGL.DataType_Role();
+                model.ExAction = "RoleMenu";
+                model.RoleID = ARoleID;
 
-                dtMenu = AppServer.wcfClient.Sys_Menu_List(ARoleID).Tables[0].Copy();
+                dtMenu = AppServer.wcfClient.Sys_Menu_List(model).Tables[0].Copy();
             }
             catch (Exception ex)
             {

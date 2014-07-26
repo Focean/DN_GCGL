@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using TY.Helper;
 using System.Globalization;
-using GLG.Common;
+using TY.Common;
 namespace GCGL_Client.NET
 {
     public partial class NET_公告通知 : Form
@@ -98,9 +98,15 @@ namespace GCGL_Client.NET
 
         private void btn通知_Click(object sender, EventArgs e)
         {
+            if (AppServer.LoginUnitType == 1)
+            {
+                AppServer.ShowMsg("本单位没有发布通知的权限！");
+                return;            
+            }
+            
             using (var form = new NET_公告通知_通知())
             {
-                form.Editor_Add();
+                    form.Editor_Add();
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     this.DataBinding_GridView(-1);
@@ -142,6 +148,7 @@ namespace GCGL_Client.NET
         private void btn删除_Click(object sender, EventArgs e)
         {
             if (this.dgvList.Rows.Count == 0) return;
+            if (!AppServer.DialogMsg("确认要删除当前选择项吗？", "删除确认")) return;
             //
             DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
             if (row == null) return;
@@ -150,11 +157,15 @@ namespace GCGL_Client.NET
                 var model = new Ref_WS_GCGL.DataType_NET_公文();
                 model.ExAction = "Del";
                 model.公文编码 = row["公文编码"].ToString();
+                model.LoginUserCode = AppServer.LoginUserCode;
                 if (!AppServer.WcfService_Open()) return;
                 //
                 AppServer.wcfClient.NET_公文_Edit(ref model);
                 if (model.ExResult != 0) AppServer.ShowMsg_Error(model.ErrorMsg);
-                DataBinding_GridView(this.dgvList.CurrentRow.Index - 1);
+                if (this.dgvList.CurrentRow.Index >= 1)
+                    DataBinding_GridView(this.dgvList.CurrentRow.Index - 1);
+                else
+                    DataBinding_GridView(-1);
             }
             catch (Exception ex)
             {
@@ -204,6 +215,11 @@ namespace GCGL_Client.NET
         private void dgvList_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.btn查看.PerformClick();
+        }
+
+        private void chk仅显示我未接收_CheckedChanged(object sender, EventArgs e)
+        {
+            this.DataBinding_GridView(0);
         }
        
     }

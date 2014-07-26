@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{67B22E0B-8C34-46AF-AB63-80853148F836}</ProjectGuid>
+    <ProjectGuid>{A1D383C5-78F3-4378-A48F-970F1B5BD52E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -103,17 +103,12 @@
     <Compile Include="FileTransfer.svc.cs">
       <DependentUpon>FileTransfer.svc</DependentUpon>
     </Compile>
+    <Compile Include="IFileTransfer.cs" />
     <Compile Include="WcfDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TY_Library\TY_Library.csproj">
-      <Project>{0EBDDBB5-807C-4BFC-B4D5-4D6271DCE760}</Project>
-      <Name>TY_Library</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
@@ -131,7 +126,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2174</DevelopmentServerPort>
+          <DevelopmentServerPort>61756</DevelopmentServerPort>
           <DevelopmentServerVPath>/dnsoft/bzfb/Service/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

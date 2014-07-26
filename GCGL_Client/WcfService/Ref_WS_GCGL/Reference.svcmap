@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="36304802-91fc-4963-9b00-8efabe24dfd1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e8473d55-def3-4c2d-8f96-9f82e8663593" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,17 +18,17 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:56964/WS_GCGL.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="WS_GCGL1.disco" MetadataType="Disco" ID="c179e3be-28b4-47a8-aced-ddabd82cb12c" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?disco" />
-    <MetadataFile FileName="WS_GCGL.xsd" MetadataType="Schema" ID="6b5e2516-15b2-4074-9680-63e2cd0aa54f" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd3" />
-    <MetadataFile FileName="WS_GCGL1.xsd" MetadataType="Schema" ID="758c944d-7e35-466a-a55e-90b6b4b0db0d" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd2" />
-    <MetadataFile FileName="WS_GCGL2.xsd" MetadataType="Schema" ID="8636ae28-29be-473b-9e58-33f058163abb" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd5" />
-    <MetadataFile FileName="WS_GCGL3.xsd" MetadataType="Schema" ID="e8b467c6-97c2-48c6-a702-aa9d03f48cdd" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd4" />
-    <MetadataFile FileName="WS_GCGL4.xsd" MetadataType="Schema" ID="1cc31990-d962-40a3-b6dd-22e498115809" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd0" />
-    <MetadataFile FileName="WS_GCGL1.wsdl" MetadataType="Wsdl" ID="b2b1d695-78ec-4845-83e7-6dbc9293a460" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?wsdl" />
-    <MetadataFile FileName="WS_GCGL5.xsd" MetadataType="Schema" ID="a931b427-17c8-4243-8d2f-a2bd1d6f820d" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd1" />
+    <MetadataFile FileName="WS_GCGL.xsd" MetadataType="Schema" ID="e818bf5d-4806-475b-b958-b97a400e5c5b" SourceId="1" SourceUrl="http://localhost:56964/WS_GCGL.svc?xsd=xsd0" />
+    <MetadataFile FileName="WS_GCGL1.xsd" MetadataType="Schema" ID="ef16fb39-b36d-41eb-b61e-e0d42a3024a7" SourceId="1" SourceUrl="http://localhost:56964/WS_GCGL.svc?xsd=xsd3" />
+    <MetadataFile FileName="WS_GCGL.wsdl" MetadataType="Wsdl" ID="2285de36-549f-4469-9449-e022486c7ce1" SourceId="1" SourceUrl="http://localhost:56964/WS_GCGL.svc?wsdl" />
+    <MetadataFile FileName="WS_GCGL.disco" MetadataType="Disco" ID="fb0a8c36-f087-43be-a80f-f6da19a920d7" SourceId="1" SourceUrl="http://localhost:56964/WS_GCGL.svc?disco" />
+    <MetadataFile FileName="WS_GCGL2.xsd" MetadataType="Schema" ID="fbd54ee1-a445-43f8-a0c1-dfc5892d9abf" SourceId="1" SourceUrl="http://localhost:56964/WS_GCGL.svc?xsd=xsd5" />
+    <MetadataFile FileName="WS_GCGL3.xsd" MetadataType="Schema" ID="7611f420-c0e6-4273-a9cd-853989f6b4d5" SourceId="1" SourceUrl="http://localhost:56964/WS_GCGL.svc?xsd=xsd2" />
+    <MetadataFile FileName="WS_GCGL4.xsd" MetadataType="Schema" ID="a142ad62-a504-4f3a-a9ec-da596686c4c6" SourceId="1" SourceUrl="http://localhost:56964/WS_GCGL.svc?xsd=xsd1" />
+    <MetadataFile FileName="WS_GCGL5.xsd" MetadataType="Schema" ID="784e50dd-b364-44f8-83e1-d704ab0df0a3" SourceId="1" SourceUrl="http://localhost:56964/WS_GCGL.svc?xsd=xsd4" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

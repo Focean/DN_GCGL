@@ -96,12 +96,10 @@ namespace WcfFileTransferService
 
         private static SqlDatabase AppDB = (SqlDatabase)DatabaseFactory.CreateDatabase("Connect_FileSvc");
 
-        private static string domain = ConfigurationManager.AppSettings["domain"].ToString();
-        private static string username = ConfigurationManager.AppSettings["username"].ToString();
-        private static string password = ConfigurationManager.AppSettings["password"].ToString();
-
-
-        private static string RootPath = null;
+        //private static string domain = ConfigurationManager.AppSettings["domain"].ToString();
+        //private static string username = ConfigurationManager.AppSettings["username"].ToString();
+        //private static string password = ConfigurationManager.AppSettings["password"].ToString();
+        private static string RootPath = ConfigurationManager.AppSettings["UploadFilePath"].ToString();
 
 
         private log4net.ILog log = log4net.LogManager.GetLogger("LogFileAppender");
@@ -111,61 +109,27 @@ namespace WcfFileTransferService
             return string.Format("{0}，你好！",yourName);
         }
 
-        private static string GetRootPath()
-        {
-            string rootPath = null;
-
-            try
-            {
-                DbCommand cmd = AppDB.GetStoredProcCommand("P_SYS_文档存放路径");
-                AppDB.AddInParameter(cmd, "@文件标识", SqlDbType.UniqueIdentifier, null);
-                AppDB.AddOutParameter(cmd, "@文件路径", SqlDbType.VarChar, 1004);
-                AppDB.ExecuteNonQuery(cmd);
-
-                object obj = AppDB.GetParameterValue(cmd, "@文件路径");
-                if (obj != DBNull.Value)
-                    rootPath = (string)obj;
-            }
-            catch (Exception e)
-            {
-                rootPath = "Err:" + e.Message;
-            }
-
-            return rootPath;
-        }
-
-        public bool DeleteFile(string FilePath)
-        {
-            impersonateValidUser(domain, username, password);
-
-            File.Delete(FilePath);
-
-            undoImpersonation();
-
-            return true;
-        }
-
-
         public UploadFileReturnMessage UploadFile(UploadFileMessage request)
         {           
-            log.Info("这是服务器端的日志信息！");
+            //log.Info("这是服务器端的日志信息！");
             log.Info("开始接收文件");
 
             Stream sourceStream = request.FileData;
 
             //  模拟用户
             //log.Info(string.Format("模拟用户：domain={0}， username={1}, password={2}",domain, username, password));
-            impersonateValidUser(username, domain, password);
+//            impersonateValidUser(username, domain, password);
             //impersonateValidUser("mengfanlai", "zzdnsoft", "mfl@5808359");
 
             //log.Info("get RootPath ... ");
 
-            if (RootPath == null)
-                RootPath = GetRootPath();
+            if (string.IsNullOrWhiteSpace(RootPath)) RootPath = @"D:\";
 
-            //log.Info("RootPath = " + RootPath);
+            log.Info("RootPath=" + RootPath);
 
             string fileName = RootPath;
+            //if (fileName.Substring(fileName.Length, 1) != @"\") fileName = fileName + @"\";
+
             if (!string.IsNullOrEmpty(request.SavePath))
             {
                 fileName = fileName + request.SavePath;
@@ -184,9 +148,6 @@ namespace WcfFileTransferService
 
             //log.Info("targetStream created !");
 
-            string FilePath = null;
-            Guid Stream_ID = new Guid();
-
             sourceStream.CopyTo(targetStream);
             targetStream.Flush();
 
@@ -197,36 +158,10 @@ namespace WcfFileTransferService
 
             //log.Info("targetStream closed !");
             
-            try
-            {
-                SqlConnection cnn = (SqlConnection)AppDB.CreateConnection();
-                cnn.Open();
-
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = cnn;
-                cmd.CommandType = CommandType.Text;
-
-                cmd.CommandText = "SELECT TOP 1 file_stream.PathName() from T_SYS_文档 where name='" + Path.GetFileName(request.FileName) + "'";
-                object obj = cmd.ExecuteScalar();
-                if (DBNull.Value != obj) FilePath = (string)obj;
-
-                cmd.CommandText = "SELECT TOP 1 stream_id from T_SYS_文档 where name='" + Path.GetFileName(request.FileName) + "'";
-                obj = cmd.ExecuteScalar();
-                if (DBNull.Value != obj) Stream_ID = (Guid)obj;
-
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                FilePath = ex.Message;
-            }
-            
-
-            undoImpersonation();
-
             log.Info("接收文件完毕");
 
-            return new UploadFileReturnMessage() { Stream_ID = Stream_ID, FilePath = fileName, Path = FilePath, Index = request.Index };
+            Guid Stream_ID = new Guid();
+            return new UploadFileReturnMessage() { Stream_ID = Stream_ID, FilePath = fileName, Path = "", Index = request.Index };
         }
 
         public IAsyncResult BeginUploadFile(UploadFileMessage request, AsyncCallback callback, object asyncState)
@@ -241,21 +176,17 @@ namespace WcfFileTransferService
 
         public DownloadFileReturnMessage DownloadFile(DownloadFileMessage request)
         {
-            log.Info("这是服务器端的日志信息！");
-            log.Info("开始接收文件");
-
-        //    //  模拟用户
-            //impersonateValidUser("mengfanlai", "zzdnsoft", "mfl@5808359");
-            impersonateValidUser(username, domain, password);
+            //log.Info("这是服务器端的日志信息！");
+            log.Info("开始下载文件");
 
             long fileSize = 0;
             Stream targetStream = null;
             string tag = null;
-            
 
+            string fileName = RootPath + request.FilePath + @"\" + request.FileName;
             try
             {
-                targetStream = new FileStream(request.FilePath, FileMode.Open, FileAccess.Read);
+                targetStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
                 fileSize = targetStream.Length;
             }
             catch (Exception e)
@@ -263,30 +194,11 @@ namespace WcfFileTransferService
                 tag = e.Message;
                 targetStream = new MemoryStream();
             }
-            
-
-            //SqlConnection cnn = (SqlConnection)AppDB.CreateConnection();
-            //cnn.Open();
-
-            //SqlCommand cmd = new SqlCommand();
-            //cmd.Connection = cnn;
-            //cmd.CommandType = CommandType.Text;
-
-            //SqlTransaction transaction = cnn.BeginTransaction();
-            //cmd.Transaction = transaction;
-            //cmd.CommandText = "SELECT GET_FILESTREAM_TRANSACTION_CONTEXT()";
-            //Object obj = cmd.ExecuteScalar();
-            //byte[] txContext = (byte[])obj;
-
-            //targetStream = new SqlFileStream(request.Path, txContext, FileAccess.Read);
-            //fileSize = targetStream.Length;
-
-            undoImpersonation();
-
 
             // ??? 这是异步调用,什么时候执行以下语句
             //transaction.Commit();
             //cnn.Close();
+            log.Info("下载文件完毕");
 
             return new DownloadFileReturnMessage() { FileData = targetStream, FileSize = fileSize, Index = request.Index, Tag = tag };
         }
@@ -299,6 +211,15 @@ namespace WcfFileTransferService
         public DownloadFileReturnMessage EndDownloadFile(IAsyncResult asyncResult)
         {
             throw new Exception("The method or operation is not implemented.");
+        }
+
+        public bool DeleteFile(string AFileName)
+        {
+            string fileName = RootPath + AFileName;
+
+            File.Delete(fileName);
+
+            return true;
         }
 
         public DataSet GetFileList()

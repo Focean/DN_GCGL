@@ -883,10 +883,12 @@
             this.Controls.Add(this.txt过路费);
             this.Controls.Add(this.pnl保养记录);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "COS_使用情况_Editor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.COS_使用情况_Editor_KeyDown);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pnl加油.ResumeLayout(false);

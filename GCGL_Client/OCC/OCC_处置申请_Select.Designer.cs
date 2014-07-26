@@ -75,7 +75,7 @@
             this.dtp结束时间.Location = new System.Drawing.Point(241, 8);
             this.dtp结束时间.Name = "dtp结束时间";
             this.dtp结束时间.Size = new System.Drawing.Size(121, 21);
-            this.dtp结束时间.TabIndex = 262;
+            this.dtp结束时间.TabIndex = 2;
             // 
             // label1
             // 
@@ -95,7 +95,7 @@
             this.dtp开始时间.Location = new System.Drawing.Point(88, 7);
             this.dtp开始时间.Name = "dtp开始时间";
             this.dtp开始时间.Size = new System.Drawing.Size(122, 21);
-            this.dtp开始时间.TabIndex = 260;
+            this.dtp开始时间.TabIndex = 1;
             this.dtp开始时间.Value = new System.DateTime(2013, 1, 24, 18, 2, 0, 0);
             // 
             // btn查找
@@ -104,8 +104,8 @@
             this.btn查找.Location = new System.Drawing.Point(574, 0);
             this.btn查找.Name = "btn查找";
             this.btn查找.Size = new System.Drawing.Size(75, 34);
-            this.btn查找.TabIndex = 258;
-            this.btn查找.Text = "查询(&C)";
+            this.btn查找.TabIndex = 0;
+            this.btn查找.Text = "查询(&Q)";
             this.btn查找.UseVisualStyleBackColor = true;
             this.btn查找.Click += new System.EventHandler(this.btn查找_Click);
             // 
@@ -224,7 +224,7 @@
             this.btn确定.Location = new System.Drawing.Point(343, 342);
             this.btn确定.Name = "btn确定";
             this.btn确定.Size = new System.Drawing.Size(110, 28);
-            this.btn确定.TabIndex = 273;
+            this.btn确定.TabIndex = 3;
             this.btn确定.Text = "确定(Ctrl+D)";
             this.btn确定.UseVisualStyleBackColor = true;
             this.btn确定.Click += new System.EventHandler(this.btn确定_Click);
@@ -236,7 +236,7 @@
             this.btn取消.Location = new System.Drawing.Point(196, 342);
             this.btn取消.Name = "btn取消";
             this.btn取消.Size = new System.Drawing.Size(110, 28);
-            this.btn取消.TabIndex = 272;
+            this.btn取消.TabIndex = 4;
             this.btn取消.Text = "取消(&ESC)";
             this.btn取消.UseVisualStyleBackColor = true;
             // 
@@ -249,10 +249,12 @@
             this.Controls.Add(this.btn取消);
             this.Controls.Add(this.dgvList);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.MinimizeBox = false;
             this.Name = "OCC_处置申请_Select";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.OCC_处置申请_Select_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OCC_处置申请_Select_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

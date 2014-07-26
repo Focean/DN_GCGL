@@ -64,7 +64,6 @@ namespace GCGL_Client.COS
                 if (dtm.ExResult != 0)
                 {
                     AppServer.ShowMsg_SubmitError(dtm.ErrorMsg);
-                   
                     return false;
                 }
             }
@@ -110,7 +109,6 @@ namespace GCGL_Client.COS
                 {
                     for (int i = 0; i < arrID.Length; i++)
                     {
-
                         if (this.clb保养项目.GetItemText(this.clb保养项目.Items[j]) == arrID[i])
                         {
                             this.clb保养项目.SetItemChecked(j, true);
@@ -130,6 +128,19 @@ namespace GCGL_Client.COS
         }
         private void btn提交_Click(object sender, EventArgs e)
         {
+            #region 控件验证
+            if (string.IsNullOrWhiteSpace(this.cbx车牌号.Text.Trim()))
+            {
+                AppServer.DialogMsg("车牌号不能为空！", "提示");
+                this.cbx车牌号.Focus();
+                return;
+            }
+            if (this.rb保养记录.Checked == false && this.rb出车记录.Checked == false && this.rb加油记录.Checked == false && this.rb维修记录.Checked == false)
+            {
+                AppServer.DialogMsg("请先选择要登记的项目，再进行提交操作！", "提示");
+                return;
+            }
+            #endregion
             if (!this.PostData()) return;
             //提交成功了
             this.DialogResult = DialogResult.OK;
@@ -164,6 +175,14 @@ namespace GCGL_Client.COS
         {
             if (this.rb出车记录.Checked == true) this.pnl出车记录.Enabled = true;
             else this.pnl出车记录.Enabled = false;
+        }
+
+        private void COS_使用情况_Editor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)         //Ctrl+S
+            {
+                this.btn提交_Click(this, EventArgs.Empty);
+            }
         }
     }
 }

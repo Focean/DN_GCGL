@@ -9,39 +9,45 @@ using System.Windows.Forms;
 using TY.Helper;
 using System.Globalization;
 using GCGL_Client.Main;
-using GLG.Common;
+using System.Drawing.Printing;
+using TY.Common;
+using GCGL_Client.NET;
+
 namespace GCGL_Client.OCC
 {
     public partial class OCC_处置申请 : Form
     {
         public OCC_处置申请()
         {
-            InitializeComponent();        
+            InitializeComponent();
             //
-            this.txt选择单位.Text = AppServer.LoginUnitName;
             this.dtp开始时间.Value = DateTime.Today.AddDays(1 - DateTime.Today.DayOfYear);
             this.dtp结束时间.Value = DateTime.Today;
             //设置表格样式
             AppServer.SetGridViewStyle(this.dgvList);
-            //
-            if (AppServer.LoginUnitType < 3 || AppServer.LoginUnitType == 8)
-            {
-                this.txt选择单位.Text = AppServer.LoginUnitName;
-                this.txt选择单位.Tag = AppServer.LoginUnitCode;
-            }
-            else
-            {
-                this.txt选择单位.Text = "所有单位";
-                this.txt选择单位.Tag = "410000_";
-            }
-            //
-            if (AppServer.LoginUnitType != 1)
-            {
-                this.btn新建.Enabled = false;
-                this.btn修改.Enabled = false;
-                this.btn删除.Enabled = false;
-            }
 
+            //
+            if (AppServer.UserQxMenuList.Rows.Contains("051102"))
+            {
+                this.btn新建.Visible = true;
+                this.btn修改.Visible = true;
+                this.btn删除.Visible = true;
+            }
+            //
+            if (AppServer.LoginUnitIsGWC())
+            {
+                this.btn预算单位.Visible = false;
+                this.txt单位编码.Tag = "410001_GWC";
+                this.txt单位编码.Text = "省公物仓";
+                this.chk包含下级.Visible = false;
+            }
+            if (AppServer.LoginUnitIsYSDW())
+            {
+                this.btn预算单位.Visible = false;
+                this.txt单位编码.Tag = AppServer.LoginUnitCode;
+                this.txt单位编码.Text = AppServer.LoginUnitName;
+                this.chk包含下级.Visible = false;
+            }
         }
 
         private void OCC_处置申请_Load(object sender, EventArgs e)
@@ -49,7 +55,6 @@ namespace GCGL_Client.OCC
             this.DataBinding_GridView(0);
         }
 
-        #region 数据绑定自定义方法       
         private void DataBinding_GridView(int ACurrRowIndex)
         {
             try
@@ -57,14 +62,16 @@ namespace GCGL_Client.OCC
                 if (!AppServer.WcfService_Open()) return;
                 //
                 var model = new Ref_WS_GCGL.DataType_OCC_处置申请();
-                model.ExAction = "List";              
+                model.ExAction = "List";
                 model.开始时间 = this.dtp开始时间.Value;
                 model.结束时间 = this.dtp结束时间.Value;
-                if (this.txt选择单位.Tag == null || this.txt选择单位.Tag.ToString()== "")
-                    model.单位编码 = AppServer.LoginUnitCode;
-                else
+                if (AppServer.LoginUnitIsYSDW() || AppServer.LoginUnitIsGWC())
                 {
-                    model.单位编码 = this.txt选择单位.Tag.ToString();
+                    model.单位编码 = AppServer.LoginUnitCode;
+                }
+                else if (this.txt单位编码.Tag != null)
+                {
+                    model.单位编码 = this.txt单位编码.Tag.ToString();
                     model.包含下级 = this.chk包含下级.Checked;
                 }
                 DataSet db = AppServer.wcfClient.OCC_处置申请_List(ref model);
@@ -83,7 +90,6 @@ namespace GCGL_Client.OCC
                 base.Cursor = Cursors.Arrow;
             }
         }
-        #endregion
 
         #region 功能按钮
         private void btn新建_Click(object sender, EventArgs e)
@@ -94,7 +100,7 @@ namespace GCGL_Client.OCC
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     //更新数据     
-                    this.DataBinding_GridView(this.dgvList.Rows.Count);
+                    this.DataBinding_GridView(0);
                 }
             }
         }
@@ -104,7 +110,7 @@ namespace GCGL_Client.OCC
             if (this.dgvList.Rows.Count == 0) return;
             DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
             if (row == null) return;
-            if (row["exWaitState"].ToString() == "等待提交")
+            if (row["exWaitState"].ToString() == "等待提交" || row["exWaitState"].ToString() == "等待重新提交")
             {
                 using (var form = new OCC_处置申请_Editor())
                 {
@@ -120,14 +126,14 @@ namespace GCGL_Client.OCC
             {
                 AppServer.ShowMsg_Warn("该申请已经提交，无法修改！", "警告");
                 return;
-            }          
+            }
         }
 
         private void btn删除_Click(object sender, EventArgs e)
         {
             if (this.dgvList.Rows.Count == 0) return;
             DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
-            if (row == null) return;           
+            if (row == null) return;
             if (AppServer.DialogMsg("是否确认删除？", " "))
             {
                 var dtm = new Ref_WS_GCGL.DataType_OCC_处置申请();
@@ -152,11 +158,46 @@ namespace GCGL_Client.OCC
             DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
             if (row == null) return;
             //
-            using (var form = new  OCC_处置申请_Editor())
+            using (var form = new OCC_处置申请_Editor())
             {
                 form.Editor_See(row["申请编号"].ToString());
                 form.ShowDialog();
             }
+        }
+
+        private void btn审批意见_Click(object sender, EventArgs e)
+        {
+            if (this.dgvList.Rows.Count == 0) return;
+            DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
+            if (row == null) return;
+            //
+            using (var form = new NET_审批中心_Flow())
+            {
+                form.Editor_See(row["审批流程编码"].ToString());
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                }
+            }
+        }
+
+        private void dgvList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.dgvList.Rows.Count == 0) return;
+            DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
+            if (row == null) return;
+            if (row["exWaitState"].ToString() == "等待提交" || row["exWaitState"].ToString() == "等待重新提交")
+            {
+                this.btn修改.PerformClick();
+            }
+            else
+            {
+                this.btn查看.PerformClick();
+            }
+        }
+
+        private void btnQuery_Click(object sender, EventArgs e)
+        {
+            DataBinding_GridView(0);
         }
 
         private void btn导出_Click(object sender, EventArgs e)
@@ -168,24 +209,38 @@ namespace GCGL_Client.OCC
         {
             this.Close();
         }
-
-        private void btn选择单位_Click(object sender, EventArgs e)
-        {
-            using (var form = new Man_单位_Select())
-            {
-                form.Select_查询单位();
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    this.txt选择单位.Text = form.SelectUnitName;
-                    this.txt选择单位.Tag = form.SelectUnitCode;
-                }
-            }
-        }
-
-        private void btnQuery_Click(object sender, EventArgs e)
+        private void cbx选择单位_SelectedValueChanged(object sender, EventArgs e)
         {
             DataBinding_GridView(0);
-        }      
+        }
         #endregion
+
+        private void btn预算单位_Click(object sender, EventArgs e)
+        {
+            AppServer.ReadAppCommon(2);
+            AppServer.Frm单位信息.SetShowParam(this.txt单位编码, 0);
+            AppServer.Frm单位信息.ShowDialog();
+            if (AppServer.Frm单位信息.DialogResult == DialogResult.OK)
+            {
+                this.txt单位编码.Tag = AppServer.Frm单位信息.SelectNodeID;
+                this.txt单位编码.Text = AppServer.Frm单位信息.SelectNodeTitle;
+            }
+            AppServer.Frm单位信息.Hide();
+        }
+
+        private void btn打印申请表_Click(object sender, EventArgs e)
+        {
+            if (this.dgvList.Rows.Count == 0) return;
+            DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
+            if (row == null) return;
+            //
+            using (var form = new OCC_处置申请_Editor())
+            {
+                form.Editor_Print(row["申请编号"].ToString());
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                }
+            }
+        }     
     }
 }

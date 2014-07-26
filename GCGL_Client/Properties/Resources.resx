@@ -118,7 +118,43 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GCGL_back_top" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GCGL_back_top.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GCGL_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GCGL_back.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_lc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_lc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_lc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_lc.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_lc副本" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_lc副本.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GCGL_lc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GCGL_lc.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GCGL_back副本" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GCGL_back副本.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_lc副本1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_lc副本.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GCGL_back_lc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GCGL_back_lc.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="table_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\table_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GCGL_back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GCGL_back.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GCGL_back11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GCGL_back11.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="back_lc2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_lc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

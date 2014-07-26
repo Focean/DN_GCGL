@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GLG.Common;
+using TY.Common;
 using TY.Helper;
 using GCGL_Client.NET;
 
@@ -18,10 +18,23 @@ namespace GCGL_Client.OCC
         {
             InitializeComponent();
             txt经办人.Text = AppServer.LoginUserName;
-            if (AppServer.LoginUnitType == 8)
+            if (AppServer.LoginUnitIsGWC())
             {
                 label4.Text = "    资产编号：";
                 label5.Enabled = false;
+            }
+            //获取打印机列表
+            try
+            {
+                this.cbxSelectPrinter.Items.Clear();
+                foreach (string iprt in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+                    this.cbxSelectPrinter.Items.Add(iprt);
+                this.cbxSelectPrinter.Text = (new System.Drawing.Printing.PrintDocument()).PrinterSettings.PrinterName;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("获取打印机配置时出现异常错误！\n 错误信息：" + ex.Message);
+                return;
             }
         }
         
@@ -29,14 +42,13 @@ namespace GCGL_Client.OCC
         {
 
         }
-
-    
+ 
         private void DataBinding_GridView(int ACurrRowIndex)
         {
             try
             {
                 if (!AppServer.WcfService_Open()) return;
-                if (AppServer.LoginUnitType == 8)
+                if (AppServer.LoginUnitIsGWC())
                 {
                     var dtm = new Ref_WS_GCGL.DataType_OCC_公车库存();
                     dtm.资产编号 = txt处置申请编号.Text.Trim();
@@ -56,7 +68,7 @@ namespace GCGL_Client.OCC
                             + "[资产编号,wh=20,al=ml,vi=0]"
                             + "[资产名称,wh=150,al=ml]"
                             + "[规格型号,wh=150,al=mc]"
-                            + "[价值,tc=账面原值(元),wh=120,al=mr]"
+                            + "[价值,tc=账面原值(元),fmt=N2,wh=120,al=mr]"
                             + "[账面净值,tc=账面净值(元),fmt=N2,wh=120,al=mr]"
                             + "[评估价值,tc=评估价值(元),fmt=N2,wh=120,al=mr]";
 
@@ -77,8 +89,7 @@ namespace GCGL_Client.OCC
             }
         }
 
-
-        #region 增、修、查看
+        #region 增、修、查看、打印
         int Onum;
         public void Editor_Add()
         {
@@ -101,9 +112,10 @@ namespace GCGL_Client.OCC
             Onum = db.Tables[0].Rows[0]["处置申请序号"].ToIntegerDef();
             this.txt附件信息.Tag = db.Tables[0].Rows[0]["附件编码"].ToString();
             this.txt附件信息.Text = db.Tables[0].Rows[0]["附件摘要"].ToString();
+            this.txt经办人.Text = db.Tables[0].Rows[0]["创建人"].ToString();
             DataBinding_GridView(0);
         }
-        public void Editor_See(string BM)
+        public void Editor_See(string BM, bool AEmebMode = false)
         {
             this.Text = "出售出库登记(查看)";
             this.Tag = "Chk";
@@ -116,12 +128,52 @@ namespace GCGL_Client.OCC
             Onum = db.Tables[0].Rows[0]["处置申请序号"].ToIntegerDef();
             this.txt附件信息.Tag = db.Tables[0].Rows[0]["附件编码"].ToString();
             this.txt附件信息.Text = db.Tables[0].Rows[0]["附件摘要"].ToString();
+            this.txt经办人.Text = db.Tables[0].Rows[0]["创建人"].ToString();
             DataBinding_GridView(0);
             //
-            this.btn提交.Enabled = false;
+            this.btn处置申请.Visible = false;
+            this.txt备注.ReadOnly = true;
+            this.txt本单位批准人.ReadOnly = true;
+            this.txt经办人.ReadOnly = true;
+            this.txt处置收入.ReadOnly = true;
+            this.dtp调拨日期.Enabled = false;
+            this.btn提交.Visible = false;
+            this.btn附件管理.Visible = false;
+
+            //嵌入式状态不显示工具栏
+            this.pnlTool.Visible = !AEmebMode;
+        }
+
+        public void Editor_Print(string BM)
+        {
+            this.Text = "处置备案表打印";
+            //
+            if (!AppServer.WcfService_Open()) return;
+            var model = new Ref_WS_GCGL.DataType_OCC_公车出库();
+            model.出库单编码 = BM;
+            DataSet db = AppServer.wcfClient.OCC_公车出库_List(ref model);
+            if (db.Tables[0].Rows.Count == 0) return;
+            TY.Helper.FormHelper.DataBinding_DataSourceToUI(db.Tables[0], this);
+            Onum = db.Tables[0].Rows[0]["处置申请序号"].ToIntegerDef();
+            this.txt附件信息.Tag = db.Tables[0].Rows[0]["附件编码"].ToString();
+            this.txt附件信息.Text = db.Tables[0].Rows[0]["附件摘要"].ToString();
+            DataBinding_GridView(0);
+
+            //
+            this.txt备注.ReadOnly = true;
+            this.txt本单位批准人.ReadOnly = true;
+            this.txt经办人.ReadOnly = true;
+            this.txt处置收入.ReadOnly = true;
+            this.dtp调拨日期.Enabled = false;
+            this.btn处置申请.Visible = false;
+            this.btn提交.Visible = false;
             this.btn附件管理.Enabled = false;
+            this.btn打印.Visible = true;
+            this.lbl打印机.Visible = true;
+            this.cbxSelectPrinter.Visible = true;
         }
         #endregion
+
         private void btn处置申请_Click(object sender, EventArgs e)
         {
             if (AppServer.LoginUnitType == 8)
@@ -192,11 +244,11 @@ namespace GCGL_Client.OCC
                 model.LoginUserCode = AppServer.LoginUserCode;
                 model.备注 = this.txt备注.Text.ToString();
                 model.出库单编码 = this.btn提交.Tag.ToString();
-                model.处置申请序号 = AppServer.SQXH;
+                model.处置申请序号 = Onum;
                 model.收购单位 = this.txt收购单位.Text.ToString();
                 model.调拨日期 = this.dtp调拨日期.Value;
                 model.处置收入 = Convert.ToDecimal(this.txt处置收入.Text.ToString());
-                model.处置形式编码 = "03";
+                model.处置形式编码 = "04";
                 model.本单位批准人 = this.txt本单位批准人.Text.ToString();
                 if (this.txt附件信息.Tag != null) model.附件编码 = this.txt附件信息.Tag.ToString();
                 AppServer.wcfClient.OCC_公车出库_Edit(ref model);
@@ -218,6 +270,40 @@ namespace GCGL_Client.OCC
             }
             #endregion
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void OCC_公车出库_出售_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.J && e.Modifiers == Keys.Control)         //Ctrl+J
+            {
+                this.btn提交_Click(this, EventArgs.Empty);
+            }
+        }
+
+        private void btn打印_Click(object sender, EventArgs e)
+        {
+            this.PrintForm();
+            //
+            this.DialogResult = DialogResult.OK;
+        }
+        public void PrintForm()
+        {
+            if (this.dgvList.Rows.Count == 0) return;
+            using (var pForm = new OCC_处置备案_Print())
+            {
+                pForm.lbl申报单位.Text = AppServer.LoginUnitName;
+                pForm.lbl原因.Text = this.txt备注.Text;
+                pForm.lbl资产价值.Text = string.Format("{0:0.00}",Convert.ToDecimal(this.dgvList.Rows[0].Cells["价值"].Value.ToString()));
+                //
+                pForm.Print(this.cbxSelectPrinter.Text);
+            }
+        }
+
+        private void txt处置收入_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '.' || e.KeyChar == 8)//退格键是8
+                e.Handled = false;
+            else e.Handled = true;
         }
        
     }

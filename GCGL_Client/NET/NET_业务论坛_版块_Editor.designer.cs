@@ -71,7 +71,7 @@
             this.panelT.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelT.Location = new System.Drawing.Point(0, 0);
             this.panelT.Name = "panelT";
-            this.panelT.Size = new System.Drawing.Size(964, 25);
+            this.panelT.Size = new System.Drawing.Size(950, 25);
             this.panelT.TabIndex = 92;
             // 
             // Btn刷新
@@ -114,7 +114,7 @@
             // 
             this.btn关闭.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn关闭.BackColor = System.Drawing.SystemColors.Control;
-            this.btn关闭.Location = new System.Drawing.Point(899, 0);
+            this.btn关闭.Location = new System.Drawing.Point(885, 0);
             this.btn关闭.Name = "btn关闭";
             this.btn关闭.Size = new System.Drawing.Size(65, 25);
             this.btn关闭.TabIndex = 0;
@@ -128,7 +128,7 @@
             this.Lbl标题.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Lbl标题.Location = new System.Drawing.Point(0, 0);
             this.Lbl标题.Name = "Lbl标题";
-            this.Lbl标题.Size = new System.Drawing.Size(964, 32);
+            this.Lbl标题.Size = new System.Drawing.Size(950, 32);
             this.Lbl标题.TabIndex = 3;
             this.Lbl标题.Text = "业务论坛版块列表";
             this.Lbl标题.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -139,7 +139,7 @@
             this.panelMT.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMT.Location = new System.Drawing.Point(0, 25);
             this.panelMT.Name = "panelMT";
-            this.panelMT.Size = new System.Drawing.Size(964, 32);
+            this.panelMT.Size = new System.Drawing.Size(950, 32);
             this.panelMT.TabIndex = 93;
             // 
             // dgvList
@@ -247,7 +247,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(378, 57);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(586, 507);
+            this.panel1.Size = new System.Drawing.Size(572, 507);
             this.panel1.TabIndex = 96;
             // 
             // btn取消
@@ -342,7 +342,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 564);
+            this.ClientSize = new System.Drawing.Size(950, 564);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.dgvList);
@@ -350,6 +350,7 @@
             this.Controls.Add(this.panelT);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "NET_业务论坛_版块_Editor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelT.ResumeLayout(false);
             this.panelMT.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();

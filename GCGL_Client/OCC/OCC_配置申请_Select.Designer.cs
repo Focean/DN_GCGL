@@ -40,6 +40,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.iglTree = new System.Windows.Forms.ImageList(this.components);
             this.dgvList = new System.Windows.Forms.DataGridView();
             this.btn取消 = new System.Windows.Forms.Button();
@@ -53,6 +55,7 @@
             this.型号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.排气量 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.价格 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.座位数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.待入库数量 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.创建时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.车辆类型名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,6 +99,7 @@
             this.型号,
             this.排气量,
             this.价格,
+            this.座位数,
             this.待入库数量,
             this.创建时间,
             this.车辆类型名称,
@@ -145,7 +149,7 @@
             this.LblTitle.Name = "LblTitle";
             this.LblTitle.Size = new System.Drawing.Size(252, 21);
             this.LblTitle.TabIndex = 272;
-            this.LblTitle.Text = "配置申请详细信息列表：";
+            this.LblTitle.Text = "配置申报详细信息列表：";
             this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -156,7 +160,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(317, 12);
             this.label1.TabIndex = 273;
-            this.label1.Text = "请选择一个申请的资产后单击“下一步”进行入库信息登记";
+            this.label1.Text = "请选择一个申报的资产后单击“下一步”进行入库信息登记";
             // 
             // 申请编号
             // 
@@ -193,6 +197,8 @@
             // 车辆品牌
             // 
             this.车辆品牌.DataPropertyName = "车辆品牌";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.车辆品牌.DefaultCellStyle = dataGridViewCellStyle5;
             this.车辆品牌.HeaderText = "品牌";
             this.车辆品牌.Name = "车辆品牌";
             this.车辆品牌.ReadOnly = true;
@@ -203,8 +209,8 @@
             // 
             this.型号.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.型号.DataPropertyName = "型号";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.型号.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.型号.DefaultCellStyle = dataGridViewCellStyle6;
             this.型号.HeaderText = "型号";
             this.型号.MinimumWidth = 80;
             this.型号.Name = "型号";
@@ -214,10 +220,10 @@
             // 排气量
             // 
             this.排气量.DataPropertyName = "排气量";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "N1";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.排气量.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.Format = "N1";
+            dataGridViewCellStyle7.NullValue = "0";
+            this.排气量.DefaultCellStyle = dataGridViewCellStyle7;
             this.排气量.HeaderText = "排气量(L)";
             this.排气量.Name = "排气量";
             this.排气量.ReadOnly = true;
@@ -227,21 +233,30 @@
             // 价格
             // 
             this.价格.DataPropertyName = "价格";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0";
-            this.价格.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = "0";
+            this.价格.DefaultCellStyle = dataGridViewCellStyle8;
             this.价格.HeaderText = "价格(万元)";
             this.价格.Name = "价格";
             this.价格.ReadOnly = true;
             this.价格.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.价格.Width = 80;
             // 
+            // 座位数
+            // 
+            this.座位数.DataPropertyName = "座位数";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.座位数.DefaultCellStyle = dataGridViewCellStyle9;
+            this.座位数.HeaderText = "座位数";
+            this.座位数.Name = "座位数";
+            this.座位数.ReadOnly = true;
+            // 
             // 待入库数量
             // 
             this.待入库数量.DataPropertyName = "待入库数量";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.待入库数量.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.待入库数量.DefaultCellStyle = dataGridViewCellStyle10;
             this.待入库数量.HeaderText = "待入库数(台)";
             this.待入库数量.Name = "待入库数量";
             this.待入库数量.ReadOnly = true;
@@ -251,10 +266,10 @@
             // 创建时间
             // 
             this.创建时间.DataPropertyName = "创建时间";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Format = "d";
-            dataGridViewCellStyle9.NullValue = null;
-            this.创建时间.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.Format = "d";
+            dataGridViewCellStyle11.NullValue = null;
+            this.创建时间.DefaultCellStyle = dataGridViewCellStyle11;
             this.创建时间.HeaderText = "申请时间";
             this.创建时间.Name = "创建时间";
             this.创建时间.ReadOnly = true;
@@ -264,8 +279,8 @@
             // 车辆类型名称
             // 
             this.车辆类型名称.DataPropertyName = "车辆类型名称";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.车辆类型名称.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.车辆类型名称.DefaultCellStyle = dataGridViewCellStyle12;
             this.车辆类型名称.HeaderText = "车辆类型";
             this.车辆类型名称.Name = "车辆类型名称";
             this.车辆类型名称.ReadOnly = true;
@@ -284,8 +299,8 @@
             // 资产类别名称
             // 
             this.资产类别名称.DataPropertyName = "资产类别名称";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.资产类别名称.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.资产类别名称.DefaultCellStyle = dataGridViewCellStyle13;
             this.资产类别名称.HeaderText = "资产类别";
             this.资产类别名称.Name = "资产类别名称";
             this.资产类别名称.ReadOnly = true;
@@ -305,16 +320,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 430);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.btn下一步);
             this.Controls.Add(this.btn取消);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.dgvList);
+            this.KeyPreview = true;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(558, 356);
             this.Name = "OCC_配置申请_Select";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.OCC_配置申请_Select_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OCC_配置申请_Select_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -336,6 +353,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn 型号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 排气量;
         private System.Windows.Forms.DataGridViewTextBoxColumn 价格;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 座位数;
         private System.Windows.Forms.DataGridViewTextBoxColumn 待入库数量;
         private System.Windows.Forms.DataGridViewTextBoxColumn 创建时间;
         private System.Windows.Forms.DataGridViewTextBoxColumn 车辆类型名称;

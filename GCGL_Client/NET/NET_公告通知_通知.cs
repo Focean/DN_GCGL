@@ -14,15 +14,15 @@ namespace GCGL_Client.NET
         public NET_公告通知_通知()
         {
             InitializeComponent();
-            IDs =null;
-        }
-
+        }      
         public void Editor_Add()
         {
             this.Text = "发布新的通知";
             this.Tag = "Add";
             //
             this.txt公文标题.Text = "通知标题";
+            this.dN_HtmlEditor1.Visible = true;
+            this.webBrowser1.Visible = false;
         }
 
         public void Editor_Mod(string GW)
@@ -35,12 +35,12 @@ namespace GCGL_Client.NET
             this.DataBinding_GridView(GW);
         }
 
-        private string IDs;
         public void Editor_See(String GW,string JSBM)
         {
             this.Text = "查看通知";
             this.txt公文标题.ReadOnly = true;
-            this.txt公文内容.ReadOnly = true;
+            this.dN_HtmlEditor1.Visible = false;
+            this.webBrowser1.Visible = true;
             this.btn接收单位.Enabled = false;
             if(JSBM=="") 
             {
@@ -66,8 +66,17 @@ namespace GCGL_Client.NET
                 if (!AppServer.WcfService_Open()) return;
                 //
                 DataSet ds = AppServer.wcfClient.NET_公文_List(ref model);
+                if (ds.Tables[0].Rows.Count > 0)                                  
                 if (ds.Tables[0].Rows.Count > 0)
+                {
                     TY.Helper.FormHelper.DataBinding_DataSourceToUI(ds.Tables[0], this);
+                    using (WebBrowser webBrowser1 = new WebBrowser())
+                    {
+                        this.webBrowser1.DocumentText = ds.Tables[0].Rows[0]["公文内容"].ToString(); ;
+                        this.webBrowser1.Document.Write(this.webBrowser1.DocumentText);
+                        this.webBrowser1.Document.Write(ds.Tables[0].Rows[0]["公文内容"].ToString());
+                    }
+                }
                 this.txt接收单位.Text = AppServer.LoginUnitName;
                 this.txt接收单位.Tag = AppServer.LoginUnitCode;
             }
@@ -90,6 +99,21 @@ namespace GCGL_Client.NET
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            if (this.txt公文标题.Text.Trim() == "")
+            {
+                AppServer.ShowMsg("公文标题不能为空！");
+                return;
+            }
+            //if (this.dN_HtmlEditor1.BodyText.Trim() == "")
+            //{
+            //    AppServer.ShowMsg("公文内容不能为空！");
+            //    return;
+            //}
+            if (string.IsNullOrEmpty(this.txt接收单位.Text.ToString()))
+            {
+                AppServer.ShowMsg("接收单位不能为空！");
+                return;
+            }
             if (this.Tag.ToString()== "Accept")
             {
                try
@@ -129,8 +153,7 @@ namespace GCGL_Client.NET
             base.Cursor = Cursors.WaitCursor;
             try
             {
-                if (string.IsNullOrEmpty(this.txt接收单位.Text.ToString()))
-                    AppServer.ShowMsg("接收单位不能为空！");
+               
                 if (!AppServer.WcfService_Open()) return;
                 var model = new Ref_WS_GCGL.DataType_NET_公文();
                 model.ExAction = this.Tag.ToString();
@@ -138,10 +161,10 @@ namespace GCGL_Client.NET
                 model.公文编码 = this.btnOk.Tag.ToString();
                 model.创建人编码 = AppServer.LoginUserCode;
                 model.公文标题 = this.txt公文标题.Text.ToString();
-                model.公文内容 = this.txt公文内容.Text.ToString();
+                model.公文内容 = this.dN_HtmlEditor1.HtmlText.ToString(); 
                 model.公文类型 = "通知";
                 model.单位编码 = AppServer.LoginUnitCode;
-                string[] arrID = IDs.Split(new char[]{ ';'});
+                string[] arrID = this.txt接收单位.Tag.ToString().Split(new char[]{ ';'});
                 model.接收单位编码 = arrID[0];
                 AppServer.wcfClient.NET_公文_Edit(ref model);
                 if (model.ExResult != 0)
@@ -184,9 +207,10 @@ namespace GCGL_Client.NET
             AppServer.Frm单位信息.ShowDialog();
             if (AppServer.Frm单位信息.DialogResult == DialogResult.OK)
             {
-                IDs += AppServer.Frm单位信息.SelectNodeID + ";";
-                this.txt接收单位.Text += AppServer.Frm单位信息.SelectNodeTitle + ";";
+                this.txt接收单位.Tag = AppServer.Frm单位信息.SelectNodeID;
+                this.txt接收单位.Text = AppServer.Frm单位信息.SelectNodeTitle;
             }
+            AppServer.Frm单位信息.Hide();          
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using GLG.Common;
+using TY.Common;
 using TY.Helper;
 using GCGL_Client.NET;
 namespace GCGL_Client.FZB
@@ -19,7 +19,13 @@ namespace GCGL_Client.FZB
             InitializeComponent();
             //设置表格样式
             AppServer.SetGridViewStyle(this.dgvList);
-  
+            //
+            if (AppServer.UserQxMenuList.Rows.Contains("010502"))
+            {
+                this.btn删除.Visible = true;
+                this.btn修改.Visible = true;
+                this.btn新增.Visible = true;
+            }
         }
        
         private void BZ_更新标准_Load(object sender, EventArgs e)
@@ -144,11 +150,6 @@ namespace GCGL_Client.FZB
             }
         }
 
-        private void btn导出_Click(object sender, EventArgs e)
-        {
-            DataToExcel.DataGridViewToExcelApp(this.dgvList, this.LblTitle.Text);
-        }
-
         private void btn关闭_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -165,6 +166,14 @@ namespace GCGL_Client.FZB
                 form.Editor_See(wCode);
                 form.ShowDialog();
             }
+        }
+
+        private void dgvList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (AppServer.UserQxMenuList.Rows.Contains("010502"))
+                this.btn修改.PerformClick();
+            else
+                this.btn查看.PerformClick();
         }
 
     }

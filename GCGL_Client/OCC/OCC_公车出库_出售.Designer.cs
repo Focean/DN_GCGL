@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt本单位批准人 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -62,7 +62,6 @@
             this.txt处置申请编号 = new System.Windows.Forms.TextBox();
             this.txt经办人 = new System.Windows.Forms.TextBox();
             this.btn处置申请 = new System.Windows.Forms.Button();
-            this.btn取消 = new System.Windows.Forms.Button();
             this.btn提交 = new System.Windows.Forms.Button();
             this.评估价值 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.账面净值 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,8 +75,14 @@
             this.txt附件信息 = new System.Windows.Forms.TextBox();
             this.btn附件管理 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
+            this.pnlTool = new System.Windows.Forms.Panel();
+            this.btn取消 = new System.Windows.Forms.Button();
+            this.btn打印 = new System.Windows.Forms.Button();
+            this.cbxSelectPrinter = new System.Windows.Forms.ComboBox();
+            this.lbl打印机 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            this.pnlTool.SuspendLayout();
             this.SuspendLayout();
             // 
             // txt本单位批准人
@@ -89,7 +94,7 @@
             this.txt本单位批准人.Multiline = true;
             this.txt本单位批准人.Name = "txt本单位批准人";
             this.txt本单位批准人.Size = new System.Drawing.Size(188, 23);
-            this.txt本单位批准人.TabIndex = 533;
+            this.txt本单位批准人.TabIndex = 3;
             // 
             // label15
             // 
@@ -119,8 +124,9 @@
             this.txt处置收入.Multiline = true;
             this.txt处置收入.Name = "txt处置收入";
             this.txt处置收入.Size = new System.Drawing.Size(204, 23);
-            this.txt处置收入.TabIndex = 530;
+            this.txt处置收入.TabIndex = 6;
             this.txt处置收入.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt处置收入.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt处置收入_KeyPress);
             // 
             // label17
             // 
@@ -140,7 +146,7 @@
             this.txt收购单位.Multiline = true;
             this.txt收购单位.Name = "txt收购单位";
             this.txt收购单位.Size = new System.Drawing.Size(188, 23);
-            this.txt收购单位.TabIndex = 526;
+            this.txt收购单位.TabIndex = 5;
             // 
             // label14
             // 
@@ -217,10 +223,12 @@
             // 
             // dtp调拨日期
             // 
+            this.dtp调拨日期.CustomFormat = "yyyy年MM月dd日";
+            this.dtp调拨日期.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp调拨日期.Location = new System.Drawing.Point(443, 9);
             this.dtp调拨日期.Name = "dtp调拨日期";
             this.dtp调拨日期.Size = new System.Drawing.Size(204, 21);
-            this.dtp调拨日期.TabIndex = 517;
+            this.dtp调拨日期.TabIndex = 2;
             // 
             // label5
             // 
@@ -247,7 +255,7 @@
             this.txt备注.Multiline = true;
             this.txt备注.Name = "txt备注";
             this.txt备注.Size = new System.Drawing.Size(552, 58);
-            this.txt备注.TabIndex = 6;
+            this.txt备注.TabIndex = 7;
             // 
             // label2
             // 
@@ -271,7 +279,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 290);
+            this.label1.Location = new System.Drawing.Point(28, 290);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 12);
             this.label1.TabIndex = 521;
@@ -284,7 +292,7 @@
             this.LblTitle.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LblTitle.Location = new System.Drawing.Point(0, 0);
             this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(729, 35);
+            this.LblTitle.Size = new System.Drawing.Size(706, 35);
             this.LblTitle.TabIndex = 520;
             this.LblTitle.Text = "公车出售（出让、转让）出库单";
             this.LblTitle.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -292,7 +300,7 @@
             // label3
             // 
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label3.Location = new System.Drawing.Point(26, 295);
+            this.label3.Location = new System.Drawing.Point(16, 295);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(674, 2);
             this.label3.TabIndex = 522;
@@ -304,7 +312,7 @@
             this.txt处置申请编号.Location = new System.Drawing.Point(126, 11);
             this.txt处置申请编号.Name = "txt处置申请编号";
             this.txt处置申请编号.ReadOnly = true;
-            this.txt处置申请编号.Size = new System.Drawing.Size(169, 21);
+            this.txt处置申请编号.Size = new System.Drawing.Size(167, 21);
             this.txt处置申请编号.TabIndex = 1;
             // 
             // txt经办人
@@ -317,50 +325,38 @@
             this.txt经办人.Name = "txt经办人";
             this.txt经办人.ReadOnly = true;
             this.txt经办人.Size = new System.Drawing.Size(204, 23);
-            this.txt经办人.TabIndex = 5;
+            this.txt经办人.TabIndex = 4;
             // 
             // btn处置申请
             // 
             this.btn处置申请.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn处置申请.Location = new System.Drawing.Point(293, 10);
             this.btn处置申请.Name = "btn处置申请";
-            this.btn处置申请.Size = new System.Drawing.Size(22, 23);
-            this.btn处置申请.TabIndex = 2;
+            this.btn处置申请.Size = new System.Drawing.Size(22, 22);
+            this.btn处置申请.TabIndex = 1;
             this.btn处置申请.Text = "…";
             this.btn处置申请.UseVisualStyleBackColor = true;
             this.btn处置申请.Click += new System.EventHandler(this.btn处置申请_Click);
-            // 
-            // btn取消
-            // 
-            this.btn取消.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn取消.AutoSize = true;
-            this.btn取消.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn取消.Location = new System.Drawing.Point(229, 459);
-            this.btn取消.Name = "btn取消";
-            this.btn取消.Size = new System.Drawing.Size(110, 28);
-            this.btn取消.TabIndex = 519;
-            this.btn取消.Text = "取消(&Esc)";
-            this.btn取消.UseVisualStyleBackColor = true;
             // 
             // btn提交
             // 
             this.btn提交.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn提交.AutoSize = true;
-            this.btn提交.Location = new System.Drawing.Point(389, 459);
+            this.btn提交.Location = new System.Drawing.Point(298, 14);
             this.btn提交.Name = "btn提交";
             this.btn提交.Size = new System.Drawing.Size(110, 28);
-            this.btn提交.TabIndex = 518;
-            this.btn提交.Text = "提交(Ctrl+S)";
+            this.btn提交.TabIndex = 10;
+            this.btn提交.Text = "提交(Ctrl+J)";
             this.btn提交.UseVisualStyleBackColor = true;
             this.btn提交.Click += new System.EventHandler(this.btn提交_Click);
             // 
             // 评估价值
             // 
             this.评估价值.DataPropertyName = "评估价值";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Format = "N2";
-            dataGridViewCellStyle25.NullValue = null;
-            this.评估价值.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.评估价值.DefaultCellStyle = dataGridViewCellStyle9;
             this.评估价值.HeaderText = "评估价值(元)";
             this.评估价值.Name = "评估价值";
             this.评估价值.ReadOnly = true;
@@ -369,10 +365,10 @@
             // 账面净值
             // 
             this.账面净值.DataPropertyName = "账面净值";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "N2";
-            dataGridViewCellStyle26.NullValue = null;
-            this.账面净值.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.账面净值.DefaultCellStyle = dataGridViewCellStyle10;
             this.账面净值.HeaderText = "账面净值(元)";
             this.账面净值.Name = "账面净值";
             this.账面净值.ReadOnly = true;
@@ -381,10 +377,10 @@
             // 价值
             // 
             this.价值.DataPropertyName = "价值";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N2";
-            dataGridViewCellStyle27.NullValue = null;
-            this.价值.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.价值.DefaultCellStyle = dataGridViewCellStyle11;
             this.价值.HeaderText = "账面原值(元)";
             this.价值.Name = "价值";
             this.价值.ReadOnly = true;
@@ -402,8 +398,8 @@
             // 
             this.资产名称.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.资产名称.DataPropertyName = "资产名称";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.资产名称.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.资产名称.DefaultCellStyle = dataGridViewCellStyle12;
             this.资产名称.HeaderText = "资产名称";
             this.资产名称.MinimumWidth = 150;
             this.资产名称.Name = "资产名称";
@@ -413,8 +409,8 @@
             // 资产编号
             // 
             this.资产编号.DataPropertyName = "资产编号";
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.资产编号.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.资产编号.DefaultCellStyle = dataGridViewCellStyle13;
             this.资产编号.HeaderText = "资产编号";
             this.资产编号.Name = "资产编号";
             this.资产编号.ReadOnly = true;
@@ -448,7 +444,7 @@
             this.panel1.Controls.Add(this.txt处置申请编号);
             this.panel1.Controls.Add(this.txt经办人);
             this.panel1.Controls.Add(this.btn处置申请);
-            this.panel1.Location = new System.Drawing.Point(28, 59);
+            this.panel1.Location = new System.Drawing.Point(18, 59);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(674, 172);
             this.panel1.TabIndex = 523;
@@ -458,17 +454,18 @@
             this.dgvList.AllowUserToAddRows = false;
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.AllowUserToResizeRows = false;
-            this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvList.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvList.ColumnHeadersHeight = 28;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -478,39 +475,39 @@
             this.价值,
             this.账面净值,
             this.评估价值});
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvList.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvList.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvList.EnableHeadersVisualStyles = false;
-            this.dgvList.Location = new System.Drawing.Point(28, 316);
+            this.dgvList.Location = new System.Drawing.Point(18, 316);
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.RowHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvList.RowHeadersWidth = 20;
             this.dgvList.RowTemplate.Height = 23;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(674, 128);
+            this.dgvList.Size = new System.Drawing.Size(674, 111);
             this.dgvList.TabIndex = 517;
             // 
             // btn附件查看
             // 
             this.btn附件查看.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn附件查看.Location = new System.Drawing.Point(620, 255);
+            this.btn附件查看.Location = new System.Drawing.Point(610, 255);
             this.btn附件查看.Name = "btn附件查看";
             this.btn附件查看.Size = new System.Drawing.Size(80, 23);
-            this.btn附件查看.TabIndex = 528;
+            this.btn附件查看.TabIndex = 9;
             this.btn附件查看.Text = "附件查看(&W)";
             this.btn附件查看.UseVisualStyleBackColor = true;
             this.btn附件查看.Click += new System.EventHandler(this.btn附件查看_Click);
@@ -519,7 +516,7 @@
             // 
             this.txt附件信息.BackColor = System.Drawing.Color.White;
             this.txt附件信息.ForeColor = System.Drawing.Color.Blue;
-            this.txt附件信息.Location = new System.Drawing.Point(28, 256);
+            this.txt附件信息.Location = new System.Drawing.Point(18, 256);
             this.txt附件信息.Name = "txt附件信息";
             this.txt附件信息.ReadOnly = true;
             this.txt附件信息.Size = new System.Drawing.Size(511, 21);
@@ -528,10 +525,10 @@
             // btn附件管理
             // 
             this.btn附件管理.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn附件管理.Location = new System.Drawing.Point(541, 255);
+            this.btn附件管理.Location = new System.Drawing.Point(531, 255);
             this.btn附件管理.Name = "btn附件管理";
             this.btn附件管理.Size = new System.Drawing.Size(80, 23);
-            this.btn附件管理.TabIndex = 526;
+            this.btn附件管理.TabIndex = 8;
             this.btn附件管理.Text = "附件管理(&F)";
             this.btn附件管理.UseVisualStyleBackColor = true;
             this.btn附件管理.Click += new System.EventHandler(this.btn附件管理_Click);
@@ -539,17 +536,77 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(28, 239);
+            this.label16.Location = new System.Drawing.Point(18, 239);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 12);
             this.label16.TabIndex = 525;
             this.label16.Text = "附件：";
             // 
+            // pnlTool
+            // 
+            this.pnlTool.Controls.Add(this.btn提交);
+            this.pnlTool.Controls.Add(this.btn取消);
+            this.pnlTool.Controls.Add(this.btn打印);
+            this.pnlTool.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlTool.Location = new System.Drawing.Point(0, 448);
+            this.pnlTool.Name = "pnlTool";
+            this.pnlTool.Size = new System.Drawing.Size(706, 54);
+            this.pnlTool.TabIndex = 529;
+            // 
+            // btn取消
+            // 
+            this.btn取消.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn取消.Location = new System.Drawing.Point(159, 14);
+            this.btn取消.Name = "btn取消";
+            this.btn取消.Size = new System.Drawing.Size(110, 28);
+            this.btn取消.TabIndex = 11;
+            this.btn取消.Text = "取消(&ESC)";
+            this.btn取消.UseVisualStyleBackColor = true;
+            // 
+            // btn打印
+            // 
+            this.btn打印.Location = new System.Drawing.Point(437, 14);
+            this.btn打印.Name = "btn打印";
+            this.btn打印.Size = new System.Drawing.Size(110, 28);
+            this.btn打印.TabIndex = 543;
+            this.btn打印.Text = "打印(&P)";
+            this.btn打印.UseVisualStyleBackColor = true;
+            this.btn打印.Visible = false;
+            this.btn打印.Click += new System.EventHandler(this.btn打印_Click);
+            // 
+            // cbxSelectPrinter
+            // 
+            this.cbxSelectPrinter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cbxSelectPrinter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSelectPrinter.FormattingEnabled = true;
+            this.cbxSelectPrinter.Items.AddRange(new object[] {
+            "\\\\192.168.1.2\\HP 5000",
+            "Microsoft XPS Document Writer"});
+            this.cbxSelectPrinter.Location = new System.Drawing.Point(79, 436);
+            this.cbxSelectPrinter.Name = "cbxSelectPrinter";
+            this.cbxSelectPrinter.Size = new System.Drawing.Size(291, 20);
+            this.cbxSelectPrinter.TabIndex = 544;
+            this.cbxSelectPrinter.Visible = false;
+            // 
+            // lbl打印机
+            // 
+            this.lbl打印机.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl打印机.AutoSize = true;
+            this.lbl打印机.Location = new System.Drawing.Point(17, 439);
+            this.lbl打印机.Name = "lbl打印机";
+            this.lbl打印机.Size = new System.Drawing.Size(65, 12);
+            this.lbl打印机.TabIndex = 545;
+            this.lbl打印机.Text = "打 印 机：";
+            this.lbl打印机.Visible = false;
+            // 
             // OCC_公车出库_出售
             // 
+            this.AcceptButton = this.btn取消;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 502);
+            this.ClientSize = new System.Drawing.Size(706, 502);
+            this.Controls.Add(this.cbxSelectPrinter);
+            this.Controls.Add(this.lbl打印机);
             this.Controls.Add(this.btn附件查看);
             this.Controls.Add(this.txt附件信息);
             this.Controls.Add(this.btn附件管理);
@@ -557,20 +614,25 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LblTitle);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btn取消);
-            this.Controls.Add(this.btn提交);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgvList);
+            this.Controls.Add(this.pnlTool);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(726, 545);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(726, 545);
             this.Name = "OCC_公车出库_出售";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "OCC_公车出库_出售";
             this.Load += new System.EventHandler(this.OCC_公车出库_出售_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OCC_公车出库_出售_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            this.pnlTool.ResumeLayout(false);
+            this.pnlTool.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -604,7 +666,6 @@
         private System.Windows.Forms.TextBox txt处置申请编号;
         private System.Windows.Forms.TextBox txt经办人;
         private System.Windows.Forms.Button btn处置申请;
-        private System.Windows.Forms.Button btn取消;
         private System.Windows.Forms.Button btn提交;
         private System.Windows.Forms.DataGridViewTextBoxColumn 评估价值;
         private System.Windows.Forms.DataGridViewTextBoxColumn 账面净值;
@@ -618,5 +679,10 @@
         private System.Windows.Forms.TextBox txt附件信息;
         private System.Windows.Forms.Button btn附件管理;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel pnlTool;
+        private System.Windows.Forms.Button btn打印;
+        private System.Windows.Forms.ComboBox cbxSelectPrinter;
+        private System.Windows.Forms.Label lbl打印机;
+        private System.Windows.Forms.Button btn取消;
     }
 }

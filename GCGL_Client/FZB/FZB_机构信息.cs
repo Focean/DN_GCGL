@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GLG.Common;
+using TY.Common;
 using TY.Helper;
 namespace GCGL_Client.FZB
 {

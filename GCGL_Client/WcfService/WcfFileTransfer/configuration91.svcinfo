@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="gGWnneW8ILvuwpFUGSMSRr4ONrM=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="lrrvUFlB8gPpv6Qfgm6UbSgxzco=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IFileTransfer">
       <properties>
@@ -118,10 +118,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IFileTransfer" contract="WcfFileTransfer.IFileTransfer" bindingType="netTcpBinding" address="net.tcp://202.102.238.46/dnsoft/gcgl/FileSvc/FileTransfer.svc" bindingConfiguration="NetTcpBinding_IFileTransfer">
+    <endpoint name="NetTcpBinding_IFileTransfer" contract="WcfFileTransfer.IFileTransfer" bindingType="netTcpBinding" address="net.tcp://127.0.0.1/dnsoft/gcgl/FileSvc/FileTransfer.svc" bindingConfiguration="NetTcpBinding_IFileTransfer">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://202.102.238.46/dnsoft/gcgl/FileSvc/FileTransfer.svc</serializedValue>
+          <serializedValue>net.tcp://127.0.0.1/dnsoft/gcgl/FileSvc/FileTransfer.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

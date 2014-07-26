@@ -30,19 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Man_UserMngr));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn分管 = new System.Windows.Forms.Button();
+            this.btnUser_Del = new System.Windows.Forms.Button();
             this.btnUser_Rgt = new System.Windows.Forms.Button();
             this.btnUser_Mod = new System.Windows.Forms.Button();
-            this.btnUser_Del = new System.Windows.Forms.Button();
             this.btnUser_Add = new System.Windows.Forms.Button();
             this.btn打印 = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -61,6 +62,8 @@
             this.UserPswd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RoleList = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.处室名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn重置密码 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dbGridView)).BeginInit();
@@ -70,9 +73,11 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btn重置密码);
+            this.panel1.Controls.Add(this.btn分管);
+            this.panel1.Controls.Add(this.btnUser_Del);
             this.panel1.Controls.Add(this.btnUser_Rgt);
             this.panel1.Controls.Add(this.btnUser_Mod);
-            this.panel1.Controls.Add(this.btnUser_Del);
             this.panel1.Controls.Add(this.btnUser_Add);
             this.panel1.Controls.Add(this.btn打印);
             this.panel1.Controls.Add(this.btnClose);
@@ -82,14 +87,38 @@
             this.panel1.Size = new System.Drawing.Size(922, 30);
             this.panel1.TabIndex = 50;
             // 
+            // btn分管
+            // 
+            this.btn分管.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn分管.Location = new System.Drawing.Point(399, 0);
+            this.btn分管.Name = "btn分管";
+            this.btn分管.Size = new System.Drawing.Size(84, 28);
+            this.btn分管.TabIndex = 6;
+            this.btn分管.Text = "部门分管(&K)";
+            this.btn分管.UseVisualStyleBackColor = true;
+            this.btn分管.Visible = false;
+            this.btn分管.Click += new System.EventHandler(this.btn分管_Click);
+            // 
+            // btnUser_Del
+            // 
+            this.btnUser_Del.BackColor = System.Drawing.SystemColors.Control;
+            this.btnUser_Del.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnUser_Del.Location = new System.Drawing.Point(307, 0);
+            this.btnUser_Del.Name = "btnUser_Del";
+            this.btnUser_Del.Size = new System.Drawing.Size(92, 28);
+            this.btnUser_Del.TabIndex = 2;
+            this.btnUser_Del.Text = "删除用户(&D)";
+            this.btnUser_Del.UseVisualStyleBackColor = false;
+            this.btnUser_Del.Click += new System.EventHandler(this.btnUser_Del_Click);
+            // 
             // btnUser_Rgt
             // 
             this.btnUser_Rgt.BackColor = System.Drawing.SystemColors.Control;
             this.btnUser_Rgt.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnUser_Rgt.Location = new System.Drawing.Point(276, 0);
+            this.btnUser_Rgt.Location = new System.Drawing.Point(184, 0);
             this.btnUser_Rgt.Name = "btnUser_Rgt";
             this.btnUser_Rgt.Size = new System.Drawing.Size(123, 28);
-            this.btnUser_Rgt.TabIndex = 25;
+            this.btnUser_Rgt.TabIndex = 3;
             this.btnUser_Rgt.Text = "用户权限设置(&R)";
             this.btnUser_Rgt.UseVisualStyleBackColor = false;
             this.btnUser_Rgt.Click += new System.EventHandler(this.btnUser_Rgt_Click);
@@ -98,25 +127,13 @@
             // 
             this.btnUser_Mod.BackColor = System.Drawing.SystemColors.Control;
             this.btnUser_Mod.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnUser_Mod.Location = new System.Drawing.Point(184, 0);
+            this.btnUser_Mod.Location = new System.Drawing.Point(92, 0);
             this.btnUser_Mod.Name = "btnUser_Mod";
             this.btnUser_Mod.Size = new System.Drawing.Size(92, 28);
-            this.btnUser_Mod.TabIndex = 23;
+            this.btnUser_Mod.TabIndex = 1;
             this.btnUser_Mod.Text = "修改用户(&M)";
             this.btnUser_Mod.UseVisualStyleBackColor = false;
             this.btnUser_Mod.Click += new System.EventHandler(this.btnUser_Mod_Click);
-            // 
-            // btnUser_Del
-            // 
-            this.btnUser_Del.BackColor = System.Drawing.SystemColors.Control;
-            this.btnUser_Del.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnUser_Del.Location = new System.Drawing.Point(92, 0);
-            this.btnUser_Del.Name = "btnUser_Del";
-            this.btnUser_Del.Size = new System.Drawing.Size(92, 28);
-            this.btnUser_Del.TabIndex = 24;
-            this.btnUser_Del.Text = "删除用户(&D)";
-            this.btnUser_Del.UseVisualStyleBackColor = false;
-            this.btnUser_Del.Click += new System.EventHandler(this.btnUser_Del_Click);
             // 
             // btnUser_Add
             // 
@@ -125,7 +142,7 @@
             this.btnUser_Add.Location = new System.Drawing.Point(0, 0);
             this.btnUser_Add.Name = "btnUser_Add";
             this.btnUser_Add.Size = new System.Drawing.Size(92, 28);
-            this.btnUser_Add.TabIndex = 22;
+            this.btnUser_Add.TabIndex = 0;
             this.btnUser_Add.Text = "新建用户(&A)";
             this.btnUser_Add.UseVisualStyleBackColor = false;
             this.btnUser_Add.Click += new System.EventHandler(this.btnUser_Add_Click);
@@ -137,7 +154,7 @@
             this.btn打印.Location = new System.Drawing.Point(770, 0);
             this.btn打印.Name = "btn打印";
             this.btn打印.Size = new System.Drawing.Size(75, 28);
-            this.btn打印.TabIndex = 21;
+            this.btn打印.TabIndex = 4;
             this.btn打印.Text = "打印(&P)";
             this.btn打印.UseVisualStyleBackColor = false;
             // 
@@ -149,7 +166,7 @@
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 28);
-            this.btnClose.TabIndex = 15;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "关闭(&X)";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnExit_Click);
@@ -186,6 +203,7 @@
             this.dbTreeView.Size = new System.Drawing.Size(211, 478);
             this.dbTreeView.TabIndex = 247;
             this.dbTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.dbTreeView_NodeMouseClick);
+            this.dbTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.dbTreeView_NodeMouseDoubleClick);
             this.dbTreeView.TreeNodeCreated += new DingnuoControlLibrary.TreeNodeCreatedEventHandler(this.dbTreeView_TreeNodeCreated);
             // 
             // iglTree
@@ -221,14 +239,14 @@
             this.dbGridView.AllowUserToResizeRows = false;
             this.dbGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dbGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dbGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dbGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dbGridView.ColumnHeadersHeight = 28;
             this.dbGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dbGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -240,20 +258,21 @@
             this.权限角色,
             this.UserPswd,
             this.RoleList,
-            this.处室名称});
+            this.处室名称,
+            this.UserType});
             this.dbGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dbGridView.EnableHeadersVisualStyles = false;
             this.dbGridView.Location = new System.Drawing.Point(0, 0);
             this.dbGridView.MultiSelect = false;
             this.dbGridView.Name = "dbGridView";
             this.dbGridView.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dbGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dbGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dbGridView.RowHeadersWidth = 20;
             this.dbGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dbGridView.RowTemplate.Height = 20;
@@ -264,10 +283,10 @@
             // UserCode
             // 
             this.UserCode.DataPropertyName = "UserCode";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.UserCode.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.UserCode.DefaultCellStyle = dataGridViewCellStyle11;
             this.UserCode.HeaderText = "用户账号";
             this.UserCode.Name = "UserCode";
             this.UserCode.ReadOnly = true;
@@ -277,9 +296,9 @@
             // UserName
             // 
             this.UserName.DataPropertyName = "UserName";
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.UserName.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            this.UserName.DefaultCellStyle = dataGridViewCellStyle12;
             this.UserName.HeaderText = "姓名";
             this.UserName.Name = "UserName";
             this.UserName.ReadOnly = true;
@@ -289,10 +308,10 @@
             // MobiPhone
             // 
             this.MobiPhone.DataPropertyName = "MobiPhone";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.MobiPhone.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            this.MobiPhone.DefaultCellStyle = dataGridViewCellStyle13;
             this.MobiPhone.HeaderText = "手机";
             this.MobiPhone.Name = "MobiPhone";
             this.MobiPhone.ReadOnly = true;
@@ -301,10 +320,10 @@
             // WorkPhone
             // 
             this.WorkPhone.DataPropertyName = "WorkPhone";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.WorkPhone.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            this.WorkPhone.DefaultCellStyle = dataGridViewCellStyle14;
             this.WorkPhone.HeaderText = "电话";
             this.WorkPhone.Name = "WorkPhone";
             this.WorkPhone.ReadOnly = true;
@@ -314,10 +333,10 @@
             // UserEmail
             // 
             this.UserEmail.DataPropertyName = "UserEmail";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.UserEmail.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            this.UserEmail.DefaultCellStyle = dataGridViewCellStyle15;
             this.UserEmail.HeaderText = "邮箱";
             this.UserEmail.Name = "UserEmail";
             this.UserEmail.ReadOnly = true;
@@ -329,8 +348,8 @@
             // 
             this.权限角色.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.权限角色.DataPropertyName = "权限角色";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.权限角色.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.权限角色.DefaultCellStyle = dataGridViewCellStyle16;
             this.权限角色.HeaderText = "权限角色";
             this.权限角色.Name = "权限角色";
             this.权限角色.ReadOnly = true;
@@ -355,13 +374,33 @@
             // 处室名称
             // 
             this.处室名称.DataPropertyName = "处室名称";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.处室名称.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.处室名称.DefaultCellStyle = dataGridViewCellStyle17;
             this.处室名称.HeaderText = "所在处室";
             this.处室名称.Name = "处室名称";
             this.处室名称.ReadOnly = true;
             this.处室名称.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.处室名称.Width = 80;
+            // 
+            // UserType
+            // 
+            this.UserType.DataPropertyName = "UserType";
+            this.UserType.HeaderText = "UserType";
+            this.UserType.Name = "UserType";
+            this.UserType.ReadOnly = true;
+            this.UserType.Visible = false;
+            // 
+            // btn重置密码
+            // 
+            this.btn重置密码.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn重置密码.Location = new System.Drawing.Point(483, 0);
+            this.btn重置密码.Name = "btn重置密码";
+            this.btn重置密码.Size = new System.Drawing.Size(96, 28);
+            this.btn重置密码.TabIndex = 7;
+            this.btn重置密码.Text = "重置密码(&R)";
+            this.btn重置密码.UseVisualStyleBackColor = true;
+            this.btn重置密码.Visible = false;
+            this.btn重置密码.Click += new System.EventHandler(this.btn重置密码_Click);
             // 
             // Man_UserMngr
             // 
@@ -398,6 +437,11 @@
         private System.Windows.Forms.Panel panel2;
         internal System.Windows.Forms.DataGridView dbGridView;
         private System.Windows.Forms.ImageList iglTree;
+        private System.Windows.Forms.Button btnUser_Rgt;
+        private System.Windows.Forms.Button btnUser_Mod;
+        private System.Windows.Forms.Button btnUser_Del;
+        private System.Windows.Forms.Button btnUser_Add;
+        private System.Windows.Forms.Button btn分管;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn MobiPhone;
@@ -407,9 +451,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserPswd;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoleList;
         private System.Windows.Forms.DataGridViewTextBoxColumn 处室名称;
-        private System.Windows.Forms.Button btnUser_Rgt;
-        private System.Windows.Forms.Button btnUser_Mod;
-        private System.Windows.Forms.Button btnUser_Del;
-        private System.Windows.Forms.Button btnUser_Add;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserType;
+        private System.Windows.Forms.Button btn重置密码;
     }
 }

@@ -37,7 +37,7 @@
             this.btn清空 = new System.Windows.Forms.Button();
             this.btn发帖 = new System.Windows.Forms.Button();
             this.pnl菜单栏 = new System.Windows.Forms.Panel();
-            this.htmlEditor1 = new Sonic.HtmlEditor.HtmlEditor();
+            this.dN_HtmlEditor1 = new DN_HtmlEditor.DN_HtmlEditor();
             this.pnl菜单栏.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,16 +133,15 @@
             this.pnl菜单栏.Size = new System.Drawing.Size(1090, 30);
             this.pnl菜单栏.TabIndex = 62;
             // 
-            // htmlEditor1
+            // dN_HtmlEditor1
             // 
-            this.htmlEditor1.BodyInnerText = null;
-            this.htmlEditor1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.htmlEditor1.HTML = resources.GetString("htmlEditor1.HTML");
-            this.htmlEditor1.Location = new System.Drawing.Point(0, 506);
-            this.htmlEditor1.Name = "htmlEditor1";
-            this.htmlEditor1.ShowToolBar = true;
-            this.htmlEditor1.Size = new System.Drawing.Size(1090, 157);
-            this.htmlEditor1.TabIndex = 63;
+            this.dN_HtmlEditor1.BodyText = null;
+            this.dN_HtmlEditor1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dN_HtmlEditor1.HtmlText = resources.GetString("dN_HtmlEditor1.HtmlText");
+            this.dN_HtmlEditor1.Location = new System.Drawing.Point(0, 506);
+            this.dN_HtmlEditor1.Name = "dN_HtmlEditor1";
+            this.dN_HtmlEditor1.Size = new System.Drawing.Size(1090, 157);
+            this.dN_HtmlEditor1.TabIndex = 64;
             // 
             // NET_业务论坛_Editor
             // 
@@ -150,7 +149,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1090, 663);
-            this.Controls.Add(this.htmlEditor1);
+            this.Controls.Add(this.dN_HtmlEditor1);
             this.Controls.Add(this.pnl菜单栏);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.webBrowser1);
@@ -176,6 +175,6 @@
         private System.Windows.Forms.Button btn清空;
         private System.Windows.Forms.Button btn发帖;
         private System.Windows.Forms.Panel pnl菜单栏;
-        private Sonic.HtmlEditor.HtmlEditor htmlEditor1;
+        private DN_HtmlEditor.DN_HtmlEditor dN_HtmlEditor1;
     }
 }

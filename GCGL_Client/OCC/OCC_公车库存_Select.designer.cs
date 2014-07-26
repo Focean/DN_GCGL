@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.iglTree = new System.Windows.Forms.ImageList(this.components);
             this.btn查询 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,17 +43,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtp结束时间 = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txt车牌号 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.dgv单位资产 = new System.Windows.Forms.DataGridView();
+            this.btn确定 = new System.Windows.Forms.Button();
+            this.btn取消 = new System.Windows.Forms.Button();
             this.资产编号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.编制情况 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.资产名称 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.车牌号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.车架号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.发动机号 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.取得日期 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn确定 = new System.Windows.Forms.Button();
-            this.btn取消 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txt车牌号 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv单位资产)).BeginInit();
             this.SuspendLayout();
@@ -131,6 +132,24 @@
             this.panel1.Size = new System.Drawing.Size(646, 28);
             this.panel1.TabIndex = 264;
             // 
+            // txt车牌号
+            // 
+            this.txt车牌号.Location = new System.Drawing.Point(433, 5);
+            this.txt车牌号.Name = "txt车牌号";
+            this.txt车牌号.Size = new System.Drawing.Size(81, 21);
+            this.txt车牌号.TabIndex = 264;
+            this.txt车牌号.Text = "豫";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.label3.Location = new System.Drawing.Point(387, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 263;
+            this.label3.Text = "车牌号：";
+            // 
             // dgv单位资产
             // 
             this.dgv单位资产.AllowUserToAddRows = false;
@@ -141,18 +160,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgv单位资产.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv单位资产.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv单位资产.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv单位资产.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv单位资产.ColumnHeadersHeight = 28;
             this.dgv单位资产.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv单位资产.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.资产编号,
+            this.编制情况,
             this.资产名称,
             this.车牌号,
             this.车架号,
@@ -170,72 +190,6 @@
             this.dgv单位资产.Size = new System.Drawing.Size(646, 341);
             this.dgv单位资产.TabIndex = 265;
             this.dgv单位资产.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgv单位资产_MouseDoubleClick);
-            // 
-            // 资产编号
-            // 
-            this.资产编号.DataPropertyName = "资产编号";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.资产编号.DefaultCellStyle = dataGridViewCellStyle9;
-            this.资产编号.HeaderText = "资产编号";
-            this.资产编号.Name = "资产编号";
-            this.资产编号.ReadOnly = true;
-            this.资产编号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.资产编号.Visible = false;
-            // 
-            // 资产名称
-            // 
-            this.资产名称.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.资产名称.DataPropertyName = "资产名称";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.资产名称.DefaultCellStyle = dataGridViewCellStyle10;
-            this.资产名称.HeaderText = "资产名称";
-            this.资产名称.MinimumWidth = 150;
-            this.资产名称.Name = "资产名称";
-            this.资产名称.ReadOnly = true;
-            this.资产名称.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // 车牌号
-            // 
-            this.车牌号.DataPropertyName = "车牌号";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.车牌号.DefaultCellStyle = dataGridViewCellStyle11;
-            this.车牌号.HeaderText = "车牌号";
-            this.车牌号.Name = "车牌号";
-            this.车牌号.ReadOnly = true;
-            this.车牌号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.车牌号.Width = 120;
-            // 
-            // 车架号
-            // 
-            this.车架号.DataPropertyName = "车架号";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.车架号.DefaultCellStyle = dataGridViewCellStyle12;
-            this.车架号.HeaderText = "车架号";
-            this.车架号.Name = "车架号";
-            this.车架号.ReadOnly = true;
-            this.车架号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.车架号.Width = 150;
-            // 
-            // 发动机号
-            // 
-            this.发动机号.DataPropertyName = "发动机号";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.发动机号.DefaultCellStyle = dataGridViewCellStyle13;
-            this.发动机号.HeaderText = "发动机号";
-            this.发动机号.Name = "发动机号";
-            this.发动机号.ReadOnly = true;
-            this.发动机号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // 取得日期
-            // 
-            this.取得日期.DataPropertyName = "取得日期";
-            dataGridViewCellStyle14.Format = "d";
-            dataGridViewCellStyle14.NullValue = null;
-            this.取得日期.DefaultCellStyle = dataGridViewCellStyle14;
-            this.取得日期.HeaderText = "取得日期";
-            this.取得日期.Name = "取得日期";
-            this.取得日期.ReadOnly = true;
-            this.取得日期.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btn确定
             // 
@@ -259,26 +213,82 @@
             this.btn取消.Text = "取消(&ESC)";
             this.btn取消.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // 资产编号
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label3.Location = new System.Drawing.Point(387, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 263;
-            this.label3.Text = "车牌号：";
+            this.资产编号.DataPropertyName = "资产编号";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.资产编号.DefaultCellStyle = dataGridViewCellStyle2;
+            this.资产编号.HeaderText = "资产编号";
+            this.资产编号.Name = "资产编号";
+            this.资产编号.ReadOnly = true;
+            this.资产编号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.资产编号.Visible = false;
             // 
-            // txt车牌号
+            // 编制情况
             // 
-            this.txt车牌号.Location = new System.Drawing.Point(433, 5);
-            this.txt车牌号.Name = "txt车牌号";
-            this.txt车牌号.Size = new System.Drawing.Size(81, 21);
-            this.txt车牌号.TabIndex = 264;
-            this.txt车牌号.Text = "豫";
+            this.编制情况.DataPropertyName = "编制情况";
+            this.编制情况.HeaderText = "编制情况";
+            this.编制情况.Name = "编制情况";
+            this.编制情况.ReadOnly = true;
+            // 
+            // 资产名称
+            // 
+            this.资产名称.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.资产名称.DataPropertyName = "资产名称";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.资产名称.DefaultCellStyle = dataGridViewCellStyle3;
+            this.资产名称.HeaderText = "资产名称";
+            this.资产名称.MinimumWidth = 150;
+            this.资产名称.Name = "资产名称";
+            this.资产名称.ReadOnly = true;
+            this.资产名称.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // 车牌号
+            // 
+            this.车牌号.DataPropertyName = "车牌号";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.车牌号.DefaultCellStyle = dataGridViewCellStyle4;
+            this.车牌号.HeaderText = "车牌号";
+            this.车牌号.Name = "车牌号";
+            this.车牌号.ReadOnly = true;
+            this.车牌号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.车牌号.Width = 120;
+            // 
+            // 车架号
+            // 
+            this.车架号.DataPropertyName = "车架号";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.车架号.DefaultCellStyle = dataGridViewCellStyle5;
+            this.车架号.HeaderText = "车架号";
+            this.车架号.Name = "车架号";
+            this.车架号.ReadOnly = true;
+            this.车架号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.车架号.Width = 150;
+            // 
+            // 发动机号
+            // 
+            this.发动机号.DataPropertyName = "发动机号";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.发动机号.DefaultCellStyle = dataGridViewCellStyle6;
+            this.发动机号.HeaderText = "发动机号";
+            this.发动机号.Name = "发动机号";
+            this.发动机号.ReadOnly = true;
+            this.发动机号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // 取得日期
+            // 
+            this.取得日期.DataPropertyName = "取得日期";
+            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.NullValue = null;
+            this.取得日期.DefaultCellStyle = dataGridViewCellStyle7;
+            this.取得日期.HeaderText = "取得日期";
+            this.取得日期.Name = "取得日期";
+            this.取得日期.ReadOnly = true;
+            this.取得日期.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // OCC_公车库存_Select
             // 
+            this.AcceptButton = this.btn查询;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 425);
@@ -286,6 +296,7 @@
             this.Controls.Add(this.btn取消);
             this.Controls.Add(this.dgv单位资产);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(569, 381);
@@ -293,6 +304,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "单位资产信息选择";
             this.Load += new System.EventHandler(this.OCC_资产信息_Select_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OCC_公车库存_Select_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv单位资产)).EndInit();
@@ -310,15 +322,16 @@
         private System.Windows.Forms.DateTimePicker dtp结束时间;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgv单位资产;
+        private System.Windows.Forms.Button btn确定;
+        private System.Windows.Forms.Button btn取消;
+        private System.Windows.Forms.TextBox txt车牌号;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn 资产编号;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 编制情况;
         private System.Windows.Forms.DataGridViewTextBoxColumn 资产名称;
         private System.Windows.Forms.DataGridViewTextBoxColumn 车牌号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 车架号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 发动机号;
         private System.Windows.Forms.DataGridViewTextBoxColumn 取得日期;
-        private System.Windows.Forms.Button btn确定;
-        private System.Windows.Forms.Button btn取消;
-        private System.Windows.Forms.TextBox txt车牌号;
-        private System.Windows.Forms.Label label3;
     }
 }

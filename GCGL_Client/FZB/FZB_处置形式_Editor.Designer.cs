@@ -41,21 +41,22 @@
             // 
             this.btn取消.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn取消.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn取消.Location = new System.Drawing.Point(104, 138);
+            this.btn取消.Location = new System.Drawing.Point(94, 140);
             this.btn取消.Name = "btn取消";
-            this.btn取消.Size = new System.Drawing.Size(80, 28);
-            this.btn取消.TabIndex = 47;
-            this.btn取消.Text = "取消";
+            this.btn取消.Size = new System.Drawing.Size(86, 28);
+            this.btn取消.TabIndex = 4;
+            this.btn取消.Text = "取消(Esc)";
             this.btn取消.UseVisualStyleBackColor = true;
+            this.btn取消.Click += new System.EventHandler(this.btn取消_Click);
             // 
             // btn提交
             // 
             this.btn提交.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn提交.Location = new System.Drawing.Point(221, 138);
+            this.btn提交.Location = new System.Drawing.Point(211, 140);
             this.btn提交.Name = "btn提交";
-            this.btn提交.Size = new System.Drawing.Size(80, 28);
-            this.btn提交.TabIndex = 46;
-            this.btn提交.Text = "提交";
+            this.btn提交.Size = new System.Drawing.Size(86, 28);
+            this.btn提交.TabIndex = 3;
+            this.btn提交.Text = "提交(Ctrl+S)";
             this.btn提交.UseVisualStyleBackColor = true;
             this.btn提交.Click += new System.EventHandler(this.btn提交_Click);
             // 
@@ -64,9 +65,9 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Location = new System.Drawing.Point(12, 119);
+            this.label11.Location = new System.Drawing.Point(12, 121);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(377, 2);
+            this.label11.Size = new System.Drawing.Size(368, 2);
             this.label11.TabIndex = 48;
             this.label11.Text = "label11";
             // 
@@ -75,7 +76,7 @@
             this.txt处置形式名称.Location = new System.Drawing.Point(104, 70);
             this.txt处置形式名称.Name = "txt处置形式名称";
             this.txt处置形式名称.Size = new System.Drawing.Size(263, 21);
-            this.txt处置形式名称.TabIndex = 45;
+            this.txt处置形式名称.TabIndex = 1;
             // 
             // txt处置形式编码
             // 
@@ -83,7 +84,8 @@
             this.txt处置形式编码.Location = new System.Drawing.Point(104, 16);
             this.txt处置形式编码.Name = "txt处置形式编码";
             this.txt处置形式编码.Size = new System.Drawing.Size(263, 21);
-            this.txt处置形式编码.TabIndex = 44;
+            this.txt处置形式编码.TabIndex = 0;
+            this.txt处置形式编码.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt处置形式编码_KeyPress);
             // 
             // label2
             // 
@@ -107,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 182);
+            this.ClientSize = new System.Drawing.Size(399, 182);
             this.Controls.Add(this.btn取消);
             this.Controls.Add(this.btn提交);
             this.Controls.Add(this.label11);
@@ -115,13 +117,16 @@
             this.Controls.Add(this.txt处置形式编码);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(416, 221);
+            this.MaximumSize = new System.Drawing.Size(409, 211);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(416, 221);
+            this.MinimumSize = new System.Drawing.Size(409, 211);
             this.Name = "BZ_处置形式_Editor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "BZ_处置形式_Editor";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BZ_处置形式_Editor_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

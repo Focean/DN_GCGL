@@ -82,7 +82,7 @@
             this.chk包含下级.Location = new System.Drawing.Point(314, 8);
             this.chk包含下级.Name = "chk包含下级";
             this.chk包含下级.Size = new System.Drawing.Size(72, 16);
-            this.chk包含下级.TabIndex = 146;
+            this.chk包含下级.TabIndex = 2;
             this.chk包含下级.Text = "包含下级";
             this.chk包含下级.UseVisualStyleBackColor = true;
             this.chk包含下级.Visible = false;
@@ -92,7 +92,7 @@
             this.btn选择单位.Location = new System.Drawing.Point(287, 6);
             this.btn选择单位.Name = "btn选择单位";
             this.btn选择单位.Size = new System.Drawing.Size(21, 19);
-            this.btn选择单位.TabIndex = 140;
+            this.btn选择单位.TabIndex = 1;
             this.btn选择单位.Text = "…";
             this.btn选择单位.UseVisualStyleBackColor = true;
             this.btn选择单位.Visible = false;
@@ -127,7 +127,7 @@
             this.btnQuery.Location = new System.Drawing.Point(643, 0);
             this.btnQuery.Name = "btnQuery";
             this.btnQuery.Size = new System.Drawing.Size(75, 30);
-            this.btnQuery.TabIndex = 6;
+            this.btnQuery.TabIndex = 3;
             this.btnQuery.Text = "查询(&Q)";
             this.btnQuery.UseVisualStyleBackColor = false;
             this.btnQuery.Click += new System.EventHandler(this.btnQuery_Click);
@@ -149,7 +149,7 @@
             this.btn导出.Location = new System.Drawing.Point(568, 0);
             this.btn导出.Name = "btn导出";
             this.btn导出.Size = new System.Drawing.Size(75, 28);
-            this.btn导出.TabIndex = 6;
+            this.btn导出.TabIndex = 4;
             this.btn导出.Text = "导出(&E)";
             this.btn导出.UseVisualStyleBackColor = true;
             this.btn导出.Click += new System.EventHandler(this.btn导出_Click);
@@ -160,7 +160,7 @@
             this.btn关闭.Location = new System.Drawing.Point(643, 0);
             this.btn关闭.Name = "btn关闭";
             this.btn关闭.Size = new System.Drawing.Size(75, 28);
-            this.btn关闭.TabIndex = 7;
+            this.btn关闭.TabIndex = 5;
             this.btn关闭.Text = "关闭(&X)";
             this.btn关闭.UseVisualStyleBackColor = true;
             this.btn关闭.Click += new System.EventHandler(this.btn关闭_Click);

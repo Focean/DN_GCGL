@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NET_公文法规_公文));
             this.btn附件查看 = new System.Windows.Forms.Button();
             this.txt附件信息 = new System.Windows.Forms.TextBox();
             this.btn附件管理 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txt公文内容 = new System.Windows.Forms.TextBox();
             this.txt公文标题 = new System.Windows.Forms.TextBox();
+            this.dN_HtmlEditor1 = new DN_HtmlEditor.DN_HtmlEditor();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
             // btn附件查看
@@ -108,47 +110,58 @@
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(97, 28);
             this.btnCancel.TabIndex = 243;
-            this.btnCancel.Text = "取消(ESC)";
+            this.btnCancel.Text = "取消(&ESC)";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // txt公文内容
-            // 
-            this.txt公文内容.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt公文内容.Font = new System.Drawing.Font("宋体", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txt公文内容.ForeColor = System.Drawing.Color.Blue;
-            this.txt公文内容.Location = new System.Drawing.Point(6, 63);
-            this.txt公文内容.Multiline = true;
-            this.txt公文内容.Name = "txt公文内容";
-            this.txt公文内容.Size = new System.Drawing.Size(703, 383);
-            this.txt公文内容.TabIndex = 242;
             // 
             // txt公文标题
             // 
             this.txt公文标题.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt公文标题.Font = new System.Drawing.Font("宋体", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txt公文标题.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txt公文标题.ForeColor = System.Drawing.Color.Blue;
             this.txt公文标题.Location = new System.Drawing.Point(5, 9);
             this.txt公文标题.Name = "txt公文标题";
-            this.txt公文标题.Size = new System.Drawing.Size(705, 46);
+            this.txt公文标题.Size = new System.Drawing.Size(705, 31);
             this.txt公文标题.TabIndex = 241;
             this.txt公文标题.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // dN_HtmlEditor1
+            // 
+            this.dN_HtmlEditor1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dN_HtmlEditor1.BodyText = null;
+            this.dN_HtmlEditor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.dN_HtmlEditor1.HtmlText = resources.GetString("dN_HtmlEditor1.HtmlText");
+            this.dN_HtmlEditor1.Location = new System.Drawing.Point(5, 70);
+            this.dN_HtmlEditor1.Name = "dN_HtmlEditor1";
+            this.dN_HtmlEditor1.Size = new System.Drawing.Size(705, 378);
+            this.dN_HtmlEditor1.TabIndex = 249;
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.webBrowser1.Location = new System.Drawing.Point(5, 58);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(705, 390);
+            this.webBrowser1.TabIndex = 250;
+            // 
             // NET_公文法规_公文
             // 
+            this.AcceptButton = this.btnCancel;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(715, 551);
+            this.Controls.Add(this.webBrowser1);
+            this.Controls.Add(this.dN_HtmlEditor1);
             this.Controls.Add(this.btn附件查看);
             this.Controls.Add(this.txt附件信息);
             this.Controls.Add(this.btn附件管理);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.txt公文内容);
             this.Controls.Add(this.txt公文标题);
             this.Name = "NET_公文法规_公文";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -165,8 +178,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txt公文内容;
         private System.Windows.Forms.TextBox txt公文标题;
+        private DN_HtmlEditor.DN_HtmlEditor dN_HtmlEditor1;
+        private System.Windows.Forms.WebBrowser webBrowser1;
 
     }
 }

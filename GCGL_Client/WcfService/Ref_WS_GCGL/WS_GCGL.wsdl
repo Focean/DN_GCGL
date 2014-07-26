@@ -1,0 +1,1361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WS_GCGL" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IWS_GCGL_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:56964/WS_GCGL.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:56964/WS_GCGL.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:56964/WS_GCGL.svc?xsd=xsd2" />
+      <xsd:import schemaLocation="http://localhost:56964/WS_GCGL.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/GCGL_Service" />
+      <xsd:import schemaLocation="http://localhost:56964/WS_GCGL.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
+      <xsd:import schemaLocation="http://localhost:56964/WS_GCGL.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWS_GCGL_ExecuteDataSet_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteDataSet" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_ExecuteDataSet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_ExecuteNoQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteNoQuery" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_ExecuteNoQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteNoQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Login" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Login_Menu_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Login_Menu" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Login_Menu_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Login_MenuResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_User_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_User_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_User_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_User_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_User_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_User_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_User_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_User_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_Role_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_Role_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_Role_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_Role_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_Role_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_Role_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_Role_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_Role_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_Menu_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_Menu_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_Sys_Menu_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Sys_Menu_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Param_Get_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Param_Get" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Param_Get_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Param_GetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Param_Set_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Param_Set" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Param_Set_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Param_SetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Grid_Get_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Grid_Get" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Grid_Get_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Grid_GetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Grid_Set_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Grid_Set" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_Grid_Set_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_Grid_SetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_GetTableDef_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTableDef" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_GetTableDef_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTableDefResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_User_log_list_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_User_log_list" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_User_log_list_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_User_log_listResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_车辆更新标准_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_车辆更新标准_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_车辆更新标准_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_车辆更新标准_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_车辆更新标准_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_车辆更新标准_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_车辆更新标准_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_车辆更新标准_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_车辆配置标准_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_车辆配置标准_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_车辆配置标准_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_车辆配置标准_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_车辆配置标准_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_车辆配置标准_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_车辆配置标准_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_车辆配置标准_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_编码_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_编码_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_编码_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_编码_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_资产类别_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_资产类别_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_资产类别_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_资产类别_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_车辆类型_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_车辆类型_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_车辆类型_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_车辆类型_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_采购形式_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_采购形式_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_采购形式_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_采购形式_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_处置形式_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_处置形式_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_处置形式_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_处置形式_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_经费来源_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_经费来源_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_经费来源_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_经费来源_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_固定资产_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_固定资产_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_固定资产_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_固定资产_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_固定资产_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_固定资产_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_固定资产_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_固定资产_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_委托_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_委托_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_委托_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_委托_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_委托_list_InputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_委托_list" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_SYS_委托_list_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SYS_委托_listResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_行政区划_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_行政区划_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_行政区划_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_行政区划_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_行政区划_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_行政区划_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_行政区划_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_行政区划_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_更新_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_更新_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_更新_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_更新_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_处室_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_处室_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_处室_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_处室_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_处室_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_处室_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_处室_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_处室_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_编制_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_编制_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_编制_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_编制_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_编制_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_编制_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_CMN_单位_编制_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CMN_单位_编制_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_更新计划_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_更新计划_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_更新计划_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_更新计划_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_更新计划_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_更新计划_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_更新计划_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_更新计划_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_配置申请_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_配置申请_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_配置申请_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_配置申请_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_配置申请_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_配置申请_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_配置申请_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_配置申请_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车入库_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车入库_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车入库_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车入库_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车入库_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车入库_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车入库_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车入库_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_批量申请_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_批量申请_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_批量申请_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_批量申请_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_批量申请_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_批量申请_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_批量申请_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_批量申请_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_使用情况_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:COS_使用情况_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_使用情况_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:COS_使用情况_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_使用情况_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:COS_使用情况_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_使用情况_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:COS_使用情况_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_计提折旧_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:COS_计提折旧_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_计提折旧_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:COS_计提折旧_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_计提折旧_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:COS_计提折旧_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_计提折旧_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:COS_计提折旧_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_车辆超编_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:COS_车辆超编_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_车辆超编_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:COS_车辆超编_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_车辆超编_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:COS_车辆超编_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_COS_车辆超编_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:COS_车辆超编_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_处置申请_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_处置申请_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_处置申请_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_处置申请_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_处置申请_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_处置申请_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_处置申请_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_处置申请_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车出库_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车出库_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车出库_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车出库_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车出库_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车出库_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车出库_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车出库_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车库存_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车库存_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_OCC_公车库存_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OCC_公车库存_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_审批_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_审批_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_审批_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_审批_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_审批_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_审批_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_审批_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_审批_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_附件管理_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_附件管理_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_附件管理_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_附件管理_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_附件管理_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_附件管理_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_附件管理_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_附件管理_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_公文_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_公文_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_公文_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_公文_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_公文_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_公文_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_公文_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_公文_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_版块_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_版块_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_版块_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_版块_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_版块_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_版块_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_版块_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_版块_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_图片_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_图片_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_NET_论坛_图片_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NET_论坛_图片_EditResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_查询方案_List_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_查询方案_List" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_查询方案_List_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_查询方案_ListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_查询方案_Edit_InputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_查询方案_Edit" />
+  </wsdl:message>
+  <wsdl:message name="IWS_GCGL_FZB_查询方案_Edit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FZB_查询方案_EditResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWS_GCGL">
+    <wsdl:operation name="ExecuteDataSet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/ExecuteDataSet" message="tns:IWS_GCGL_ExecuteDataSet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/ExecuteDataSetResponse" message="tns:IWS_GCGL_ExecuteDataSet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNoQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/ExecuteNoQuery" message="tns:IWS_GCGL_ExecuteNoQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/ExecuteNoQueryResponse" message="tns:IWS_GCGL_ExecuteNoQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Login" message="tns:IWS_GCGL_SYS_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_LoginResponse" message="tns:IWS_GCGL_SYS_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Login_Menu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Login_Menu" message="tns:IWS_GCGL_SYS_Login_Menu_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Login_MenuResponse" message="tns:IWS_GCGL_SYS_Login_Menu_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sys_User_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_User_List" message="tns:IWS_GCGL_Sys_User_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_User_ListResponse" message="tns:IWS_GCGL_Sys_User_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sys_User_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_User_Edit" message="tns:IWS_GCGL_Sys_User_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_User_EditResponse" message="tns:IWS_GCGL_Sys_User_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sys_Role_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_Role_List" message="tns:IWS_GCGL_Sys_Role_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_Role_ListResponse" message="tns:IWS_GCGL_Sys_Role_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sys_Role_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_Role_Edit" message="tns:IWS_GCGL_Sys_Role_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_Role_EditResponse" message="tns:IWS_GCGL_Sys_Role_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sys_Menu_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_Menu_List" message="tns:IWS_GCGL_Sys_Menu_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/Sys_Menu_ListResponse" message="tns:IWS_GCGL_Sys_Menu_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Param_Get">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Param_Get" message="tns:IWS_GCGL_SYS_Param_Get_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Param_GetResponse" message="tns:IWS_GCGL_SYS_Param_Get_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Param_Set">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Param_Set" message="tns:IWS_GCGL_SYS_Param_Set_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Param_SetResponse" message="tns:IWS_GCGL_SYS_Param_Set_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Grid_Get">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Grid_Get" message="tns:IWS_GCGL_SYS_Grid_Get_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Grid_GetResponse" message="tns:IWS_GCGL_SYS_Grid_Get_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Grid_Set">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Grid_Set" message="tns:IWS_GCGL_SYS_Grid_Set_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_Grid_SetResponse" message="tns:IWS_GCGL_SYS_Grid_Set_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableDef">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/GetTableDef" message="tns:IWS_GCGL_GetTableDef_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/GetTableDefResponse" message="tns:IWS_GCGL_GetTableDef_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_User_log_list">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_User_log_list" message="tns:IWS_GCGL_SYS_User_log_list_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_User_log_listResponse" message="tns:IWS_GCGL_SYS_User_log_list_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_车辆更新标准_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_车辆更新标准_List" message="tns:IWS_GCGL_CMN_车辆更新标准_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_车辆更新标准_ListResponse" message="tns:IWS_GCGL_CMN_车辆更新标准_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_车辆更新标准_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_车辆更新标准_Edit" message="tns:IWS_GCGL_CMN_车辆更新标准_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_车辆更新标准_EditResponse" message="tns:IWS_GCGL_CMN_车辆更新标准_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_车辆配置标准_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_车辆配置标准_List" message="tns:IWS_GCGL_CMN_车辆配置标准_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_车辆配置标准_ListResponse" message="tns:IWS_GCGL_CMN_车辆配置标准_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_车辆配置标准_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_车辆配置标准_Edit" message="tns:IWS_GCGL_CMN_车辆配置标准_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_车辆配置标准_EditResponse" message="tns:IWS_GCGL_CMN_车辆配置标准_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_编码_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_编码_List" message="tns:IWS_GCGL_FZB_编码_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_编码_ListResponse" message="tns:IWS_GCGL_FZB_编码_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_资产类别_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_资产类别_Edit" message="tns:IWS_GCGL_FZB_资产类别_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_资产类别_EditResponse" message="tns:IWS_GCGL_FZB_资产类别_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_车辆类型_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_车辆类型_Edit" message="tns:IWS_GCGL_FZB_车辆类型_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_车辆类型_EditResponse" message="tns:IWS_GCGL_FZB_车辆类型_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_采购形式_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_采购形式_Edit" message="tns:IWS_GCGL_FZB_采购形式_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_采购形式_EditResponse" message="tns:IWS_GCGL_FZB_采购形式_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_处置形式_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_处置形式_Edit" message="tns:IWS_GCGL_FZB_处置形式_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_处置形式_EditResponse" message="tns:IWS_GCGL_FZB_处置形式_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_经费来源_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_经费来源_Edit" message="tns:IWS_GCGL_FZB_经费来源_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_经费来源_EditResponse" message="tns:IWS_GCGL_FZB_经费来源_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_固定资产_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_固定资产_Edit" message="tns:IWS_GCGL_FZB_固定资产_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_固定资产_EditResponse" message="tns:IWS_GCGL_FZB_固定资产_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_固定资产_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_固定资产_List" message="tns:IWS_GCGL_FZB_固定资产_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_固定资产_ListResponse" message="tns:IWS_GCGL_FZB_固定资产_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_委托_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_委托_Edit" message="tns:IWS_GCGL_SYS_委托_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_委托_EditResponse" message="tns:IWS_GCGL_SYS_委托_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SYS_委托_list">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_委托_list" message="tns:IWS_GCGL_SYS_委托_list_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/SYS_委托_listResponse" message="tns:IWS_GCGL_SYS_委托_list_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_行政区划_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_行政区划_List" message="tns:IWS_GCGL_CMN_行政区划_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_行政区划_ListResponse" message="tns:IWS_GCGL_CMN_行政区划_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_行政区划_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_行政区划_Edit" message="tns:IWS_GCGL_CMN_行政区划_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_行政区划_EditResponse" message="tns:IWS_GCGL_CMN_行政区划_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_List" message="tns:IWS_GCGL_CMN_单位_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_ListResponse" message="tns:IWS_GCGL_CMN_单位_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_Edit" message="tns:IWS_GCGL_CMN_单位_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_EditResponse" message="tns:IWS_GCGL_CMN_单位_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_更新_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_更新_List" message="tns:IWS_GCGL_CMN_单位_更新_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_更新_ListResponse" message="tns:IWS_GCGL_CMN_单位_更新_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_处室_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_处室_List" message="tns:IWS_GCGL_CMN_单位_处室_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_处室_ListResponse" message="tns:IWS_GCGL_CMN_单位_处室_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_处室_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_处室_Edit" message="tns:IWS_GCGL_CMN_单位_处室_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_处室_EditResponse" message="tns:IWS_GCGL_CMN_单位_处室_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_编制_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_编制_List" message="tns:IWS_GCGL_CMN_单位_编制_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_编制_ListResponse" message="tns:IWS_GCGL_CMN_单位_编制_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_编制_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_编制_Edit" message="tns:IWS_GCGL_CMN_单位_编制_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/CMN_单位_编制_EditResponse" message="tns:IWS_GCGL_CMN_单位_编制_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_更新计划_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_更新计划_List" message="tns:IWS_GCGL_OCC_更新计划_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_更新计划_ListResponse" message="tns:IWS_GCGL_OCC_更新计划_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_更新计划_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_更新计划_Edit" message="tns:IWS_GCGL_OCC_更新计划_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_更新计划_EditResponse" message="tns:IWS_GCGL_OCC_更新计划_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_配置申请_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_配置申请_Edit" message="tns:IWS_GCGL_OCC_配置申请_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_配置申请_EditResponse" message="tns:IWS_GCGL_OCC_配置申请_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_配置申请_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_配置申请_List" message="tns:IWS_GCGL_OCC_配置申请_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_配置申请_ListResponse" message="tns:IWS_GCGL_OCC_配置申请_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车入库_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车入库_Edit" message="tns:IWS_GCGL_OCC_公车入库_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车入库_EditResponse" message="tns:IWS_GCGL_OCC_公车入库_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车入库_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车入库_List" message="tns:IWS_GCGL_OCC_公车入库_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车入库_ListResponse" message="tns:IWS_GCGL_OCC_公车入库_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_批量申请_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_批量申请_Edit" message="tns:IWS_GCGL_OCC_批量申请_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_批量申请_EditResponse" message="tns:IWS_GCGL_OCC_批量申请_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_批量申请_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_批量申请_List" message="tns:IWS_GCGL_OCC_批量申请_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_批量申请_ListResponse" message="tns:IWS_GCGL_OCC_批量申请_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="COS_使用情况_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/COS_使用情况_Edit" message="tns:IWS_GCGL_COS_使用情况_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/COS_使用情况_EditResponse" message="tns:IWS_GCGL_COS_使用情况_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="COS_使用情况_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/COS_使用情况_List" message="tns:IWS_GCGL_COS_使用情况_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/COS_使用情况_ListResponse" message="tns:IWS_GCGL_COS_使用情况_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="COS_计提折旧_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/COS_计提折旧_Edit" message="tns:IWS_GCGL_COS_计提折旧_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/COS_计提折旧_EditResponse" message="tns:IWS_GCGL_COS_计提折旧_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="COS_计提折旧_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/COS_计提折旧_List" message="tns:IWS_GCGL_COS_计提折旧_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/COS_计提折旧_ListResponse" message="tns:IWS_GCGL_COS_计提折旧_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="COS_车辆超编_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/COS_车辆超编_List" message="tns:IWS_GCGL_COS_车辆超编_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/COS_车辆超编_ListResponse" message="tns:IWS_GCGL_COS_车辆超编_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="COS_车辆超编_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/COS_车辆超编_Edit" message="tns:IWS_GCGL_COS_车辆超编_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/COS_车辆超编_EditResponse" message="tns:IWS_GCGL_COS_车辆超编_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_处置申请_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_处置申请_Edit" message="tns:IWS_GCGL_OCC_处置申请_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_处置申请_EditResponse" message="tns:IWS_GCGL_OCC_处置申请_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_处置申请_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_处置申请_List" message="tns:IWS_GCGL_OCC_处置申请_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_处置申请_ListResponse" message="tns:IWS_GCGL_OCC_处置申请_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车出库_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车出库_List" message="tns:IWS_GCGL_OCC_公车出库_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车出库_ListResponse" message="tns:IWS_GCGL_OCC_公车出库_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车出库_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车出库_Edit" message="tns:IWS_GCGL_OCC_公车出库_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车出库_EditResponse" message="tns:IWS_GCGL_OCC_公车出库_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车库存_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车库存_List" message="tns:IWS_GCGL_OCC_公车库存_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/OCC_公车库存_ListResponse" message="tns:IWS_GCGL_OCC_公车库存_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_审批_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_审批_List" message="tns:IWS_GCGL_NET_审批_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_审批_ListResponse" message="tns:IWS_GCGL_NET_审批_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_审批_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_审批_Edit" message="tns:IWS_GCGL_NET_审批_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_审批_EditResponse" message="tns:IWS_GCGL_NET_审批_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_附件管理_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_附件管理_List" message="tns:IWS_GCGL_NET_附件管理_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_附件管理_ListResponse" message="tns:IWS_GCGL_NET_附件管理_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_附件管理_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_附件管理_Edit" message="tns:IWS_GCGL_NET_附件管理_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_附件管理_EditResponse" message="tns:IWS_GCGL_NET_附件管理_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_公文_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_公文_List" message="tns:IWS_GCGL_NET_公文_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_公文_ListResponse" message="tns:IWS_GCGL_NET_公文_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_公文_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_公文_Edit" message="tns:IWS_GCGL_NET_公文_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_公文_EditResponse" message="tns:IWS_GCGL_NET_公文_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_List" message="tns:IWS_GCGL_NET_论坛_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_ListResponse" message="tns:IWS_GCGL_NET_论坛_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_Edit" message="tns:IWS_GCGL_NET_论坛_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_EditResponse" message="tns:IWS_GCGL_NET_论坛_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_版块_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_版块_List" message="tns:IWS_GCGL_NET_论坛_版块_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_版块_ListResponse" message="tns:IWS_GCGL_NET_论坛_版块_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_版块_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_版块_Edit" message="tns:IWS_GCGL_NET_论坛_版块_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_版块_EditResponse" message="tns:IWS_GCGL_NET_论坛_版块_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_图片_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_图片_Edit" message="tns:IWS_GCGL_NET_论坛_图片_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/NET_论坛_图片_EditResponse" message="tns:IWS_GCGL_NET_论坛_图片_Edit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_查询方案_List">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_查询方案_List" message="tns:IWS_GCGL_FZB_查询方案_List_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_查询方案_ListResponse" message="tns:IWS_GCGL_FZB_查询方案_List_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FZB_查询方案_Edit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_查询方案_Edit" message="tns:IWS_GCGL_FZB_查询方案_Edit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWS_GCGL/FZB_查询方案_EditResponse" message="tns:IWS_GCGL_FZB_查询方案_Edit_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWS_GCGL" type="tns:IWS_GCGL">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IWS_GCGL_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ExecuteDataSet">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/ExecuteDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteNoQuery">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/ExecuteNoQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Login">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Login_Menu">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_Login_Menu" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sys_User_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/Sys_User_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sys_User_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/Sys_User_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sys_Role_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/Sys_Role_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sys_Role_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/Sys_Role_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sys_Menu_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/Sys_Menu_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Param_Get">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_Param_Get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Param_Set">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_Param_Set" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Grid_Get">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_Grid_Get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_Grid_Set">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_Grid_Set" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableDef">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/GetTableDef" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_User_log_list">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_User_log_list" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_车辆更新标准_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_车辆更新标准_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_车辆更新标准_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_车辆更新标准_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_车辆配置标准_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_车辆配置标准_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_车辆配置标准_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_车辆配置标准_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_编码_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_编码_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_资产类别_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_资产类别_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_车辆类型_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_车辆类型_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_采购形式_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_采购形式_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_处置形式_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_处置形式_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_经费来源_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_经费来源_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_固定资产_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_固定资产_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_固定资产_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_固定资产_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_委托_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_委托_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SYS_委托_list">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/SYS_委托_list" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_行政区划_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_行政区划_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_行政区划_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_行政区划_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_单位_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_单位_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_更新_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_单位_更新_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_处室_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_单位_处室_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_处室_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_单位_处室_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_编制_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_单位_编制_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CMN_单位_编制_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/CMN_单位_编制_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_更新计划_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_更新计划_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_更新计划_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_更新计划_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_配置申请_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_配置申请_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_配置申请_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_配置申请_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车入库_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_公车入库_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车入库_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_公车入库_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_批量申请_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_批量申请_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_批量申请_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_批量申请_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="COS_使用情况_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/COS_使用情况_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="COS_使用情况_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/COS_使用情况_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="COS_计提折旧_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/COS_计提折旧_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="COS_计提折旧_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/COS_计提折旧_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="COS_车辆超编_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/COS_车辆超编_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="COS_车辆超编_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/COS_车辆超编_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_处置申请_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_处置申请_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_处置申请_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_处置申请_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车出库_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_公车出库_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车出库_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_公车出库_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OCC_公车库存_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/OCC_公车库存_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_审批_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_审批_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_审批_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_审批_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_附件管理_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_附件管理_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_附件管理_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_附件管理_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_公文_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_公文_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_公文_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_公文_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_论坛_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_论坛_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_版块_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_论坛_版块_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_版块_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_论坛_版块_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NET_论坛_图片_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/NET_论坛_图片_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_查询方案_List">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_查询方案_List" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FZB_查询方案_Edit">
+      <soap:operation soapAction="http://tempuri.org/IWS_GCGL/FZB_查询方案_Edit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_GCGL">
+    <wsdl:port name="BasicHttpBinding_IWS_GCGL" binding="tns:BasicHttpBinding_IWS_GCGL">
+      <soap:address location="http://localhost:56964/WS_GCGL.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

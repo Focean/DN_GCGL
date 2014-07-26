@@ -34,7 +34,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.nud数量 = new System.Windows.Forms.NumericUpDown();
             this.nud价格 = new System.Windows.Forms.NumericUpDown();
             this.btn取消 = new System.Windows.Forms.Button();
@@ -43,10 +42,8 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.txt资产类别名称 = new System.Windows.Forms.TextBox();
             this.btn资产类别 = new System.Windows.Forms.Button();
-            this.btn车辆类型 = new System.Windows.Forms.Button();
-            this.txt车辆类型名称 = new System.Windows.Forms.TextBox();
+            this.txt资产类别名称 = new System.Windows.Forms.TextBox();
             this.txt经费来源 = new System.Windows.Forms.TextBox();
             this.lb预算单位 = new System.Windows.Forms.Label();
             this.txt预算单位名称 = new System.Windows.Forms.TextBox();
@@ -61,6 +58,12 @@
             this.txt备注 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbx经费来源性质 = new System.Windows.Forms.ComboBox();
+            this.cbx车辆类型名称 = new System.Windows.Forms.ComboBox();
+            this.btn附件查看 = new System.Windows.Forms.Button();
+            this.btn附件管理 = new System.Windows.Forms.Button();
+            this.txt附件信息 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nud数量)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud价格)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +86,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 19;
-            this.label7.Text = "资产类别：";
+            this.label7.Text = "车辆类型：";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
@@ -126,16 +129,6 @@
             this.label11.Text = "单    价：";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 268);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 12);
-            this.label12.TabIndex = 24;
-            this.label12.Text = "经费项目来源：";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // nud数量
             // 
             this.nud数量.ForeColor = System.Drawing.Color.Blue;
@@ -152,7 +145,7 @@
             0});
             this.nud数量.Name = "nud数量";
             this.nud数量.Size = new System.Drawing.Size(112, 21);
-            this.nud数量.TabIndex = 12;
+            this.nud数量.TabIndex = 9;
             this.nud数量.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nud数量.Value = new decimal(new int[] {
             1,
@@ -172,25 +165,25 @@
             0});
             this.nud价格.Name = "nud价格";
             this.nud价格.Size = new System.Drawing.Size(121, 21);
-            this.nud价格.TabIndex = 11;
+            this.nud价格.TabIndex = 8;
             this.nud价格.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btn取消
             // 
             this.btn取消.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn取消.Location = new System.Drawing.Point(120, 387);
+            this.btn取消.Location = new System.Drawing.Point(120, 502);
             this.btn取消.Name = "btn取消";
             this.btn取消.Size = new System.Drawing.Size(110, 28);
-            this.btn取消.TabIndex = 17;
+            this.btn取消.TabIndex = 16;
             this.btn取消.Text = "取消(ESC)";
             this.btn取消.UseVisualStyleBackColor = true;
             // 
             // btn确定
             // 
-            this.btn确定.Location = new System.Drawing.Point(264, 387);
+            this.btn确定.Location = new System.Drawing.Point(264, 502);
             this.btn确定.Name = "btn确定";
             this.btn确定.Size = new System.Drawing.Size(110, 28);
-            this.btn确定.TabIndex = 16;
+            this.btn确定.TabIndex = 15;
             this.btn确定.Text = "确定(Ctrl+D)";
             this.btn确定.UseVisualStyleBackColor = true;
             this.btn确定.Click += new System.EventHandler(this.btn确定_Click);
@@ -221,7 +214,7 @@
             // 
             this.label4.BackColor = System.Drawing.SystemColors.Control;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Location = new System.Drawing.Point(10, 371);
+            this.label4.Location = new System.Drawing.Point(10, 486);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(478, 2);
             this.label4.TabIndex = 43;
@@ -233,55 +226,37 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(65, 12);
             this.label13.TabIndex = 44;
-            this.label13.Text = "车辆类型：";
-            // 
-            // txt资产类别名称
-            // 
-            this.txt资产类别名称.BackColor = System.Drawing.Color.White;
-            this.txt资产类别名称.Location = new System.Drawing.Point(101, 95);
-            this.txt资产类别名称.Name = "txt资产类别名称";
-            this.txt资产类别名称.ReadOnly = true;
-            this.txt资产类别名称.Size = new System.Drawing.Size(351, 21);
-            this.txt资产类别名称.TabIndex = 5;
+            this.label13.Text = "资产类别：";
             // 
             // btn资产类别
             // 
             this.btn资产类别.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn资产类别.Location = new System.Drawing.Point(430, 96);
+            this.btn资产类别.Location = new System.Drawing.Point(430, 61);
             this.btn资产类别.Name = "btn资产类别";
             this.btn资产类别.Size = new System.Drawing.Size(21, 19);
-            this.btn资产类别.TabIndex = 6;
+            this.btn资产类别.TabIndex = 4;
             this.btn资产类别.Text = "…";
             this.btn资产类别.UseVisualStyleBackColor = true;
             this.btn资产类别.Click += new System.EventHandler(this.btn资产类别_Click);
             // 
-            // btn车辆类型
+            // txt资产类别名称
             // 
-            this.btn车辆类型.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn车辆类型.Location = new System.Drawing.Point(430, 61);
-            this.btn车辆类型.Name = "btn车辆类型";
-            this.btn车辆类型.Size = new System.Drawing.Size(21, 19);
-            this.btn车辆类型.TabIndex = 4;
-            this.btn车辆类型.Text = "…";
-            this.btn车辆类型.UseVisualStyleBackColor = true;
-            this.btn车辆类型.Click += new System.EventHandler(this.btn车辆类型_Click);
-            // 
-            // txt车辆类型名称
-            // 
-            this.txt车辆类型名称.BackColor = System.Drawing.Color.White;
-            this.txt车辆类型名称.Location = new System.Drawing.Point(101, 60);
-            this.txt车辆类型名称.Name = "txt车辆类型名称";
-            this.txt车辆类型名称.ReadOnly = true;
-            this.txt车辆类型名称.Size = new System.Drawing.Size(351, 21);
-            this.txt车辆类型名称.TabIndex = 3;
+            this.txt资产类别名称.BackColor = System.Drawing.SystemColors.Control;
+            this.txt资产类别名称.Location = new System.Drawing.Point(101, 60);
+            this.txt资产类别名称.Name = "txt资产类别名称";
+            this.txt资产类别名称.ReadOnly = true;
+            this.txt资产类别名称.Size = new System.Drawing.Size(351, 21);
+            this.txt资产类别名称.TabIndex = 3;
+            this.txt资产类别名称.TextChanged += new System.EventHandler(this.txt车辆类型名称_TextChanged);
             // 
             // txt经费来源
             // 
             this.txt经费来源.BackColor = System.Drawing.Color.White;
-            this.txt经费来源.Location = new System.Drawing.Point(101, 264);
+            this.txt经费来源.Location = new System.Drawing.Point(101, 267);
+            this.txt经费来源.Multiline = true;
             this.txt经费来源.Name = "txt经费来源";
-            this.txt经费来源.Size = new System.Drawing.Size(350, 21);
-            this.txt经费来源.TabIndex = 13;
+            this.txt经费来源.Size = new System.Drawing.Size(349, 49);
+            this.txt经费来源.TabIndex = 11;
             // 
             // lb预算单位
             // 
@@ -311,6 +286,7 @@
             this.btn预算单位.TabIndex = 2;
             this.btn预算单位.Text = "…";
             this.btn预算单位.UseVisualStyleBackColor = true;
+            this.btn预算单位.Visible = false;
             this.btn预算单位.Click += new System.EventHandler(this.btn预算单位_Click);
             // 
             // cbx车辆品牌
@@ -319,7 +295,7 @@
             this.cbx车辆品牌.Location = new System.Drawing.Point(101, 129);
             this.cbx车辆品牌.Name = "cbx车辆品牌";
             this.cbx车辆品牌.Size = new System.Drawing.Size(152, 20);
-            this.cbx车辆品牌.TabIndex = 7;
+            this.cbx车辆品牌.TabIndex = 4;
             // 
             // label1
             // 
@@ -336,15 +312,16 @@
             this.txt型号.Location = new System.Drawing.Point(320, 129);
             this.txt型号.Name = "txt型号";
             this.txt型号.Size = new System.Drawing.Size(131, 21);
-            this.txt型号.TabIndex = 8;
+            this.txt型号.TabIndex = 5;
             // 
             // cbx排气量
             // 
+            this.cbx排气量.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx排气量.FormattingEnabled = true;
             this.cbx排气量.Location = new System.Drawing.Point(320, 163);
             this.cbx排气量.Name = "cbx排气量";
             this.cbx排气量.Size = new System.Drawing.Size(131, 20);
-            this.cbx排气量.TabIndex = 10;
+            this.cbx排气量.TabIndex = 7;
             // 
             // label3
             // 
@@ -361,12 +338,12 @@
             this.cbx座位数.Location = new System.Drawing.Point(101, 163);
             this.cbx座位数.Name = "cbx座位数";
             this.cbx座位数.Size = new System.Drawing.Size(152, 20);
-            this.cbx座位数.TabIndex = 9;
+            this.cbx座位数.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 301);
+            this.label5.Location = new System.Drawing.Point(55, 392);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 12);
             this.label5.TabIndex = 60;
@@ -374,35 +351,98 @@
             // 
             // txt备注
             // 
-            this.txt备注.Location = new System.Drawing.Point(101, 298);
+            this.txt备注.Location = new System.Drawing.Point(101, 393);
             this.txt备注.Multiline = true;
             this.txt备注.Name = "txt备注";
-            this.txt备注.Size = new System.Drawing.Size(350, 61);
-            this.txt备注.TabIndex = 15;
+            this.txt备注.Size = new System.Drawing.Size(350, 77);
+            this.txt备注.TabIndex = 14;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 234);
+            this.label6.Location = new System.Drawing.Point(37, 234);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 12);
+            this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 61;
-            this.label6.Text = "经费来源性质：";
+            this.label6.Text = "资金来源：";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbx经费来源性质
             // 
+            this.cbx经费来源性质.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbx经费来源性质.FormattingEnabled = true;
             this.cbx经费来源性质.Items.AddRange(new object[] {
-            "",
             "自筹资金",
             "年初预算",
-            "年度经费追加",
+            "年度追加",
             "年度结余"});
             this.cbx经费来源性质.Location = new System.Drawing.Point(101, 231);
             this.cbx经费来源性质.Name = "cbx经费来源性质";
-            this.cbx经费来源性质.Size = new System.Drawing.Size(350, 20);
-            this.cbx经费来源性质.TabIndex = 62;
+            this.cbx经费来源性质.Size = new System.Drawing.Size(349, 20);
+            this.cbx经费来源性质.TabIndex = 10;
+            // 
+            // cbx车辆类型名称
+            // 
+            this.cbx车辆类型名称.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbx车辆类型名称.FormattingEnabled = true;
+            this.cbx车辆类型名称.Location = new System.Drawing.Point(101, 96);
+            this.cbx车辆类型名称.Name = "cbx车辆类型名称";
+            this.cbx车辆类型名称.Size = new System.Drawing.Size(350, 20);
+            this.cbx车辆类型名称.TabIndex = 3;
+            this.cbx车辆类型名称.SelectedIndexChanged += new System.EventHandler(this.cbx资产类别名称_SelectedIndexChanged);
+            // 
+            // btn附件查看
+            // 
+            this.btn附件查看.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn附件查看.Location = new System.Drawing.Point(370, 358);
+            this.btn附件查看.Name = "btn附件查看";
+            this.btn附件查看.Size = new System.Drawing.Size(80, 23);
+            this.btn附件查看.TabIndex = 13;
+            this.btn附件查看.Text = "附件查看(&W)";
+            this.btn附件查看.UseVisualStyleBackColor = true;
+            this.btn附件查看.Click += new System.EventHandler(this.btn附件查看_Click);
+            // 
+            // btn附件管理
+            // 
+            this.btn附件管理.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn附件管理.Location = new System.Drawing.Point(275, 358);
+            this.btn附件管理.Name = "btn附件管理";
+            this.btn附件管理.Size = new System.Drawing.Size(80, 23);
+            this.btn附件管理.TabIndex = 12;
+            this.btn附件管理.Text = "附件管理(&F)";
+            this.btn附件管理.UseVisualStyleBackColor = true;
+            this.btn附件管理.Click += new System.EventHandler(this.btn附件管理_Click);
+            // 
+            // txt附件信息
+            // 
+            this.txt附件信息.BackColor = System.Drawing.SystemColors.Control;
+            this.txt附件信息.Enabled = false;
+            this.txt附件信息.ForeColor = System.Drawing.Color.Blue;
+            this.txt附件信息.Location = new System.Drawing.Point(101, 331);
+            this.txt附件信息.Name = "txt附件信息";
+            this.txt附件信息.ReadOnly = true;
+            this.txt附件信息.Size = new System.Drawing.Size(350, 21);
+            this.txt附件信息.TabIndex = 535;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label12.Location = new System.Drawing.Point(59, 335);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 12);
+            this.label12.TabIndex = 534;
+            this.label12.Text = "附件：";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(14, 270);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(89, 12);
+            this.label14.TabIndex = 538;
+            this.label14.Text = "资金来源项目：";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OCC_配置申请_Editor_MX
             // 
@@ -410,7 +450,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.CancelButton = this.btn取消;
-            this.ClientSize = new System.Drawing.Size(495, 425);
+            this.ClientSize = new System.Drawing.Size(495, 546);
+            this.Controls.Add(this.txt经费来源);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.btn附件查看);
+            this.Controls.Add(this.btn附件管理);
+            this.Controls.Add(this.txt附件信息);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.cbx车辆类型名称);
             this.Controls.Add(this.cbx经费来源性质);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txt备注);
@@ -424,9 +471,6 @@
             this.Controls.Add(this.btn预算单位);
             this.Controls.Add(this.txt预算单位名称);
             this.Controls.Add(this.lb预算单位);
-            this.Controls.Add(this.txt经费来源);
-            this.Controls.Add(this.btn车辆类型);
-            this.Controls.Add(this.txt车辆类型名称);
             this.Controls.Add(this.btn资产类别);
             this.Controls.Add(this.txt资产类别名称);
             this.Controls.Add(this.label13);
@@ -437,7 +481,6 @@
             this.Controls.Add(this.btn取消);
             this.Controls.Add(this.nud价格);
             this.Controls.Add(this.nud数量);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -445,10 +488,13 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(505, 575);
             this.Name = "OCC_配置申请_Editor_MX";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OCC_配置申请_Editor_MX_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.nud数量)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud价格)).EndInit();
             this.ResumeLayout(false);
@@ -464,7 +510,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown nud数量;
         private System.Windows.Forms.NumericUpDown nud价格;
         private System.Windows.Forms.Button btn取消;
@@ -473,10 +518,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txt资产类别名称;
         private System.Windows.Forms.Button btn资产类别;
-        private System.Windows.Forms.Button btn车辆类型;
-        private System.Windows.Forms.TextBox txt车辆类型名称;
+        private System.Windows.Forms.TextBox txt资产类别名称;
         private System.Windows.Forms.TextBox txt经费来源;
         private System.Windows.Forms.Label lb预算单位;
         private System.Windows.Forms.TextBox txt预算单位名称;
@@ -491,5 +534,11 @@
         private System.Windows.Forms.TextBox txt备注;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbx经费来源性质;
+        private System.Windows.Forms.ComboBox cbx车辆类型名称;
+        private System.Windows.Forms.Button btn附件查看;
+        private System.Windows.Forms.Button btn附件管理;
+        private System.Windows.Forms.TextBox txt附件信息;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
     }
 }

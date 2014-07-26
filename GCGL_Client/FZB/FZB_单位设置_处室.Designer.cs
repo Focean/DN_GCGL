@@ -46,21 +46,22 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(61, 184);
+            this.btnCancel.Location = new System.Drawing.Point(35, 184);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 26);
+            this.btnCancel.Size = new System.Drawing.Size(97, 26);
             this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "取消(&C)";
+            this.btnCancel.Text = "取消(Esc)";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(254, 184);
+            this.btnOK.Location = new System.Drawing.Point(267, 184);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 26);
+            this.btnOK.Size = new System.Drawing.Size(97, 26);
             this.btnOK.TabIndex = 4;
             this.btnOK.Tag = "保存";
-            this.btnOK.Text = "提交(E)";
+            this.btnOK.Text = "提交(Ctrl+S)";
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -155,6 +156,7 @@
             this.txt处室编码.Name = "txt处室编码";
             this.txt处室编码.Size = new System.Drawing.Size(205, 21);
             this.txt处室编码.TabIndex = 0;
+            this.txt处室编码.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt处室编码_KeyPress);
             // 
             // label3
             // 
@@ -167,12 +169,12 @@
             // 
             // btn提交并继续
             // 
-            this.btn提交并继续.Location = new System.Drawing.Point(146, 184);
+            this.btn提交并继续.Location = new System.Drawing.Point(139, 184);
             this.btn提交并继续.Name = "btn提交并继续";
-            this.btn提交并继续.Size = new System.Drawing.Size(97, 26);
-            this.btn提交并继续.TabIndex = 198;
+            this.btn提交并继续.Size = new System.Drawing.Size(121, 26);
+            this.btn提交并继续.TabIndex = 6;
             this.btn提交并继续.Tag = "保存";
-            this.btn提交并继续.Text = "提交并继续(E)";
+            this.btn提交并继续.Text = "提交并继续录入(&N)";
             this.btn提交并继续.UseVisualStyleBackColor = false;
             this.btn提交并继续.Click += new System.EventHandler(this.btn提交并继续_Click);
             // 
@@ -180,7 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 222);
+            this.ClientSize = new System.Drawing.Size(398, 234);
             this.Controls.Add(this.btn提交并继续);
             this.Controls.Add(this.txt处室编码);
             this.Controls.Add(this.label3);
@@ -194,6 +196,8 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txt处室名称);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(406, 261);
             this.MinimizeBox = false;
@@ -202,6 +206,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "单位处室编辑";
             this.Load += new System.EventHandler(this.Man_单位_处室_Editor_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FZB_单位_处室_Editor_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

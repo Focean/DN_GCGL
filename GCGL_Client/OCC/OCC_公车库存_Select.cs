@@ -14,16 +14,55 @@ namespace GCGL_Client.OCC
         public OCC_公车库存_Select()
         {           
             InitializeComponent();
+            //
             this.dtp开始时间.Value = this.dtp结束时间.Value.AddMonths(-1);    
         }
         private void OCC_资产信息_Select_Load(object sender, EventArgs e)
         {
+        }
+        private string Ucode;
+        public void select_超编(string Unitcode)
+        {
+            this.Text = "单位资产列表";
+            this.Tag = "超编选择";
+            Ucode = Unitcode;
+            //
+            try
+            {
+                if (!AppServer.WcfService_Open()) return;
+                var model = new Ref_WS_GCGL.DataType_OCC_公车库存();
+                model.ExAction = "Check";
+                model.单位编码 = Unitcode;
+                model.开始时间 = this.dtp开始时间.Value;
+                model.结束时间 = this.dtp结束时间.Value;
+                model.车牌号 = this.txt车牌号.Text;
+                model.编制情况 = "在编制";
+                DataSet db = AppServer.wcfClient.OCC_公车库存_List(ref model);
+                DataTable table = db.Tables[1];                
+                if (table.Rows.Count == 0)
+                {
+                    dgv单位资产.DataSource = table;
+                    return;
+                }
+                dgv单位资产.DataSource = table;
+            }
+            catch (Exception ex)
+            {
+                AppServer.ShowMsg_ExceptError(ex.Message);
+                return;
+            }
+            finally
+            {
+                AppServer.WcfService_Close();
+                base.Cursor = Cursors.Arrow;
+            }
         }
         private string[] ZCstr = new string[10];
         public void Select_查询单位资产(string[] ss)
         {
             Array.Copy(ss, ZCstr, ss.Length);
             this.Text = "单位资产选择";
+            this.Tag = "资产选择";
             //
             try
             {
@@ -81,17 +120,49 @@ namespace GCGL_Client.OCC
         }
 
         private void btn确定_Click(object sender, EventArgs e)
-        {
+        {          
             if (this.dgv单位资产.Rows.Count == 0) return;
             DataRow row = ((DataTable)this.dgv单位资产.DataSource).Rows[this.dgv单位资产.CurrentRow.Index];
-            DataRow newrow = ((DataTable)this.dgv单位资产.DataSource).Rows[this.dgv单位资产.CurrentRow.Index];
+           // DataRow newrow = ((DataTable)this.dgv单位资产.DataSource).Rows[this.dgv单位资产.CurrentRow.Index];
             if (row == null) return;
             else
             {
                 SelectPropertyCode = row["资产编号"].ToString();
                 SelectPropertyName = row["资产名称"].ToString();
             }
+            if (this.Tag.ToString() == "超编选择")
+            {
+                try
+                {
+                    if (!AppServer.WcfService_Open()) return;
+                    //
+                    var model = new Ref_WS_GCGL.DataType_OCC_公车入库();
+                    model.ExAction = "Add";
+                    model.资产编号 = SelectPropertyCode;
+                    model.LoginUserCode = AppServer.LoginUserCode;
+                    model.单位编码 = Ucode;
+                    AppServer.wcfClient.COS_车辆超编_Edit(ref model);
+                }
+                catch (Exception ex)
+                {
+                    AppServer.ShowMsg_ExceptError(ex.Message);
+                    return;
+                }
+                finally
+                {
+                    AppServer.WcfService_Close();
+                    base.Cursor = Cursors.Arrow;
+                }
+            }
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void OCC_公车库存_Select_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)         //Ctrl+D
+            {
+                this.btn确定_Click(this, EventArgs.Empty);
+            }
         } 
     }
 }

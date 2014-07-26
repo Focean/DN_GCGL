@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GLG.Common;
+using TY.Common;
 using TY.Helper;
 namespace GCGL_Client.OCC
 {
@@ -112,6 +112,14 @@ namespace GCGL_Client.OCC
             using (var form = new OCC_公车入库_Editor())
             {
                 //form.Editor_View(row);
+            }
+        }
+
+        private void OCC_公车入库_调拨_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)         //Ctrl+N
+            {
+                this.btnOk_Click(this, EventArgs.Empty);               
             }
         }
     }

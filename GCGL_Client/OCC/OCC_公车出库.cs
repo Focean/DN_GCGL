@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using GCGL_Client.Main;
-using GLG.Common;
+using TY.Common;
 using TY.Helper;
 using GCGL_Client.NET;
 namespace GCGL_Client.OCC
@@ -17,29 +17,33 @@ namespace GCGL_Client.OCC
         public OCC_公车出库()
         {
             InitializeComponent();
-            if (AppServer.LoginUnitType < 3 || AppServer.LoginUnitType == 8)
-            {
-                this.txt选择单位.Text = AppServer.LoginUnitName;
-                this.txt选择单位.Tag = AppServer.LoginUnitCode;
-            }
-            else
-            {
-                this.txt选择单位.Text = "所有单位";
-                this.txt选择单位.Tag = "410000_";
-            }
             this.dtp开始时间.Value = DateTime.Today.AddDays(1 - DateTime.Today.DayOfYear);
-            this.dtp结束时间.Value = DateTime.Today;
-            
+            this.dtp结束时间.Value = DateTime.Today;          
             //设置表格样式
            AppServer.SetGridViewStyle(this.dgvList);
 
-           if (AppServer.LoginUnitType >= 2&&AppServer.LoginUnitType<8)
+           if (AppServer.UserQxMenuList.Rows.Contains("051202"))
            {
-               this.btn报废.Enabled = false;
-               this.btn出售出库.Enabled = false;
-               this.btn删除.Enabled = false;
-               this.btn调拨.Enabled = false;
-               this.btn修改.Enabled = false;
+               this.btn报废.Visible = true;
+               this.btn出售出库.Visible = true;
+               this.btn删除.Visible = true;
+               this.btn调拨.Visible = true;
+               this.btn修改.Visible = true;
+           }
+           if (AppServer.LoginUnitIsGWC())
+           {
+               this.btn调拨.Text = "上交(&B)";
+               this.btn预算单位.Visible = false;
+               this.txt单位编码.Tag = "410001_GWC";
+               this.txt单位编码.Text = "省公物仓";
+               this.chk包含下级.Visible = false;
+           }
+           if (AppServer.LoginUnitIsYSDW())
+           {
+               this.btn预算单位.Visible = false;
+               this.txt单位编码.Tag = AppServer.LoginUnitCode;
+               this.txt单位编码.Text = AppServer.LoginUnitName;
+               this.chk包含下级.Visible = false;
            }
         }
 
@@ -59,11 +63,13 @@ namespace GCGL_Client.OCC
                 model.ExAction = "List";
                 model.开始时间 = this.dtp开始时间.Value;
                 model.结束时间 = this.dtp结束时间.Value;
-                if (this.txt选择单位.Tag == null || this.txt选择单位.Tag.ToString() == "")
-                    model.单位编码 = AppServer.LoginUnitCode;
-                else
+                if (AppServer.LoginUnitIsYSDW() || AppServer.LoginUnitIsGWC())
                 {
-                    model.单位编码 = this.txt选择单位.Tag.ToString();
+                    model.单位编码 = AppServer.LoginUnitCode;
+                }
+                else if (this.txt单位编码.Tag != null)
+                {
+                    model.单位编码 = this.txt单位编码.Tag.ToString();
                     model.包含下级 = this.chk包含下级.Checked;
                 }
                 DataSet db = AppServer.wcfClient.OCC_公车出库_List(ref model);
@@ -82,19 +88,6 @@ namespace GCGL_Client.OCC
             }
         }
         #endregion
- 
-        private void btn选择单位_Click(object sender, EventArgs e)
-        {
-            using (var form = new Man_单位_Select())
-            {
-                form.Select_查询单位();
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    this.txt选择单位.Text = form.SelectUnitName;
-                    this.txt选择单位.Tag = form.SelectUnitCode;
-                }
-            }
-        }
 
         private void btn报废_Click(object sender, EventArgs e)
         {
@@ -105,7 +98,6 @@ namespace GCGL_Client.OCC
                 {
                     //更新数据     
                     this.DataBinding_GridView(this.dgvList.Rows.Count);
-
                 }
             }
         }
@@ -119,7 +111,6 @@ namespace GCGL_Client.OCC
                 {
                     //更新数据     
                     this.DataBinding_GridView(this.dgvList.Rows.Count);
-
                 }
             }
         }
@@ -132,7 +123,6 @@ namespace GCGL_Client.OCC
                 {
                     //更新数据     
                     this.DataBinding_GridView(this.dgvList.Rows.Count);
-
                 }
             }
         }
@@ -143,7 +133,7 @@ namespace GCGL_Client.OCC
             if (row == null) return;
             if (row["审批流程编码"].ToString() == "")
             {
-                if (row["处置形式编码"].ToString() == "01")
+                if (row["处置形式编码"].ToString() == "03")
                 using (var form = new OCC_公车出库_调拨())
                 {
                     form.Editor_Mod(row["出库单编码"].ToString());
@@ -153,7 +143,7 @@ namespace GCGL_Client.OCC
                         this.DataBinding_GridView(this.dgvList.CurrentRow.Index);
                     }
                 }
-                if (row["处置形式编码"].ToString() == "02")
+                if (row["处置形式编码"].ToString() == "02" || row["处置形式编码"].ToString() == "01")
                     using (var form = new OCC_公车出库_报废())
                     {
                         form.Editor_Mod(row["出库单编码"].ToString());
@@ -163,7 +153,7 @@ namespace GCGL_Client.OCC
                             this.DataBinding_GridView(this.dgvList.CurrentRow.Index);
                         }
                     }
-                if (row["处置形式编码"].ToString() == "03")
+                if (row["处置形式编码"].ToString() == "04")
                     using (var form = new OCC_公车出库_出售())
                     {
                         form.Editor_Mod(row["出库单编码"].ToString());
@@ -186,20 +176,18 @@ namespace GCGL_Client.OCC
             if (this.dgvList.Rows.Count == 0) return;
             DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
             if (row == null) return;
-            if (row["审批流程编码"].ToString() == "")
+            if (row["exWaitState"].ToString() == "等待提交" || row["exWaitState"].ToString() == "等待重新提交")
             {
                 if (AppServer.DialogMsg("是否确认删除？", " "))
                 {
-
                     var dtm = new Ref_WS_GCGL.DataType_OCC_公车出库();
                     dtm.ExAction = "Del";
                     dtm.出库单编码 = row["出库单编码"].ToString();
+                    dtm.LoginUserCode = AppServer.LoginUserCode;
                     if (!AppServer.WcfService_Open()) return;
                     AppServer.wcfClient.OCC_公车出库_Edit(ref dtm);
                     if (dtm.ExResult == 0)
-                    {
                         this.DataBinding_GridView(this.dgvList.CurrentRow.Index - 1);
-                    }
                     else
                         AppServer.ShowMsg_Error(dtm.ErrorMsg, "错误");
                 }
@@ -216,46 +204,46 @@ namespace GCGL_Client.OCC
         {
             if (this.dgvList.Rows.Count == 0) return;
             DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
-            if (row == null) return;  
-         
-            if (row["处置形式编码"].ToString() == "01")
+            if (row == null) return;
+            if (row["处置形式编码"].ToString().Trim() == "03")
+            {
                 using (var form = new OCC_公车出库_调拨())
                 {
                     form.Editor_See(row["出库单编码"].ToString());
                     if (form.ShowDialog() == DialogResult.OK)
                     {
-                        //更新数据
-                        this.DataBinding_GridView(this.dgvList.CurrentRow.Index);
+
                     }
                 }
-             if (row["处置形式编码"].ToString() == "02")
-                    using (var form = new OCC_公车出库_报废())
+            }
+            if (row["处置形式编码"].ToString().Trim() == "01" || row["处置形式编码"].ToString() == "02")
+            {
+                using (var form = new OCC_公车出库_报废())
+                {
+                    form.Editor_See(row["出库单编码"].ToString());
+                    if (form.ShowDialog() == DialogResult.OK)
                     {
-                        form.Editor_See(row["出库单编码"].ToString());
-                        if (form.ShowDialog() == DialogResult.OK)
-                        {
-                            //更新数据
-                            this.DataBinding_GridView(this.dgvList.CurrentRow.Index);
-                        }
+
                     }
-            if (row["处置形式编码"].ToString() == "03")
-                 using (var form = new OCC_公车出库_出售())
-                 {
-                     form.Editor_See(row["出库单编码"].ToString());
-                     if (form.ShowDialog() == DialogResult.OK)
-                     {
-                         //更新数据
-                         this.DataBinding_GridView(this.dgvList.CurrentRow.Index);
-                     }
-                 }
+                }
+            }
+            if (row["处置形式编码"].ToString().Trim() == "04")
+            {
+                using (var form = new OCC_公车出库_出售())
+                {
+                    form.Editor_See(row["出库单编码"].ToString());
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
         }
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
             DataBinding_GridView(0);
         }
-
-       
 
         private void btn附件查看_Click(object sender, EventArgs e)
         {
@@ -270,9 +258,24 @@ namespace GCGL_Client.OCC
             }
         }
 
+        private void btn审批意见_Click(object sender, EventArgs e)
+        {
+            if (this.dgvList.Rows.Count == 0) return;
+            DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
+            if (row == null) return;
+            //
+            using (var form = new NET_审批中心_Flow())
+            {
+                form.Editor_See(row["审批流程编码"].ToString());
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                }
+            }
+        }     
+
         private void btn导出_Click(object sender, EventArgs e)
         {
-
+            DataToExcel.DataGridViewToExcelApp(this.dgvList, this.lblTitle.Text);
         }
 
         private void btn打印_Click(object sender, EventArgs e)
@@ -285,6 +288,93 @@ namespace GCGL_Client.OCC
             this.Close();
         }
 
-      
+        private void dgvList_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.dgvList.Rows.Count == 0) return;
+            DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
+            if (row == null) return;
+
+            if (row["处置形式编码"].ToString().Trim() == "01" || row["处置形式编码"].ToString().Trim() == "02")
+                using (var form = new OCC_公车出库_报废())
+                {
+                    form.Editor_See(row["出库单编码"].ToString());
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            if (row["处置形式编码"].ToString().Trim() == "03")
+                using (var form = new OCC_公车出库_调拨())
+                {
+                    form.Editor_See(row["出库单编码"].ToString());
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                      
+                    }
+                }
+            if (row["处置形式编码"].ToString().Trim() == "04")
+                using (var form = new OCC_公车出库_出售())
+                {
+                    form.Editor_See(row["出库单编码"].ToString());
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+        }
+
+        private void btn预算单位_Click(object sender, EventArgs e)
+        {
+            AppServer.ReadAppCommon(2);
+            AppServer.Frm单位信息.SetShowParam(this.txt单位编码, 0);
+            AppServer.Frm单位信息.ShowDialog();
+            if (AppServer.Frm单位信息.DialogResult == DialogResult.OK)
+            {
+                this.txt单位编码.Tag = AppServer.Frm单位信息.SelectNodeID;
+                this.txt单位编码.Text = AppServer.Frm单位信息.SelectNodeTitle;
+            }
+            AppServer.Frm单位信息.Hide();
+        }
+
+        private void btn打印处置备案表_Click(object sender, EventArgs e)
+        {
+            if (this.dgvList.Rows.Count == 0) return;
+            DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
+            if (row == null) return;
+            //
+            if (row["处置形式编码"].ToString().Trim() == "01" || row["处置形式编码"].ToString().Trim() == "02")
+            {
+                using (var form = new OCC_公车出库_报废())
+                {
+                    form.Editor_Print(row["出库单编码"].ToString());
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+            if (row["处置形式编码"].ToString().Trim() == "03")
+            {
+                using (var form = new OCC_公车出库_调拨())
+                {
+                    form.Editor_Print(row["出库单编码"].ToString());
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+            if (row["处置形式编码"].ToString().Trim() == "04")
+            {
+                using (var form = new OCC_公车出库_出售())
+                {
+                    form.Editor_Print(row["出库单编码"].ToString());
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+        }
     }
 }

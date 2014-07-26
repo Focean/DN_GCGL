@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("郑州鼎诺电子科技有限公司")]
 [assembly: AssemblyProduct("河南省行政事业单位公务用车管理信息系统")]
-[assembly: AssemblyCopyright("Copyright © DnSoft 2013")]
+[assembly: AssemblyCopyright("Copyright © DnSoft 2014")]
 [assembly: AssemblyTrademark("DnSoft")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("8fbbcd51-123a-49d4-1cc2-52053193fd66")]
+[assembly: Guid("8fbbcd51-123a-66d6-1cc2-52053193fd66")]
 
 // 程序集的版本信息由下面四个值组成:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“内部版本号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.5.2013.1202")]
-[assembly: AssemblyFileVersion("1.5.2013.1202")]
+[assembly: AssemblyVersion("2.2.14.0331")]
+[assembly: AssemblyFileVersion("2.2.14.0331")]

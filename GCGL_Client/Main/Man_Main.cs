@@ -14,8 +14,6 @@ namespace GCGL_Client
 {
     public partial class Man_Main : Form
     {
-        //是否登录成功了
-        private bool FLoginSuccess;
         //
         private MdiClient FMDI_Client;
 
@@ -34,8 +32,8 @@ namespace GCGL_Client
                 }
             }
             //m_MdiClient.BackColor = System.Drawing.SystemColors.Control;
-            FMDI_Client.ControlAdded += new ControlEventHandler(m_MdiClient_ControlAdded);
-            FMDI_Client.ControlRemoved += new ControlEventHandler(m_MdiClient_ControlRemoved);
+            //FMDI_Client.ControlAdded += new ControlEventHandler(m_MdiClient_ControlAdded);
+            //FMDI_Client.ControlRemoved += new ControlEventHandler(m_MdiClient_ControlRemoved);
 
             #endregion
 
@@ -43,29 +41,67 @@ namespace GCGL_Client
             AppServer.InitAppServer();
 
             //用户登录
-            FLoginSuccess = this.Login(true);
-            //if (!FLoginSuccess) return;
+            if (!AppServer.LoginSuccess)
+                this.Login(true);
+            else
+                this.ReadFormParam();
+         
         }
 
         private void fmMan_Main_Load(object sender, EventArgs e)
         {
-            if (!FLoginSuccess) return;
+            if (!AppServer.LoginSuccess) return;
             //
             this.toolBtnShowFT.PerformClick();
-            //AppServer.OpenUserMenu("0201","待办处理事项", this);
+           
         }
 
         private void TfmMan_Main_Shown(object sender, EventArgs e)
         {
-            if (!FLoginSuccess) this.Close();
+            if (!AppServer.LoginSuccess) this.Close();
         }
 
         private void TfmMan_Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = false;
-            if (!FLoginSuccess) return;
+            if (!AppServer.LoginSuccess) return;
             //退出提示
             e.Cancel = !AppServer.DialogMsg("感谢您的使用，确认要退出系统吗？", "退出提示");
+        }
+
+        private void ReadFormParam()
+        {
+            base.Cursor = Cursors.WaitCursor;
+            try
+            {
+                //更新界面属性
+                this.Text = string.Format("{0} {1}", Application.ProductName, Man_About.AssemblyAppVer);
+                this.toolStripLabelTitle.Text = string.Format("『{0}』的功能树", AppServer.LoginUserName);
+                this.tsslAppHost.Text = string.Format("应用服务器：{0}", AppServer.wcfClient.Endpoint.Address.Uri.Host.ToString());
+                this.tsslWorkDate.Text = string.Format("业务日期：{0:yyyy-MM-dd}", AppServer.LoginWorkDate);
+                this.tsslLoginUser.Text = string.Format("  操作员：({0}){1}  ", AppServer.LoginUserCode, AppServer.LoginUserName);
+                this.tsslAppArea.Text = string.Format("  区划：{0}", AppServer.LoginAreaName);
+                this.tsslAppUnit.Text = string.Format("  单位名称：{0}", AppServer.LoginUnitName);
+                //创建用户功能树
+                if (AppServer.UserQxMenuList != null)
+                {
+                    //DataView dv = new DataView(AppServer.UserQxMenuList);
+                    //dv.RowFilter = "MenuType=0 or MenuType=1";
+                    DataTable dt = AppServer.UserQxMenuList.Clone();
+                    foreach (DataRow row in AppServer.UserQxMenuList.Select("MenuType=0 or MenuType=1", "MenuPCode, MenuOrder, MenuCode"))
+                    {
+                        dt.Rows.Add(row.ItemArray);
+                    }
+                    this.dbTreeView.DataSource = dt;
+                    this.dbTreeView.BuildTrees();
+                    //
+                    this.dbTreeView.ExpandAll();
+                }
+            }
+            finally
+            {
+                base.Cursor = Cursors.Arrow;
+            }
         }
 
         private Boolean Login(Boolean AFirst = false)
@@ -78,49 +114,23 @@ namespace GCGL_Client
                 {
                     return false;
                 }
-                //登录成功了
-                base.Cursor = Cursors.WaitCursor;
-                try
+            }
+            //登录成功了
+            this.ReadFormParam();
+            //重新登录后要把子窗口全部关闭
+            if (!AFirst)
+            {
+                foreach (Form fMDI in this.MdiChildren)
                 {
-                    //更新界面属性
-                    this.Text = string.Format("{0} {1}", Application.ProductName, Man_About.AssemblyAppVer);
-                    this.toolStripLabelTitle.Text = string.Format("『{0}』的功能树", AppServer.LoginUserName);
-                    this.tsslAppHost.Text = string.Format("应用服务器：{0}", AppServer.wcfClient.Endpoint.Address.Uri.Host.ToString());
-                    this.tsslWorkDate.Text = string.Format("业务日期：{0:yyyy-MM-dd}", AppServer.LoginWorkDate);
-                    this.tsslLoginUser.Text = string.Format("  操作员：({0}){1}  ", AppServer.LoginUserCode, AppServer.LoginUserName);
-                    this.tsslAppArea.Text = string.Format("  区划：{0}", AppServer.LoginAreaName);
-                    this.tsslAppUnit.Text = string.Format("  单位名称：{0}", AppServer.LoginUnitName);
-                    //创建用户功能树
-                    if (AppServer.UserQxMenuList != null)
-                    {
-                        //DataView dv = new DataView(AppServer.UserQxMenuList);
-                        //dv.RowFilter = "MenuType=0 or MenuType=1";
-                        DataTable dt = AppServer.UserQxMenuList.Clone();
-                        foreach (DataRow row in AppServer.UserQxMenuList.Select("MenuType=0 or MenuType=1", "MenuPCode, MenuOrder, MenuCode"))
-                        {
-                            dt.Rows.Add(row.ItemArray);
-                        }
-                        this.dbTreeView.DataSource = dt; 
-                        this.dbTreeView.BuildTrees();
-                        //
-                        this.dbTreeView.ExpandAll();
-                    }
-                    //重新登录后要把子窗口全部关闭
-                    if (!AFirst)
-                    {
-                        foreach (Form fMDI in this.MdiChildren)
-                        {
-                            fMDI.Close();
-                        }
-                    }
-                    //返回成功登录了
-                    return true;
-                }
-                finally
-                {
-                    base.Cursor = Cursors.Arrow;
+                    fMDI.Close();
                 }
             }
+            if (AppServer.UserQxMenuList.Rows.Contains("0600"))
+            {
+                AppServer.OpenUserMenu("0600", "代办事项", this);
+            }
+            //返回成功登录了
+            return true;
         }
 
         public void UpdateForm(bool ABuildTree = true)
@@ -308,6 +318,7 @@ namespace GCGL_Client
         private void btn重新登录_Click(object sender, EventArgs e)
         {
             this.miLogin.PerformClick();
+          
         }
 
         private void btn退出系统_Click(object sender, EventArgs e)
@@ -351,9 +362,11 @@ namespace GCGL_Client
                     }
             }
         }
-
         #endregion
 
-
+        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://10.8.4.140/dnsoft/gcgl/" + "\\操作手册.rar");
+        }
     }
 }

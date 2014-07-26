@@ -21,7 +21,7 @@ namespace GCGL_Client.NET
             try
             {
                 if (!AppServer.WcfService_Open()) return;
-                DataTable dt = AppServer.wcfClient.FZB_编码_List("版块名称").Tables[0];
+                DataTable dt = AppServer.wcfClient.FZB_编码_List("版块名称", AppServer.LoginAreaCode).Tables[0];
                 dt.Rows.RemoveAt(0);
                 this.cbx版块名称.DataSource = dt;
                 this.cbx版块名称.DisplayMember = "版块名称";
@@ -40,11 +40,10 @@ namespace GCGL_Client.NET
             }
 
         }
-        public void Editor_Add(string LTBM)
+        public void Editor_Add()
         {
             this.Text = "发帖";
-            this.Tag = "Add";
-            this.btnOk.Tag = LTBM;        
+            this.Tag = "Add";               
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -54,6 +53,19 @@ namespace GCGL_Client.NET
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            if (this.txt贴子标题.Text.Trim().ToString() == "")
+            {
+                AppServer.ShowMsg("帖子标题不能为空！");
+                this.txt贴子标题.Focus();
+                return;
+            }
+            if (this.dN_HtmlEditor1.BodyText == null)
+            {
+                AppServer.ShowMsg("帖子内容不能为空！");
+                this.dN_HtmlEditor1.Focus();
+                return;
+            }
+            
             try
             {
                 if (!AppServer.WcfService_Open()) return;
@@ -62,7 +74,7 @@ namespace GCGL_Client.NET
                 model.版块编码 = this.cbx版块名称.SelectedValue.ToString();
                 model.版主人编码 = this.txt创建人编码.Tag.ToString();
                 model.贴子标题 = this.txt贴子标题.Text.ToString();
-                model.贴子内容 = GetHtmlImageUrlList(this.dN_HtmlEditor1.WB_HtmlText);
+                model.贴子内容 = GetHtmlImageUrlList(this.dN_HtmlEditor1.HtmlText);
                 model.LoginUserCode = AppServer.LoginUserCode;
                 AppServer.wcfClient.NET_论坛_Edit(ref model);
                 //

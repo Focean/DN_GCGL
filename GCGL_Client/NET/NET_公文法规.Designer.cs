@@ -38,7 +38,6 @@
             this.btn删除 = new System.Windows.Forms.Button();
             this.btn修改 = new System.Windows.Forms.Button();
             this.btn发布法规 = new System.Windows.Forms.Button();
-            this.btn发布公文 = new System.Windows.Forms.Button();
             this.btn关闭 = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
             this.dtp结束时间 = new System.Windows.Forms.DateTimePicker();
@@ -53,6 +52,8 @@
             this.查阅次数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.发布人 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.发布时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.附件摘要 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.附件编码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlTool.SuspendLayout();
             this.pnlQuery.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
@@ -78,7 +79,6 @@
             this.pnlTool.Controls.Add(this.btn删除);
             this.pnlTool.Controls.Add(this.btn修改);
             this.pnlTool.Controls.Add(this.btn发布法规);
-            this.pnlTool.Controls.Add(this.btn发布公文);
             this.pnlTool.Controls.Add(this.btn关闭);
             this.pnlTool.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTool.Location = new System.Drawing.Point(0, 0);
@@ -90,7 +90,7 @@
             // 
             this.btn查看.BackColor = System.Drawing.SystemColors.Control;
             this.btn查看.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn查看.Location = new System.Drawing.Point(326, 0);
+            this.btn查看.Location = new System.Drawing.Point(238, 0);
             this.btn查看.Name = "btn查看";
             this.btn查看.Size = new System.Drawing.Size(75, 28);
             this.btn查看.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             this.btn删除.BackColor = System.Drawing.SystemColors.Control;
             this.btn删除.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn删除.Location = new System.Drawing.Point(251, 0);
+            this.btn删除.Location = new System.Drawing.Point(163, 0);
             this.btn删除.Name = "btn删除";
             this.btn删除.Size = new System.Drawing.Size(75, 28);
             this.btn删除.TabIndex = 10;
@@ -114,12 +114,13 @@
             // 
             this.btn修改.BackColor = System.Drawing.SystemColors.Control;
             this.btn修改.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn修改.Location = new System.Drawing.Point(176, 0);
+            this.btn修改.Location = new System.Drawing.Point(88, 0);
             this.btn修改.Name = "btn修改";
             this.btn修改.Size = new System.Drawing.Size(75, 28);
             this.btn修改.TabIndex = 9;
             this.btn修改.Text = "修改(&M)";
             this.btn修改.UseVisualStyleBackColor = false;
+            this.btn修改.Visible = false;
             this.btn修改.Click += new System.EventHandler(this.btn修改_Click);
             // 
             // btn发布法规
@@ -127,26 +128,13 @@
             this.btn发布法规.BackColor = System.Drawing.SystemColors.Control;
             this.btn发布法规.Dock = System.Windows.Forms.DockStyle.Left;
             this.btn发布法规.ForeColor = System.Drawing.Color.Red;
-            this.btn发布法规.Location = new System.Drawing.Point(88, 0);
+            this.btn发布法规.Location = new System.Drawing.Point(0, 0);
             this.btn发布法规.Name = "btn发布法规";
             this.btn发布法规.Size = new System.Drawing.Size(88, 28);
             this.btn发布法规.TabIndex = 8;
-            this.btn发布法规.Text = "发布法规(&T)";
+            this.btn发布法规.Text = "发布(&A)";
             this.btn发布法规.UseVisualStyleBackColor = false;
             this.btn发布法规.Click += new System.EventHandler(this.btn发布法规_Click);
-            // 
-            // btn发布公文
-            // 
-            this.btn发布公文.BackColor = System.Drawing.SystemColors.Control;
-            this.btn发布公文.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn发布公文.ForeColor = System.Drawing.Color.Blue;
-            this.btn发布公文.Location = new System.Drawing.Point(0, 0);
-            this.btn发布公文.Name = "btn发布公文";
-            this.btn发布公文.Size = new System.Drawing.Size(88, 28);
-            this.btn发布公文.TabIndex = 11;
-            this.btn发布公文.Text = "发布公文(&G)";
-            this.btn发布公文.UseVisualStyleBackColor = false;
-            this.btn发布公文.Click += new System.EventHandler(this.btn发布公文_Click);
             // 
             // btn关闭
             // 
@@ -263,7 +251,9 @@
             this.标题,
             this.查阅次数,
             this.发布人,
-            this.发布时间});
+            this.发布时间,
+            this.附件摘要,
+            this.附件编码});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -292,6 +282,7 @@
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvList.Size = new System.Drawing.Size(859, 491);
             this.dgvList.TabIndex = 125;
+            this.dgvList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvList_MouseDoubleClick);
             // 
             // 标题
             // 
@@ -320,7 +311,7 @@
             this.发布人.Name = "发布人";
             this.发布人.ReadOnly = true;
             this.发布人.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.发布人.Width = 80;
+            this.发布人.Width = 150;
             // 
             // 发布时间
             // 
@@ -330,6 +321,20 @@
             this.发布时间.ReadOnly = true;
             this.发布时间.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.发布时间.Width = 110;
+            // 
+            // 附件摘要
+            // 
+            this.附件摘要.DataPropertyName = "附件摘要";
+            this.附件摘要.HeaderText = "附件摘要";
+            this.附件摘要.Name = "附件摘要";
+            this.附件摘要.ReadOnly = true;
+            // 
+            // 附件编码
+            // 
+            this.附件编码.DataPropertyName = "附件编码";
+            this.附件编码.HeaderText = "附件编码";
+            this.附件编码.Name = "附件编码";
+            this.附件编码.ReadOnly = true;
             // 
             // NET_公文法规
             // 
@@ -363,16 +368,17 @@
         private System.Windows.Forms.DataGridView dgvList;
         private System.Windows.Forms.TextBox txt关键字;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 标题;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 查阅次数;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 发布人;
-        private System.Windows.Forms.DataGridViewTextBoxColumn 发布时间;
         private System.Windows.Forms.Button btn查看;
         private System.Windows.Forms.Button btn删除;
         private System.Windows.Forms.Button btn修改;
         private System.Windows.Forms.Button btn发布法规;
-        private System.Windows.Forms.Button btn发布公文;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 标题;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 查阅次数;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 发布人;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 发布时间;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 附件摘要;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 附件编码;
     }
 }

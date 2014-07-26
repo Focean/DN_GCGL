@@ -18,6 +18,7 @@ using GCGL_Client.NET;
 using GCGL_Client.FZB;
 using GCGL_Client.RPT;
 using GCGL_Client.COS;
+
 namespace GCGL_Client
 {
     class Win32
@@ -36,15 +37,15 @@ namespace GCGL_Client
     {
         #region 全局变量
 
-        //在这里，我又增加了一行哟。--fjw
-
-        //当前用户编码  呵呵，此行是修改吧？
-        public static string LoginUserCode="999";
+        //当前用户编码
+        public static string LoginUserCode;
         //当前用户名称
-        public static string LoginUserName="999";
+        public static string LoginUserName;
         //登录业务日期
         public static DateTime LoginWorkDate;
-        //
+        //是否登录成功了
+        public static bool LoginSuccess = false;
+
         public static string LoginUnitCode;
         public static string LoginUnitName;
         public static int    LoginUnitJC;
@@ -59,39 +60,72 @@ namespace GCGL_Client
         public static int    LoginSkillCars; //特种专业技术用车编制数
         public static int    LoginUnitType;
         public static int    LoginUserType;
+        public static string LoginDataType;//数据权限
 
+        //当前单位是不是公物仓
+        public static bool LoginUnitIsGWC()
+        {
+            return AppServer.LoginUnitType == 8;
+        }
 
-        public static string RequestCode;
-        public static string VName;
-        public static string VType;
-        public static string PName;
-        public static string PType;
-        public static string Emission;
-        public static int SQXH;
-        public static string CarBrand;//车辆品牌
-        public static string CarModel;//车辆型号
-        public static string CarPrice;//车辆价值
+        //当前单位是不是预算单位
+        public static bool LoginUnitIsYSDW()
+        {
+            return AppServer.LoginUnitType == 1;
+        }
+
+        //当前单位是不是主管单位
+        public static bool LoginUnitIsZGDW()
+        {
+            return AppServer.LoginUnitType == 2;
+        }
+
+        //当前单位是不是财政厅
+        public static bool LoginUnitIsCZT()
+        {
+            return AppServer.LoginUnitType == 3;
+        }
+
+        //当前单位是不是区划
+        public static bool LoginUnitIsQH()
+        {
+            return AppServer.LoginUnitType == 0;
+        }
+        //当前用户是区划管理员
+        public static bool LoginUserIsQH()
+        {
+            return AppServer.LoginUserType == 99;
+        }
+        //当前用户是系统管理员
+        public static bool LoginUserIsXT()
+        {
+            return AppServer.LoginUserType == 88;
+        }
         //用户权限表
         public static DataTable UserQxMenuList = null;
 
+        //单位表
+        public static DataTable  UdataTable = null;
+        public static DBTreeView dbTreeView = null;
+        public static DateTime EndChange;
+        public static DateTime ChangeTime;
+        
         //系统参数
         public static DataType_Param Sys_Param = new DataType_Param();
 
         public static string SelectTaskCode;
         public static string SelectUnitCode;
         public static int    SelectUnitJC;
+        
 
         #endregion
 
         #region 编码选择窗体显示
         public static Cmn_TreeBox Frm行政区划 = null;//1
         public static Cmn_TreeBox Frm单位信息 = null;//2
-       // public static Cmn_TreeBox Frm处室信息 = null;//21
         public static Cmn_TreeBox Frm上级编码 = null;//3
-        public static Cmn_TreeBox Frm资产类别 = null;//4
-        public static Cmn_TreeBox Frm车辆类型 = null;//5
-        public static Cmn_TreeBox Frm采购形式 = null;//6
-        public static Cmn_TreeBox Frm处置形式 = null;//7
+        public static Cmn_TreeBox Frm资产类别 = null;//5
+
         public static void ReadAppCommon(int AReadType)
         {
             try
@@ -101,62 +135,35 @@ namespace GCGL_Client
                 if (AppServer.Frm行政区划 == null) AppServer.Frm行政区划 = new Cmn_TreeBox();
                 if (AReadType == 0 || AReadType == 1)
                 {
-                    AppServer.Frm行政区划.BuildTree("行政区划", AppServer.wcfClient.FZB_编码_List("行政区划1").Tables[0].Copy(), "编码", "上级编码", "名称");
+                    AppServer.Frm行政区划.BuildTree("行政区划", AppServer.wcfClient.FZB_编码_List("行政区划1", AppServer.LoginAreaCode).Tables[0].Copy(), "编码", "上级编码", "名称");
                     AppServer.Frm行政区划.ExpandAll();
                 }
 
-                if (AppServer.Frm单位信息 == null) AppServer.Frm单位信息 = new Cmn_TreeBox();
-                if (AReadType == 2)
+                if (AppServer.Frm单位信息 == null)
                 {
-                    //TODO: AppServer.Frm单位信息.BuildTree("单位信息", AppServer.wcfClient.CMN_单位信息_List(LoginUnitCode).Tables[0].Copy(), "编码", "上级编码", "名称");
-                    AppServer.Frm单位信息.ExpandAll();
+                    AppServer.Frm单位信息 = new Cmn_TreeBox();
+                    AppServer.Frm单位信息.BuildTree("单位信息", AppServer.UdataTable, "单位编码", "上级编码", "单位名称");
                 }
-                if (AppServer.Frm单位信息 == null) AppServer.Frm单位信息 = new Cmn_TreeBox();
-                if (AReadType == 22)
+                else
                 {
-                    AppServer.Frm单位信息.BuildTree("单位信息", AppServer.wcfClient.FZB_编码_List("预算单位").Tables[0].Copy(), "编码", "上级编码", "名称");
-                    AppServer.Frm单位信息.ExpandAll();
+                    if(AppServer.EndChange != AppServer.ChangeTime)
+                    AppServer.Frm单位信息.BuildTree("单位信息", AppServer.UdataTable, "单位编码", "上级编码", "单位名称");
+                    AppServer.EndChange = AppServer.ChangeTime;
                 }
-                //if (AppServer.Frm处室信息 == null) AppServer.Frm处室信息 = new Cmn_TreeBox();
-                if (AReadType == 21)
-                {
-                   
-                    //AppServer.Frm处室信息.BuildTree("处室信息", AppServer.wcfClient.CMN_处室_List(LoginUnitCode).Tables[0].Copy(), "编码", "上级编码", "名称");
-                    //AppServer.Frm处室信息.ExpandAll();
-                }
+               
                 if (AppServer.Frm上级编码 == null) AppServer.Frm上级编码 = new Cmn_TreeBox();
                 if (AReadType == 0 || AReadType == 3)
                 {
-                    AppServer.Frm上级编码.BuildTree("所属上级主管部门", AppServer.wcfClient.FZB_编码_List("上级编码").Tables[0].Copy(), "编码", "上级编码", "名称");
+                    AppServer.Frm上级编码.BuildTree("所属上级主管部门", AppServer.wcfClient.FZB_编码_List("上级编码", AppServer.LoginAreaCode).Tables[0].Copy(), "编码", "上级编码", "名称");
                     AppServer.Frm上级编码.ExpandAll();
                 }
+
                 if (AppServer.Frm资产类别 == null) AppServer.Frm资产类别 = new Cmn_TreeBox();
-                if (AReadType == 4)
+                if (AReadType == 5)
                 {
-                    AppServer.Frm资产类别.BuildTree("资产类别", AppServer.wcfClient.FZB_编码_List("资产类别1").Tables[0].Copy(), "编码", "上级编码", "名称");
+                    AppServer.Frm资产类别.BuildTree("资产类别", AppServer.wcfClient.FZB_编码_List("资产类别1", AppServer.LoginAreaCode).Tables[0].Copy(), "编码", "上级编码", "名称");
                     AppServer.Frm资产类别.ExpandAll();
                 }
-
-                if (AppServer.Frm车辆类型 == null) AppServer.Frm车辆类型 = new Cmn_TreeBox();
-                if (AReadType ==5)
-                {
-                    AppServer.Frm车辆类型.BuildTree("车辆类型", AppServer.wcfClient.FZB_编码_List("车辆类型1").Tables[0].Copy(), "编码", "上级编码", "名称");
-                    AppServer.Frm车辆类型.ExpandAll();
-                }
-
-                if (AppServer.Frm采购形式 == null) AppServer.Frm采购形式 = new Cmn_TreeBox();
-                if (AReadType == 6)
-                {
-                    AppServer.Frm采购形式.BuildTree("采购形式", AppServer.wcfClient.FZB_编码_List("采购形式1").Tables[0].Copy(), "编码", "上级编码", "名称");
-                    AppServer.Frm采购形式.ExpandAll();
-                }
-
-                if (AppServer.Frm处置形式 == null) AppServer.Frm处置形式 = new Cmn_TreeBox();
-                if (AReadType == 7)
-                {
-                    AppServer.Frm处置形式.BuildTree("处置形式", AppServer.wcfClient.FZB_编码_List("处置形式1").Tables[0].Copy(), "编码", "上级编码", "名称");
-                    AppServer.Frm处置形式.ExpandAll();
-                }              
             }
             catch (Exception ex)
             {
@@ -200,6 +207,18 @@ namespace GCGL_Client
             MessageBox.Show("执行过程中出现异常错误了！\n错误信息：" + AErrorMessage, "异常错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion
+
+        #region ToolTipBox   //在控件的上方出现“云朵”式的提示
+        public static ToolTip ToolTip;
+        public static void ShowMsg_ToolTip(string Text, IWin32Window Window)
+        {
+            AppServer.ToolTip.Show(Text, Window, 0, -40);
+        }
+        public static void ShowMsg_ToolTip(string Text, IWin32Window Window, int X, int Y)
+        {
+            AppServer.ToolTip.Show(Text, Window, X, Y);
+        }
         #endregion
 
         #region WCF服务连接
@@ -247,7 +266,6 @@ namespace GCGL_Client
                 return false;
             }
         }
-
         public static void WcfService_Close()
         {
             try
@@ -431,19 +449,18 @@ namespace GCGL_Client
                 case "0104": { fMdiForm = new FZB_配置标准(); break; }
                 case "0105": { fMdiForm = new FZB_更新标准(); break; }
 
-                case "0111": { fMdiForm = new FZB_资产类别(); break; }
-                case "0112": { fMdiForm = new FZB_车辆类型(); break; }
+                case "0111": { fMdiForm = new FZB_车辆类型(); break; }
+                case "0112": { fMdiForm = new FZB_资产类别(); break; }
                 case "0113": { fMdiForm = new FZB_采购形式(); break; }
                 case "0114": { fMdiForm = new FZB_处置形式(); break; }
-                case "0115": { fMdiForm = new EXCELtoSQL(); break; }
-                case "0116": { fMdiForm = new FZB_公车编制数(); break; }
-                   
+                case "0115": { fMdiForm = new FZB_基础数据();break; }
+                case "0120": { fMdiForm = new Man_UserLog(); break; }
                 #endregion
 
                 #region 预算管理-02
                 case "0201":
                     {
-                        if (AppServer.LoginUnitType == 1)
+                        if (AppServer.LoginUnitIsYSDW())
                         {
                             using (var form = new OCC_更新计划_Editor())
                             {
@@ -479,11 +496,11 @@ namespace GCGL_Client
                     }
                 case "0302":
                     {
-                        if (AppServer.LoginUnitType == 8)
+                        if (AppServer.LoginUnitIsGWC())
                         {
                             using (var form = new OCC_公车入库_Editor())
                             {
-                                form.Editor_Add();
+                                form.Editor_Add(null);
                                 form.ShowDialog();
                             }
                               
@@ -506,38 +523,16 @@ namespace GCGL_Client
                         }
                         break;
                     }
-                case "0304":
-                    {
-                        using (var form = new OCC_批量配置申请_Editor())
-                        {
-                            form.ShowDialog();
-                        }
-                        break;
-                    }
+                case "0304": { fMdiForm = new OCC_批量申请(); break; }
+                case "0310": { fMdiForm = new FZB_公车编制数(); break; }
                 case "0311": { fMdiForm = new OCC_配置申请(); break; }
                 case "0312": { fMdiForm = new OCC_公车入库(); break; }
 
                 #endregion
 
                 #region 使用情况-04
-                case "0401":
-                    {
-                        using (var form = new COS_使用情况_Editor())
-                        {
-                            form.Editor_Add();
-                            form.ShowDialog();
-                        }
-                        break;
-                    }
-                case "0402":
-                    {
-                        using (var form = new COS_计提折旧_Editor())
-                        {
-                            form.Editor_Add();
-                            form.ShowDialog();
-                        }
-                        break;
-                    }
+               
+                case "0403": { fMdiForm = new COS_超编车辆(); break; }
                 case "0411": { fMdiForm = new COS_使用情况(); break; }
                 case "0412": { fMdiForm = new COS_计提折旧(); break; }
                 #endregion
@@ -586,13 +581,12 @@ namespace GCGL_Client
 
                 #endregion
 
-                #region 公文管理-06
-
+                #region 信息管理-06
+                case "0600": { fMdiForm = new NET_代办事项(); break; }
                 case "0601": { fMdiForm = new NET_审批中心(); break; }
                 case "0602": { fMdiForm = new NET_公告通知(); break; }
                 case "0603": { fMdiForm = new NET_公文法规(); break; }
                 case "0604": { fMdiForm = new NET_业务论坛(); break; }
-
                 #endregion
 
                 #region 统计报表-08
@@ -600,12 +594,14 @@ namespace GCGL_Client
                 case "0801": { fMdiForm = new RPT_公车库存_存量(); break; }
                 case "0802": { fMdiForm = new RPT_公车库存_状况(); break; }
                 case "0803": { fMdiForm = new RPT_公车库存_变化(); break; }
+                case "0804": { fMdiForm = new RPT_单位编制_统计(); break; }
+                case "0805": { fMdiForm = new RPT_超编车辆_统计(); break; }
                 case "0811": { fMdiForm = new RPT_公车库存_台账(); break; }
                 case "0812": { fMdiForm = new RPT_公车库存_总账(); break; }
                 #endregion
 
                 #region 系统管理-09
-                case "0900": { (new Man_Param()).ShowDialog(); break; }
+                case "0900": { fMdiForm = new Man_Entrust(); break; }
                 case "0901": { fMdiForm = new Man_UserMngr(); break; }
                 case "0902": { (new Man_UserPswd()).ShowDialog(); break; }
                 case "0903": { (new Man_Login()).ShowDialog(); break; }

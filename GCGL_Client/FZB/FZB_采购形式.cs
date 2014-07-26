@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using GLG.Common;
+using TY.Common;
 using TY.Helper;
 namespace GCGL_Client.FZB
 {
@@ -17,6 +17,18 @@ namespace GCGL_Client.FZB
             InitializeComponent();
             //设置表格样式
             AppServer.SetGridViewStyle(this.dgvList);
+            if (AppServer.UserQxMenuList.Rows.Contains("011302"))
+            {
+                this.Btn修改.Visible = true;
+                this.Btn增加.Visible = true;
+                this.Btn删除.Visible = true;
+            }
+            //if (AppServer.LoginUnitType == 0)
+            //{
+            //    this.Btn修改.Visible = true;
+            //    this.Btn增加.Visible = true;
+            //    this.Btn删除.Visible = true;
+            //}
             DataBinding_GridView(0);
         }
         private void DataBinding_GridView(int ACurrRowIndex)
@@ -24,7 +36,7 @@ namespace GCGL_Client.FZB
             try
             {
                 if (!AppServer.WcfService_Open()) return;
-                this.dgvList.DataSource = AppServer.wcfClient.FZB_编码_List("采购形式").Tables[0];
+                this.dgvList.DataSource = AppServer.wcfClient.FZB_编码_List("采购形式", AppServer.LoginAreaCode).Tables[0];
                 //行定位
                 this.dgvList.GoToRowByIndex(ACurrRowIndex);
             }
@@ -47,7 +59,6 @@ namespace GCGL_Client.FZB
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     //更新数据
-                    this.dgvList.GoToRowByIndex(0);
                     this.DataBinding_GridView(0);
                 }
             }

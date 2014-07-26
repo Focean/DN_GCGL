@@ -14,7 +14,8 @@ namespace GCGL_Client.OCC
         public OCC_处置申请_Select()
         {
             InitializeComponent();
-            this.dtp开始时间.Value = this.dtp结束时间.Value.AddMonths(-1);         
+            this.dtp开始时间.Value = this.dtp结束时间.Value.AddMonths(-1);
+            AppServer.SetGridViewStyle(this.dgvList);
         }
 
         #region 处置形式窗体定义
@@ -22,8 +23,7 @@ namespace GCGL_Client.OCC
         public void Select_DB(string Code)
         {
             this.Text = "调拨处置申请选择";
-            this.Tag = "DB";
-            Ucode = Code;           
+            this.Tag = "DB";    
         }
         public void Select_BF(string ACardCode)
         {
@@ -37,6 +37,7 @@ namespace GCGL_Client.OCC
         }
         #endregion
 
+        public string CZXS { get; set; }//处置形式编码
         #region 数据绑定自定义方法
         private void DataBinding_GridView(int ACurrRowIndex)
         {
@@ -63,6 +64,8 @@ namespace GCGL_Client.OCC
                 else if (this.Tag.ToString() == "BF")
                 {
                     this.dgvList.DataSource = db.Tables[1];//第二个数据表(报废)
+                    if (db.Tables[1].Rows.Count == 0) return;
+                    CZXS = db.Tables[1].Rows[0]["处置形式编码"].ToString();
                 }
                 else if (this.Tag.ToString() == "CS")
                 {
@@ -110,6 +113,14 @@ namespace GCGL_Client.OCC
                 RequestIndex = Convert.ToInt16(row["申请序号"].ToString());
             }
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void OCC_处置申请_Select_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)         //Ctrl+D
+            {
+                this.btn确定_Click(this, EventArgs.Empty);
+            }
         }
     }
 }

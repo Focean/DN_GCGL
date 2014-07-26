@@ -43,7 +43,7 @@ namespace GCGL_Client.OCC
 
         public void Select_DB()
         {
-            this.Text = "配置申请选择";
+            this.Text = "配置申报选择";
         }
       
         private void OCC_配置申请_Select_Load(object sender, EventArgs e)
@@ -55,33 +55,30 @@ namespace GCGL_Client.OCC
         {
             this.Close();
         }
-
+        //
         private void btn下一步_Click(object sender, EventArgs e)
         {   
             if (this.dgvList.Rows.Count == 0) return;
             DataRow row = ((DataTable)this.dgvList.DataSource).Rows[this.dgvList.CurrentRow.Index];
             if (row == null) return;
-            else
-            {
-                AppServer.RequestCode = row["申请编号"].ToString();
-                AppServer.VName = row["车辆类型名称"].ToString();
-                AppServer.VType = row["车辆类型编码"].ToString();
-                AppServer.PName = row["资产类别名称"].ToString();
-                AppServer.PType = row["资产类别编码"].ToString();
-                AppServer.Emission = row["排气量"].ToString();
-                AppServer.CarModel = row["型号"].ToString();
-                AppServer.CarPrice = row["价格"].ToString();
-                AppServer.CarBrand = row["车辆品牌"].ToString();
-                AppServer.SQXH =Convert.ToInt16(row["申请序号"].ToString());
-                this.Close();
-                using (var form = new OCC_公车入库_Editor())
-                {
-                    form.Editor_Add();
-                    if (form.ShowDialog() == DialogResult.OK)
-                        this.DialogResult = DialogResult.OK;
 
+            using (var form = new OCC_公车入库_Editor())
+            {
+                form.Editor_Add(row);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-            }           
+            }         
+        }
+
+        private void OCC_配置申请_Select_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.N && e.Modifiers == Keys.Control)         //Ctrl+N
+            {
+                this.btn下一步_Click(this, EventArgs.Empty);
+            }
         }
     }
 }

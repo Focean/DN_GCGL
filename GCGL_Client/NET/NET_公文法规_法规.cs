@@ -18,14 +18,14 @@ namespace GCGL_Client.NET
 
         public void Editor_Add()
         {
-            this.Text = "发布新的法规";
+            this.Text = "发布";
             this.Tag = "Add";
-            //        
+            //   
         }
 
         public void Editor_Mod(string GW)
         {
-            this.Text = "修改法规";
+            this.Text = "修改";
             this.Tag = "Mod";
             this.txt公文标题.ReadOnly = true;
             //
@@ -35,13 +35,13 @@ namespace GCGL_Client.NET
 
         public void Editor_See(string GW)
         {
-            this.Text = "查看法规";
+            this.Text = "查看";
             this.Tag = "See";
             this.txt公文标题.ReadOnly = true;
-            this.txt公文内容.ReadOnly = true;
             this.btn附件管理.Enabled = false;
             this.btnOk.Enabled = false;
             DataBinding_GridView(GW);
+            this.btnCancel.Text = "返回(ESC)";
         }
 
         private void DataBinding_GridView(String GWBM)
@@ -58,16 +58,14 @@ namespace GCGL_Client.NET
                 //
                 DataSet ds = AppServer.wcfClient.NET_公文_List(ref model);
                 if (ds.Tables[0].Rows.Count == 0) return;
-                TY.Helper.FormHelper.DataBinding_DataSourceToUI(ds.Tables[0], this);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    TY.Helper.FormHelper.DataBinding_DataSourceToUI(ds.Tables[0], this);
+                }
+                
                 this.txt附件信息.Tag = ds.Tables[0].Rows[0]["附件编码"].ToString();
-                //
-                model2.附件编码 = ds.Tables[0].Rows[0]["附件编码"].ToString();
-                DataSet ds2 = AppServer.wcfClient.NET_附件管理_List(ref model2);
-                if (ds2.Tables[0].Rows.Count == 0) return;
-                string FileNames = "";
-                for (int i = 0; i < ds2.Tables[0].Rows.Count; i++)
-                    FileNames += ds2.Tables[0].Rows[i]["文件名称"].ToString();
-                this.txt附件信息.Text = string.Format("共{0}个文件:{1}", ds2.Tables[0].Rows.Count, FileNames);
+                this.txt附件信息.Text = ds.Tables[0].Rows[0]["附件摘要"].ToString();
+               
             }
             catch (Exception ex)
             {
@@ -83,6 +81,13 @@ namespace GCGL_Client.NET
 
         public void PostData()
         {
+            if (this.txt公文标题.Text.Trim().ToString() == "")
+            {
+                AppServer.ShowMsg("法规标题不能为空！");
+                this.txt公文标题.Focus();
+                return;
+            }
+          
             try
             {
                 if (!AppServer.WcfService_Open()) return;
@@ -91,12 +96,14 @@ namespace GCGL_Client.NET
                 if (this.Tag.ToString() == "Mod")
                 model.公文编码 = this.btnOk.Tag.ToString();
                 model.公文标题 = this.txt公文标题.Text.ToString();
-                model.公文内容 = this.txt公文内容.Text.ToString();
                 model.创建人编码 = AppServer.LoginUserCode;
                 model.单位编码 = AppServer.LoginUnitCode;
                 model.公文类型 = "法规";
                 model.接收单位编码="All";
-                model.附件编码 = this.txt附件信息.Tag.ToString();
+                if (this.txt附件信息.Tag == null)
+                    model.附件编码 = "";
+                else
+                    model.附件编码 = this.txt附件信息.Tag.ToString();
                 AppServer.wcfClient.NET_公文_Edit(ref model);
                 if (model.ExResult != 0)
                     AppServer.ShowMsg_Error(model.ErrorMsg);

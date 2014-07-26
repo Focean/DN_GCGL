@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FZB_行政区划));
             this.dtvTreeView = new DingnuoControlLibrary.DBTreeView();
+            this.iglTree = new System.Windows.Forms.ImageList(this.components);
             this.panelMB = new System.Windows.Forms.Panel();
             this.panelMR = new System.Windows.Forms.Panel();
             this.panelT = new System.Windows.Forms.Panel();
@@ -42,7 +43,6 @@
             this.panelMT = new System.Windows.Forms.Panel();
             this.Lbl标题 = new System.Windows.Forms.Label();
             this.panelMI = new System.Windows.Forms.Panel();
-            this.iglTree = new System.Windows.Forms.ImageList(this.components);
             this.panelT.SuspendLayout();
             this.panelMT.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,14 @@
             this.dtvTreeView.TabIndex = 75;
             this.dtvTreeView.TreeNodeCreated += new DingnuoControlLibrary.TreeNodeCreatedEventHandler(this.dtvTreeView_TreeNodeCreated);
             // 
+            // iglTree
+            // 
+            this.iglTree.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iglTree.ImageStream")));
+            this.iglTree.TransparentColor = System.Drawing.Color.Fuchsia;
+            this.iglTree.Images.SetKeyName(0, "arrowright_green16.bmp");
+            this.iglTree.Images.SetKeyName(1, "stop_blue16.bmp");
+            this.iglTree.Images.SetKeyName(2, "AddToFavorites.bmp");
+            // 
             // panelMB
             // 
             this.panelMB.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -89,8 +97,8 @@
             // 
             this.panelT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panelT.Controls.Add(this.Btn刷新);
-            this.panelT.Controls.Add(this.Btn修改);
             this.panelT.Controls.Add(this.Btn删除);
+            this.panelT.Controls.Add(this.Btn修改);
             this.panelT.Controls.Add(this.Btn增加);
             this.panelT.Controls.Add(this.Btn关闭);
             this.panelT.Dock = System.Windows.Forms.DockStyle.Top;
@@ -102,7 +110,8 @@
             // Btn刷新
             // 
             this.Btn刷新.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn刷新.Location = new System.Drawing.Point(192, 0);
+            this.Btn刷新.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Btn刷新.Location = new System.Drawing.Point(195, 0);
             this.Btn刷新.Name = "Btn刷新";
             this.Btn刷新.Size = new System.Drawing.Size(65, 25);
             this.Btn刷新.TabIndex = 4;
@@ -113,21 +122,23 @@
             // Btn修改
             // 
             this.Btn修改.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn修改.Location = new System.Drawing.Point(128, 0);
+            this.Btn修改.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Btn修改.Location = new System.Drawing.Point(65, 0);
             this.Btn修改.Name = "Btn修改";
             this.Btn修改.Size = new System.Drawing.Size(65, 25);
-            this.Btn修改.TabIndex = 15;
-            this.Btn修改.Text = "修改(&U)";
+            this.Btn修改.TabIndex = 3;
+            this.Btn修改.Text = "修改(&M)";
             this.Btn修改.UseVisualStyleBackColor = false;
             this.Btn修改.Click += new System.EventHandler(this.Btn修改_Click);
             // 
             // Btn删除
             // 
             this.Btn删除.BackColor = System.Drawing.SystemColors.Control;
-            this.Btn删除.Location = new System.Drawing.Point(64, 0);
+            this.Btn删除.Dock = System.Windows.Forms.DockStyle.Left;
+            this.Btn删除.Location = new System.Drawing.Point(130, 0);
             this.Btn删除.Name = "Btn删除";
             this.Btn删除.Size = new System.Drawing.Size(65, 25);
-            this.Btn删除.TabIndex = 16;
+            this.Btn删除.TabIndex = 2;
             this.Btn删除.Text = "删除(&D)";
             this.Btn删除.UseVisualStyleBackColor = false;
             this.Btn删除.Click += new System.EventHandler(this.Btn删除_Click);
@@ -135,22 +146,23 @@
             // Btn增加
             // 
             this.Btn增加.BackColor = System.Drawing.SystemColors.Control;
+            this.Btn增加.Dock = System.Windows.Forms.DockStyle.Left;
             this.Btn增加.Location = new System.Drawing.Point(0, 0);
             this.Btn增加.Name = "Btn增加";
             this.Btn增加.Size = new System.Drawing.Size(65, 25);
-            this.Btn增加.TabIndex = 14;
+            this.Btn增加.TabIndex = 1;
             this.Btn增加.Text = "增加(&A)";
             this.Btn增加.UseVisualStyleBackColor = false;
             this.Btn增加.Click += new System.EventHandler(this.Btn增加_Click);
             // 
             // Btn关闭
             // 
-            this.Btn关闭.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn关闭.BackColor = System.Drawing.SystemColors.Control;
+            this.Btn关闭.Dock = System.Windows.Forms.DockStyle.Right;
             this.Btn关闭.Location = new System.Drawing.Point(630, 0);
             this.Btn关闭.Name = "Btn关闭";
             this.Btn关闭.Size = new System.Drawing.Size(65, 25);
-            this.Btn关闭.TabIndex = 0;
+            this.Btn关闭.TabIndex = 5;
             this.Btn关闭.Text = "关闭(&X)";
             this.Btn关闭.UseVisualStyleBackColor = false;
             this.Btn关闭.Click += new System.EventHandler(this.Btn关闭_Click);
@@ -182,14 +194,6 @@
             this.panelMI.Name = "panelMI";
             this.panelMI.Size = new System.Drawing.Size(695, 2);
             this.panelMI.TabIndex = 74;
-            // 
-            // iglTree
-            // 
-            this.iglTree.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iglTree.ImageStream")));
-            this.iglTree.TransparentColor = System.Drawing.Color.Fuchsia;
-            this.iglTree.Images.SetKeyName(0, "arrowright_green16.bmp");
-            this.iglTree.Images.SetKeyName(1, "stop_blue16.bmp");
-            this.iglTree.Images.SetKeyName(2, "AddToFavorites.bmp");
             // 
             // FZB_行政区划
             // 

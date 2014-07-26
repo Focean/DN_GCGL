@@ -33,8 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btn附件查看 = new System.Windows.Forms.Button();
             this.btn查看 = new System.Windows.Forms.Button();
-            this.btn导出 = new System.Windows.Forms.Button();
             this.btn删除 = new System.Windows.Forms.Button();
             this.btn关闭 = new System.Windows.Forms.Button();
             this.btn修改 = new System.Windows.Forms.Button();
@@ -50,7 +50,6 @@
             this.依据文件编码 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.创建时间 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.是否生效 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn附件查看 = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.SuspendLayout();
@@ -60,7 +59,6 @@
             this.pnlTop.BackColor = System.Drawing.SystemColors.ControlLight;
             this.pnlTop.Controls.Add(this.btn附件查看);
             this.pnlTop.Controls.Add(this.btn查看);
-            this.pnlTop.Controls.Add(this.btn导出);
             this.pnlTop.Controls.Add(this.btn删除);
             this.pnlTop.Controls.Add(this.btn关闭);
             this.pnlTop.Controls.Add(this.btn修改);
@@ -71,6 +69,18 @@
             this.pnlTop.Size = new System.Drawing.Size(907, 28);
             this.pnlTop.TabIndex = 10;
             // 
+            // btn附件查看
+            // 
+            this.btn附件查看.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn附件查看.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn附件查看.Location = new System.Drawing.Point(300, 0);
+            this.btn附件查看.Name = "btn附件查看";
+            this.btn附件查看.Size = new System.Drawing.Size(80, 28);
+            this.btn附件查看.TabIndex = 5;
+            this.btn附件查看.Text = "附件查看(&W)";
+            this.btn附件查看.UseVisualStyleBackColor = true;
+            this.btn附件查看.Click += new System.EventHandler(this.btn附件查看_Click);
+            // 
             // btn查看
             // 
             this.btn查看.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -78,22 +88,10 @@
             this.btn查看.Location = new System.Drawing.Point(225, 0);
             this.btn查看.Name = "btn查看";
             this.btn查看.Size = new System.Drawing.Size(75, 28);
-            this.btn查看.TabIndex = 13;
+            this.btn查看.TabIndex = 4;
             this.btn查看.Text = "查看(&K)";
             this.btn查看.UseVisualStyleBackColor = true;
             this.btn查看.Click += new System.EventHandler(this.btn查看_Click);
-            // 
-            // btn导出
-            // 
-            this.btn导出.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn导出.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn导出.Location = new System.Drawing.Point(757, 0);
-            this.btn导出.Name = "btn导出";
-            this.btn导出.Size = new System.Drawing.Size(75, 28);
-            this.btn导出.TabIndex = 9;
-            this.btn导出.Text = "导出(&E)";
-            this.btn导出.UseVisualStyleBackColor = true;
-            this.btn导出.Click += new System.EventHandler(this.btn导出_Click);
             // 
             // btn删除
             // 
@@ -102,9 +100,10 @@
             this.btn删除.Location = new System.Drawing.Point(150, 0);
             this.btn删除.Name = "btn删除";
             this.btn删除.Size = new System.Drawing.Size(75, 28);
-            this.btn删除.TabIndex = 11;
+            this.btn删除.TabIndex = 3;
             this.btn删除.Text = "删除(&D)";
             this.btn删除.UseVisualStyleBackColor = true;
+            this.btn删除.Visible = false;
             this.btn删除.Click += new System.EventHandler(this.btn删除_Click);
             // 
             // btn关闭
@@ -126,9 +125,10 @@
             this.btn修改.Location = new System.Drawing.Point(75, 0);
             this.btn修改.Name = "btn修改";
             this.btn修改.Size = new System.Drawing.Size(75, 28);
-            this.btn修改.TabIndex = 10;
+            this.btn修改.TabIndex = 2;
             this.btn修改.Text = "修改(&M)";
             this.btn修改.UseVisualStyleBackColor = true;
+            this.btn修改.Visible = false;
             this.btn修改.Click += new System.EventHandler(this.btn修改_Click);
             // 
             // btn新增
@@ -138,9 +138,10 @@
             this.btn新增.Location = new System.Drawing.Point(0, 0);
             this.btn新增.Name = "btn新增";
             this.btn新增.Size = new System.Drawing.Size(75, 28);
-            this.btn新增.TabIndex = 9;
-            this.btn新增.Text = "新增(&N)";
+            this.btn新增.TabIndex = 1;
+            this.btn新增.Text = "新增(&A)";
             this.btn新增.UseVisualStyleBackColor = true;
+            this.btn新增.Visible = false;
             this.btn新增.Click += new System.EventHandler(this.btn新增_Click);
             // 
             // LblTitle
@@ -210,6 +211,7 @@
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvList.Size = new System.Drawing.Size(907, 571);
             this.dgvList.TabIndex = 12;
+            this.dgvList.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvList_MouseDoubleClick);
             // 
             // ID
             // 
@@ -296,18 +298,6 @@
             this.是否生效.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.是否生效.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // btn附件查看
-            // 
-            this.btn附件查看.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn附件查看.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn附件查看.Location = new System.Drawing.Point(300, 0);
-            this.btn附件查看.Name = "btn附件查看";
-            this.btn附件查看.Size = new System.Drawing.Size(80, 28);
-            this.btn附件查看.TabIndex = 240;
-            this.btn附件查看.Text = "附件查看(&W)";
-            this.btn附件查看.UseVisualStyleBackColor = true;
-            this.btn附件查看.Click += new System.EventHandler(this.btn附件查看_Click);
-            // 
             // FZB_配置标准
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -327,7 +317,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlTop;
-        private System.Windows.Forms.Button btn导出;
         private System.Windows.Forms.Button btn删除;
         private System.Windows.Forms.Button btn关闭;
         private System.Windows.Forms.Button btn修改;

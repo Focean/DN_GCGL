@@ -18,14 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="net.tcp://202.102.238.46/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="net.tcp://127.0.0.1/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex/mex/mex/mex/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="b529e28f-1277-4607-97d7-997d575e57a0" SourceId="1" SourceUrl="net.tcp://202.102.238.46/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex" />
-    <MetadataFile FileName="service3.xsd" MetadataType="Schema" ID="ea5f4131-dcc1-447f-88e6-e02b57018f15" SourceId="1" SourceUrl="net.tcp://202.102.238.46/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex" />
-    <MetadataFile FileName="service31.xsd" MetadataType="Schema" ID="3e727c72-c951-44d3-9adb-e82912f15d3d" SourceId="1" SourceUrl="net.tcp://202.102.238.46/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex" />
-    <MetadataFile FileName="Message1.xsd" MetadataType="Schema" ID="897df402-77fa-4068-a61a-74d102a77ad0" SourceId="1" SourceUrl="net.tcp://202.102.238.46/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex" />
-    <MetadataFile FileName="service32.xsd" MetadataType="Schema" ID="86bece5c-167e-471c-858a-a5ba57ff9e40" SourceId="1" SourceUrl="net.tcp://202.102.238.46/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="1511dc9f-b3a5-4dd2-a4c4-fdf70101c69b" SourceId="1" SourceUrl="net.tcp://127.0.0.1/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex/mex/mex/mex/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="c311748f-8a47-46f2-b2cd-5b9b1e47be15" SourceId="1" SourceUrl="net.tcp://127.0.0.1/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex/mex/mex/mex/mex" />
+    <MetadataFile FileName="service22.xsd" MetadataType="Schema" ID="68fe8259-23c6-4ff0-bb6b-360c8b4ffc4e" SourceId="1" SourceUrl="net.tcp://127.0.0.1/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex/mex/mex/mex/mex" />
+    <MetadataFile FileName="Message.xsd" MetadataType="Schema" ID="de24fbb6-8b83-481b-af6e-b7f13d822227" SourceId="1" SourceUrl="net.tcp://127.0.0.1/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex/mex/mex/mex/mex" />
+    <MetadataFile FileName="service23.xsd" MetadataType="Schema" ID="71edae9c-031a-4d29-8619-e1c0ea35a156" SourceId="1" SourceUrl="net.tcp://127.0.0.1/dnsoft/gcgl/FileSvc/FileTransfer.svc/mex/mex/mex/mex/mex/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

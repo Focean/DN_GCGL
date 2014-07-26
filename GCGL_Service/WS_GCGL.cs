@@ -62,7 +62,7 @@ namespace GCGL_Service
         /// 菜单列表
         /// </summary>
         [OperationContract]
-        DataSet Sys_Menu_List(int ARoleID);
+        DataSet Sys_Menu_List(DataType_Role model);
 
         /// <summary>
         /// 参数读取
@@ -93,12 +93,17 @@ namespace GCGL_Service
         
         #endregion
 
+        #region 用户日志
+        [OperationContract]
+        DataSet SYS_User_log_list(ref DataType_User_log model);
+        #endregion
+
         #region 标准管理
 
         [OperationContract]
         DataSet CMN_车辆更新标准_List(ref DataType_CMN_车辆更新标准 model);
         [OperationContract]
-         void CMN_车辆更新标准_Edit(ref DataType_CMN_车辆更新标准 model);
+        void CMN_车辆更新标准_Edit(ref DataType_CMN_车辆更新标准 model);
 
         [OperationContract]
         DataSet CMN_车辆配置标准_List(ref DataType_CMN_车辆配置标准 model);
@@ -112,7 +117,7 @@ namespace GCGL_Service
         /// 编码列表
         /// </summary>
         [OperationContract]
-        DataSet FZB_编码_List(string AExAction);
+        DataSet FZB_编码_List(string AExAction, string 区划编码);
         [OperationContract]
         void FZB_资产类别_Edit(ref DataType_FZB_编码 model);
         [OperationContract]
@@ -123,7 +128,18 @@ namespace GCGL_Service
         void FZB_处置形式_Edit(ref DataType_FZB_编码 model);
         [OperationContract]
         void FZB_经费来源_Edit(ref DataType_FZB_编码 model);
-        
+        [OperationContract]
+        void FZB_固定资产_Edit(ref DataType_FZB_编码 model);
+        [OperationContract]
+        DataSet FZB_固定资产_List(string AExAction, string ZCBM);
+
+        #endregion
+
+        #region 委托
+        [OperationContract]
+        void SYS_委托_Edit(ref DataType_SYS_委托 model);
+        [OperationContract]
+        DataSet SYS_委托_list(ref DataType_SYS_委托 model);
         #endregion
 
         #region 行政区划、单位、处室
@@ -137,6 +153,9 @@ namespace GCGL_Service
         DataSet CMN_单位_List(ref DataType_CMN_单位 model);
         [OperationContract]
         void CMN_单位_Edit(ref DataType_CMN_单位 model);
+
+        [OperationContract]
+        DateTime CMN_单位_更新_List();
 
         [OperationContract]
         DataSet CMN_单位_处室_List(ref DataType_CMN_单位_处室 model);
@@ -171,6 +190,11 @@ namespace GCGL_Service
         [OperationContract]
         DataSet OCC_公车入库_List(ref DataType_OCC_公车入库 model);
 
+        [OperationContract]
+        void OCC_批量申请_Edit(ref DataType_OCC_批量申请 model);
+        [OperationContract]
+        DataSet OCC_批量申请_List(ref DataType_OCC_批量申请 model);
+
         #endregion
 
         #region 使用情况
@@ -183,6 +207,11 @@ namespace GCGL_Service
         void COS_计提折旧_Edit(ref DataType_COS_计提折旧 model);
         [OperationContract]
         DataSet COS_计提折旧_List(ref DataType_COS_计提折旧 model);
+
+        [OperationContract]
+        DataSet COS_车辆超编_List(ref DataType_OCC_公车入库 model);
+        [OperationContract]
+        void COS_车辆超编_Edit(ref  DataType_OCC_公车入库 model);
         #endregion
 
         #region 处置管理（处置申请、公车出库）
@@ -206,7 +235,7 @@ namespace GCGL_Service
         
         #endregion
 
-        #region 公文管理
+        #region 信息管理
 
         [OperationContract]
         DataSet NET_审批_List(ref DataType_NET_审批 model);
@@ -234,8 +263,15 @@ namespace GCGL_Service
 
         [OperationContract]
         string NET_论坛_图片_Edit(MemoryStream ss, string Fileformat, string ip);
+
         #endregion
 
+        #region 查询方案
+        [OperationContract]
+        DataSet FZB_查询方案_List(ref DataType_FZB_查询方案 model);
+        [OperationContract]
+        void FZB_查询方案_Edit(ref DataType_FZB_查询方案 model);
+        #endregion
     }
 
     #region 模型/契约 定义
@@ -312,11 +348,16 @@ namespace GCGL_Service
         public int GovCars { get; set; }
         [DataMember]
         public int LawCars { get; set; }
+        [DataMember]
+        public int UserType { get; set; }
+        [DataMember]
+        public string UserPCode { get; set; }
 
         [DataMember]
         public string OldUserPswd { get; set; }
         [DataMember]
         public string WorkName { get; set; }
+
     }
 
     [DataContract]
@@ -377,6 +418,17 @@ namespace GCGL_Service
 
     #endregion
 
+    #region 用户日志
+    [DataContract]
+    public class DataType_User_log : ModelBase
+    {
+        [DataMember]
+        public DateTime 开始时间 { get; set; }
+        [DataMember]
+        public DateTime 结束时间 { get; set; }
+    }
+    #endregion
+
     #region  基础设置
 
     [DataContract]
@@ -390,6 +442,10 @@ namespace GCGL_Service
         public string 采购形式编码 { get; set; }
         [DataMember]
         public string 处置形式编码 { get; set; }
+        [DataMember]
+        public string 资产分类编码 { get; set; }
+        [DataMember]
+        public string 资产分类名称 { get; set; }
         [DataMember]
         public string 车辆品牌 { get; set; }
         [DataMember]
@@ -405,7 +461,47 @@ namespace GCGL_Service
         [DataMember]
         public Boolean 可选择项 { get; set; }
     }
-   
+    #endregion
+
+    #region 委托
+    [DataContract]
+    public class DataType_SYS_委托 : ModelBase
+    {
+        [DataMember]
+        public int ID { get; set; }
+        [DataMember]
+        public string 委托人 { get; set; }
+        [DataMember]
+        public string 被委托人 { get; set; }
+        [DataMember]
+        public string 是否启用 { get; set; }
+    }
+    #endregion
+
+    #region 短信
+    [DataContract]
+    public class DataType_发送短信 : ModelBase
+    {
+        [DataMember]
+        public int ID { get; set; }
+        [DataMember]
+        public string 单位编码 { get; set; }
+        [DataMember]
+        public string 处室编码 { get; set; }
+        [DataMember]
+        public string 接收人编码 { get; set; }
+        [DataMember]
+        public string 发送手机 { get; set; }
+        [DataMember]
+        public string 短信内容 { get; set; }
+        [DataMember]
+        public int 发送状态 { get; set; }
+        //查询条件
+        [DataMember]
+        public DateTime 开始时间 { get; set; }
+        [DataMember]
+        public DateTime 结束时间 { get; set; }
+    }
     #endregion
 
     #region 行政区划、单位、处室
@@ -473,7 +569,6 @@ namespace GCGL_Service
         public Boolean 包含下级 { get; set; }
 
     }
-
     public class DataType_CMN_单位_处室 : ModelBase
     {
         [DataMember]
@@ -488,6 +583,8 @@ namespace GCGL_Service
         public int 执法执勤类型 { get; set; }
         [DataMember]
         public Boolean 有效 { get; set; }
+        [DataMember]
+        public string 分管人 { get; set; }
     }
 
     [DataContract]
@@ -497,6 +594,8 @@ namespace GCGL_Service
         public int ID { get; set; }
         [DataMember]
         public string 单位编码 { get; set; }
+        [DataMember]
+        public string 单位名称 { get; set; }
         [DataMember]
         public int 一般公务用车编制数 { get; set; }
         [DataMember]
@@ -508,9 +607,11 @@ namespace GCGL_Service
         [DataMember]
         public string 创建人编码 { get; set; }
         [DataMember]
-        public string 审核人编码 { get; set; }
+        public string 备注 { get; set; }
         [DataMember]
-        public Boolean 是否审核 { get; set; }
+        public string 审批流程编码 { get; set; }
+        [DataMember]
+        public string 附件编码 { get; set; }
     }
   
     #endregion
@@ -649,7 +750,11 @@ namespace GCGL_Service
         [DataMember]
         public string 车辆类型编码 { get; set; }
         [DataMember]
+        public string 车辆类型名称 { get; set; }
+        [DataMember]
         public string 资产类别编码 { get; set; }
+        [DataMember]
+        public string 资产类别名称 { get; set; }
         [DataMember]
         public string 规格型号 { get; set; }
         [DataMember]
@@ -662,6 +767,8 @@ namespace GCGL_Service
         public DateTime 取得日期 { get; set; }
         [DataMember]
         public string 采购形式编码 { get; set; }
+        [DataMember]
+        public string 采购形式名称 { get; set; }
         [DataMember]
         public int 使用年限 { get; set; }
         [DataMember]
@@ -693,7 +800,7 @@ namespace GCGL_Service
         [DataMember]
         public string 会计凭证号 { get; set; }
         [DataMember]
-        public int     座位数 { get; set; }
+        public string  座位数 { get; set; }
         [DataMember]
         public string  型号 { get; set; }
         [DataMember]
@@ -703,9 +810,25 @@ namespace GCGL_Service
         [DataMember]
         public string 单位编码 { get; set; }
         [DataMember]
+        public string 单位名称 { get; set; }
+        [DataMember]
         public string 处室编码 { get; set; }
         [DataMember]
+        public string 处室名称 { get; set; }
+        [DataMember]
         public int 资产状态编码 { get; set; }
+        [DataMember]
+        public string 购车票据附件 { get; set; }
+        [DataMember]
+        public string 车辆信息附件 { get; set; }
+        [DataMember]
+        public string 备案信息附件 { get; set; }
+        [DataMember]
+        public string 行驶证附件 { get; set; }
+        [DataMember]
+        public string 备案字 { get; set; }
+        [DataMember]
+        public int 备案号 { get; set; }
 
         [DataMember]
         public string 入库单编码 { get; set; }
@@ -722,6 +845,14 @@ namespace GCGL_Service
         [DataMember]
         public DateTime 创建时间 { get; set; }
 
+        //超编
+        [DataMember]
+        public string 超编状态 { get; set; }
+        [DataMember]
+        public string 超编编码 { get; set; }
+        [DataMember]
+        public string 编制情况 { get; set; }
+
         //查询条件
         [DataMember]
         public DateTime 开始时间 { get; set; }
@@ -729,8 +860,72 @@ namespace GCGL_Service
         public DateTime 结束时间 { get; set; }
         [DataMember]
         public Boolean 包含下级 { get; set; }
+        [DataMember]
+        public Boolean 忽略重复 { get; set; }
+        [DataMember]
+        public Boolean 未完成 { get; set; }
+
     }
 
+    [DataContract]
+    public class DataType_OCC_批量申请 : ModelBase
+    {
+        [DataMember]
+        public string 配置编号 { get; set; }
+        [DataMember]
+        public int 序号 { get; set; }
+        [DataMember]
+        public string 单位编码 { get; set; }
+        [DataMember]
+        public string 车辆类型编码 { get; set; }
+        [DataMember]
+        public string 资产类别编码 { get; set; }
+        [DataMember]
+        public string 车辆品牌 { get; set; }
+        [DataMember]
+        public string 型号 { get; set; }
+        [DataMember]
+        public string 排气量 { get; set; }
+        [DataMember]
+        public string 座位数 { get; set; }
+        [DataMember]
+        public int 分配数量 { get; set; }
+        [DataMember]
+        public int 接收数量 { get; set; }
+        [DataMember]
+        public decimal 价格 { get; set; }
+        [DataMember]
+        public string 经费来源 { get; set; }
+        [DataMember]
+        public string 经费来源性质 { get; set; }
+        [DataMember]
+        public string 配置原因 { get; set; }
+        [DataMember]
+        public string 接收原因 { get; set; }
+        [DataMember]
+        public string 备注 { get; set; }
+        [DataMember]
+        public string 依据文件编码 { get; set; }
+        [DataMember]
+        public Boolean 是否分发 { get; set; }
+        [DataMember]
+        public Boolean 是否接收 { get; set; }
+        [DataMember]
+        public Boolean 是否提交 { get; set; }
+        [DataMember]
+        public string 申请单位 { get; set; }
+        [DataMember]
+        public string 创建人编码 { get; set; }
+        [DataMember]
+        public string 创建时间 { get; set; }
+        [DataMember]
+        public string MxDataStr { get; set; }
+
+        [DataMember]
+        public DateTime 开始时间 { get; set; }
+        [DataMember]
+        public DateTime 结束时间 { get; set; }
+    }
     #endregion
 
     #region 使用情况
@@ -855,6 +1050,8 @@ namespace GCGL_Service
         [DataMember]
         public string 附件编码 { get; set; }
         [DataMember]
+        public string 处置形式编码 { get; set; }
+        [DataMember]
         public string MxDataStr { get; set; }
 
         //查询条件
@@ -910,7 +1107,6 @@ namespace GCGL_Service
     #endregion
 
     #region 公车库存
-
     [DataContract]
     public class DataType_OCC_公车库存 : ModelBase
     {
@@ -978,6 +1174,18 @@ namespace GCGL_Service
         public string 处室编码 { get; set; }
         [DataMember]
         public int 资产状态编码 { get; set; }
+        [DataMember]
+        public string 购车票据附件 { get; set; }
+        [DataMember]
+        public string 车辆信息附件 { get; set; }
+        [DataMember]
+        public string 备案信息附件 { get; set; }
+        [DataMember]
+        public string 行驶证附件 { get; set; }
+        [DataMember]
+        public string 座位数 { get; set; }
+        [DataMember]
+        public string 编制情况 { get; set; }
 
         //查询条件
         [DataMember]
@@ -1008,12 +1216,13 @@ namespace GCGL_Service
         public Boolean 已报废 { get; set; }
         [DataMember]
         public Boolean 已出售 { get; set; }
+        [DataMember]
+        public Boolean 审核中 { get; set; }
     }
 
     #endregion
 
-    #region 公文管理
-
+    #region 信息管理
     [DataContract]
     public class DataType_NET_审批 : ModelBase
     {
@@ -1034,19 +1243,32 @@ namespace GCGL_Service
         [DataMember]
         public string exUserCode { get; set; }
         [DataMember]
+        public string exNextUserCode { get; set; }
+        [DataMember]
         public int exUserType { get; set; }
+        [DataMember]
+        public string exnext { get; set; }
+        [DataMember]
+        public string exWaitState { get; set; }
 
         //查询条件
         [DataMember]
-        public string 单位编码 { get; set; }
+        public string 单位编码   { get; set; }
+        [DataMember]
+        public string 分管人 { get; set; }
         [DataMember]
         public DateTime 开始时间 { get; set; }
         [DataMember]
         public DateTime 结束时间 { get; set; }
         [DataMember]
-        public Boolean 仅未审批 { get; set; }
+        public Boolean  仅未审批  { get; set; }
         [DataMember]
-        public Boolean 包含下级 { get; set; }
+        public Boolean  包含下级  { get; set; }
+        [DataMember]
+        public string   审批类型  { get; set; }
+        [DataMember]
+        public string   资产类别 { get; set; }
+
     }
 
     [DataContract]
@@ -1059,7 +1281,9 @@ namespace GCGL_Service
         [DataMember]
         public string 附件备注 { get; set; }
         [DataMember]
-        public string 文件标识 { get; set; }
+        public string 文件名称 { get; set; }
+        [DataMember]
+        public long 文件大小 { get; set; }
     }
 
     [DataContract]
@@ -1132,9 +1356,24 @@ namespace GCGL_Service
         [DataMember]
         public Boolean 包含下级 { get; set; }
     }
-
     #endregion
 
+    #region 查询方案
+    [DataContract]
+    public class DataType_FZB_查询方案 : ModelBase
+    {
+        [DataMember]
+        public string ID { get; set; }
+        [DataMember]
+        public string 类型 { get; set; }
+        [DataMember]
+        public string 名称 { get; set; }
+        [DataMember]
+        public string 内容 { get; set; }
+        [DataMember]
+        public string 创建人 { get; set; }
+    }
+    #endregion
     #endregion
 
 }

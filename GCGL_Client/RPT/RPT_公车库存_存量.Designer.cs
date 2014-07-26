@@ -41,6 +41,7 @@
             this.txt执法执勤用车的数量 = new System.Windows.Forms.TextBox();
             this.txt领导干部用车数量 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn设置显示 = new System.Windows.Forms.Button();
             this.btnQuery = new System.Windows.Forms.Button();
             this.btn导出 = new System.Windows.Forms.Button();
             this.btn关闭 = new System.Windows.Forms.Button();
@@ -58,7 +59,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(630, 40);
             this.lblTitle.TabIndex = 18;
-            this.lblTitle.Text = "公车库存量统计列表";
+            this.lblTitle.Text = "车辆库存量统计列表";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lb公车总数量
@@ -152,6 +153,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.btn设置显示);
             this.panel1.Controls.Add(this.btnQuery);
             this.panel1.Controls.Add(this.btn导出);
             this.panel1.Controls.Add(this.btn关闭);
@@ -160,6 +162,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(630, 28);
             this.panel1.TabIndex = 130;
+            // 
+            // btn设置显示
+            // 
+            this.btn设置显示.BackColor = System.Drawing.SystemColors.Control;
+            this.btn设置显示.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn设置显示.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn设置显示.Location = new System.Drawing.Point(75, 0);
+            this.btn设置显示.Name = "btn设置显示";
+            this.btn设置显示.Size = new System.Drawing.Size(94, 28);
+            this.btn设置显示.TabIndex = 8;
+            this.btn设置显示.Text = "设置显示信息";
+            this.btn设置显示.UseVisualStyleBackColor = false;
+            this.btn设置显示.Click += new System.EventHandler(this.btn设置显示_Click);
             // 
             // btnQuery
             // 
@@ -241,6 +256,7 @@
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvList.Size = new System.Drawing.Size(630, 435);
             this.dgvList.TabIndex = 131;
+            this.dgvList.DoubleClick += new System.EventHandler(this.dgvList_DoubleClick);
             // 
             // panel2
             // 
@@ -293,6 +309,7 @@
         private System.Windows.Forms.DataGridView dgvList;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnQuery;
+        private System.Windows.Forms.Button btn设置显示;
 
     }
 }

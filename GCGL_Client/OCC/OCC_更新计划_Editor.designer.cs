@@ -30,7 +30,6 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btn取消 = new System.Windows.Forms.Button();
-            this.btn提交 = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.nud一般执法执勤用车预报废数 = new System.Windows.Forms.NumericUpDown();
             this.nud一般执法执勤用车预配置数 = new System.Windows.Forms.NumericUpDown();
@@ -41,9 +40,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt计划年度 = new System.Windows.Forms.TextBox();
             this.txt申请单位 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.txt一般执法执勤用车编制数 = new System.Windows.Forms.TextBox();
             this.txt特种专业技术用车编制数 = new System.Windows.Forms.TextBox();
             this.txt一般执法执勤用车实有数 = new System.Windows.Forms.TextBox();
@@ -68,7 +67,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.nud计划年度 = new System.Windows.Forms.NumericUpDown();
+            this.btn提交 = new System.Windows.Forms.Button();
+            this.btn保存 = new System.Windows.Forms.Button();
+            this.pnlTool = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.nud一般执法执勤用车预报废数)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud一般执法执勤用车预配置数)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud公务用车预配置数)).BeginInit();
@@ -77,6 +79,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud特种专业技术用车预报废数)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud特种专业技术用车预配置数)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud计划年度)).BeginInit();
+            this.pnlTool.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -85,33 +89,21 @@
             this.label1.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(674, 48);
+            this.label1.Size = new System.Drawing.Size(612, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "年度更新计划申请表";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn取消
             // 
+            this.btn取消.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btn取消.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn取消.Location = new System.Drawing.Point(208, 422);
+            this.btn取消.Location = new System.Drawing.Point(95, 15);
             this.btn取消.Name = "btn取消";
             this.btn取消.Size = new System.Drawing.Size(110, 28);
-            this.btn取消.TabIndex = 9;
+            this.btn取消.TabIndex = 10;
             this.btn取消.Text = "取消(ESC)";
             this.btn取消.UseVisualStyleBackColor = true;
-            this.btn取消.Click += new System.EventHandler(this.btn取消_Click);
-            // 
-            // btn提交
-            // 
-            this.btn提交.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn提交.Font = new System.Drawing.Font("宋体", 9F);
-            this.btn提交.Location = new System.Drawing.Point(356, 422);
-            this.btn提交.Name = "btn提交";
-            this.btn提交.Size = new System.Drawing.Size(110, 28);
-            this.btn提交.TabIndex = 8;
-            this.btn提交.Text = "提交(Ctrl+S)";
-            this.btn提交.UseVisualStyleBackColor = true;
-            this.btn提交.Click += new System.EventHandler(this.btn提交_Click);
             // 
             // label16
             // 
@@ -126,56 +118,56 @@
             // nud一般执法执勤用车预报废数
             // 
             this.nud一般执法执勤用车预报废数.ForeColor = System.Drawing.Color.Blue;
-            this.nud一般执法执勤用车预报废数.Location = new System.Drawing.Point(278, 219);
+            this.nud一般执法执勤用车预报废数.Location = new System.Drawing.Point(262, 219);
             this.nud一般执法执勤用车预报废数.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nud一般执法执勤用车预报废数.Name = "nud一般执法执勤用车预报废数";
-            this.nud一般执法执勤用车预报废数.Size = new System.Drawing.Size(121, 21);
+            this.nud一般执法执勤用车预报废数.Size = new System.Drawing.Size(99, 21);
             this.nud一般执法执勤用车预报废数.TabIndex = 5;
             this.nud一般执法执勤用车预报废数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nud一般执法执勤用车预配置数
             // 
             this.nud一般执法执勤用车预配置数.ForeColor = System.Drawing.Color.Blue;
-            this.nud一般执法执勤用车预配置数.Location = new System.Drawing.Point(278, 184);
+            this.nud一般执法执勤用车预配置数.Location = new System.Drawing.Point(262, 184);
             this.nud一般执法执勤用车预配置数.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nud一般执法执勤用车预配置数.Name = "nud一般执法执勤用车预配置数";
-            this.nud一般执法执勤用车预配置数.Size = new System.Drawing.Size(121, 21);
+            this.nud一般执法执勤用车预配置数.Size = new System.Drawing.Size(99, 21);
             this.nud一般执法执勤用车预配置数.TabIndex = 2;
             this.nud一般执法执勤用车预配置数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nud公务用车预配置数
             // 
             this.nud公务用车预配置数.ForeColor = System.Drawing.Color.Blue;
-            this.nud公务用车预配置数.Location = new System.Drawing.Point(126, 184);
+            this.nud公务用车预配置数.Location = new System.Drawing.Point(128, 184);
             this.nud公务用车预配置数.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nud公务用车预配置数.Name = "nud公务用车预配置数";
-            this.nud公务用车预配置数.Size = new System.Drawing.Size(121, 21);
+            this.nud公务用车预配置数.Size = new System.Drawing.Size(99, 21);
             this.nud公务用车预配置数.TabIndex = 1;
             this.nud公务用车预配置数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nud公务用车预报废数
             // 
             this.nud公务用车预报废数.ForeColor = System.Drawing.Color.Blue;
-            this.nud公务用车预报废数.Location = new System.Drawing.Point(126, 219);
+            this.nud公务用车预报废数.Location = new System.Drawing.Point(128, 219);
             this.nud公务用车预报废数.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nud公务用车预报废数.Name = "nud公务用车预报废数";
-            this.nud公务用车预报废数.Size = new System.Drawing.Size(121, 21);
+            this.nud公务用车预报废数.Size = new System.Drawing.Size(99, 21);
             this.nud公务用车预报废数.TabIndex = 4;
             this.nud公务用车预报废数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -183,7 +175,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("宋体", 9F);
-            this.label10.Location = new System.Drawing.Point(149, 81);
+            this.label10.Location = new System.Drawing.Point(140, 81);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 12);
             this.label10.TabIndex = 35;
@@ -228,17 +220,6 @@
             this.label2.TabIndex = 61;
             this.label2.Text = "计划年度(年)";
             // 
-            // txt计划年度
-            // 
-            this.txt计划年度.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt计划年度.ForeColor = System.Drawing.Color.Blue;
-            this.txt计划年度.Location = new System.Drawing.Point(18, 11);
-            this.txt计划年度.Name = "txt计划年度";
-            this.txt计划年度.Size = new System.Drawing.Size(36, 14);
-            this.txt计划年度.TabIndex = 0;
-            this.txt计划年度.Text = "2013";
-            this.txt计划年度.TextChanged += new System.EventHandler(this.txt计划年度_TextChanged);
-            // 
             // txt申请单位
             // 
             this.txt申请单位.BackColor = System.Drawing.Color.White;
@@ -247,7 +228,7 @@
             this.txt申请单位.Location = new System.Drawing.Point(18, 44);
             this.txt申请单位.Name = "txt申请单位";
             this.txt申请单位.ReadOnly = true;
-            this.txt申请单位.Size = new System.Drawing.Size(409, 14);
+            this.txt申请单位.Size = new System.Drawing.Size(388, 14);
             this.txt申请单位.TabIndex = 64;
             // 
             // panel1
@@ -288,19 +269,28 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.nud公务用车预报废数);
             this.panel1.Controls.Add(this.nud公务用车预配置数);
-            this.panel1.Location = new System.Drawing.Point(57, 54);
+            this.panel1.Location = new System.Drawing.Point(45, 54);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(572, 325);
+            this.panel1.Size = new System.Drawing.Size(527, 325);
             this.panel1.TabIndex = 65;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(32, 81);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 105;
+            this.label11.Text = "资产类别";
             // 
             // txt一般执法执勤用车编制数
             // 
             this.txt一般执法执勤用车编制数.BackColor = System.Drawing.SystemColors.Control;
             this.txt一般执法执勤用车编制数.ForeColor = System.Drawing.Color.Blue;
-            this.txt一般执法执勤用车编制数.Location = new System.Drawing.Point(278, 114);
+            this.txt一般执法执勤用车编制数.Location = new System.Drawing.Point(262, 114);
             this.txt一般执法执勤用车编制数.Name = "txt一般执法执勤用车编制数";
             this.txt一般执法执勤用车编制数.ReadOnly = true;
-            this.txt一般执法执勤用车编制数.Size = new System.Drawing.Size(121, 21);
+            this.txt一般执法执勤用车编制数.Size = new System.Drawing.Size(99, 21);
             this.txt一般执法执勤用车编制数.TabIndex = 104;
             this.txt一般执法执勤用车编制数.Text = "0";
             this.txt一般执法执勤用车编制数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -309,10 +299,10 @@
             // 
             this.txt特种专业技术用车编制数.BackColor = System.Drawing.SystemColors.Control;
             this.txt特种专业技术用车编制数.ForeColor = System.Drawing.Color.Blue;
-            this.txt特种专业技术用车编制数.Location = new System.Drawing.Point(433, 113);
+            this.txt特种专业技术用车编制数.Location = new System.Drawing.Point(405, 114);
             this.txt特种专业技术用车编制数.Name = "txt特种专业技术用车编制数";
             this.txt特种专业技术用车编制数.ReadOnly = true;
-            this.txt特种专业技术用车编制数.Size = new System.Drawing.Size(121, 21);
+            this.txt特种专业技术用车编制数.Size = new System.Drawing.Size(99, 21);
             this.txt特种专业技术用车编制数.TabIndex = 103;
             this.txt特种专业技术用车编制数.Text = "0";
             this.txt特种专业技术用车编制数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -321,43 +311,46 @@
             // 
             this.txt一般执法执勤用车实有数.BackColor = System.Drawing.SystemColors.Control;
             this.txt一般执法执勤用车实有数.ForeColor = System.Drawing.Color.Blue;
-            this.txt一般执法执勤用车实有数.Location = new System.Drawing.Point(278, 148);
+            this.txt一般执法执勤用车实有数.Location = new System.Drawing.Point(262, 148);
             this.txt一般执法执勤用车实有数.Name = "txt一般执法执勤用车实有数";
             this.txt一般执法执勤用车实有数.ReadOnly = true;
-            this.txt一般执法执勤用车实有数.Size = new System.Drawing.Size(121, 21);
+            this.txt一般执法执勤用车实有数.Size = new System.Drawing.Size(99, 21);
             this.txt一般执法执勤用车实有数.TabIndex = 102;
             this.txt一般执法执勤用车实有数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt一般执法执勤用车实有数.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt一般执法执勤用车实有数_MouseDoubleClick);
             // 
             // txt公务用车实有数
             // 
             this.txt公务用车实有数.BackColor = System.Drawing.SystemColors.Control;
             this.txt公务用车实有数.ForeColor = System.Drawing.Color.Blue;
-            this.txt公务用车实有数.Location = new System.Drawing.Point(126, 148);
+            this.txt公务用车实有数.Location = new System.Drawing.Point(128, 148);
             this.txt公务用车实有数.Name = "txt公务用车实有数";
             this.txt公务用车实有数.ReadOnly = true;
-            this.txt公务用车实有数.Size = new System.Drawing.Size(121, 21);
+            this.txt公务用车实有数.Size = new System.Drawing.Size(99, 21);
             this.txt公务用车实有数.TabIndex = 101;
             this.txt公务用车实有数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt公务用车实有数.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt公务用车实有数_MouseDoubleClick);
             // 
             // txt特种专业技术用车实有数
             // 
             this.txt特种专业技术用车实有数.BackColor = System.Drawing.SystemColors.Control;
             this.txt特种专业技术用车实有数.ForeColor = System.Drawing.Color.Blue;
-            this.txt特种专业技术用车实有数.Location = new System.Drawing.Point(433, 147);
+            this.txt特种专业技术用车实有数.Location = new System.Drawing.Point(405, 148);
             this.txt特种专业技术用车实有数.Name = "txt特种专业技术用车实有数";
             this.txt特种专业技术用车实有数.ReadOnly = true;
-            this.txt特种专业技术用车实有数.Size = new System.Drawing.Size(121, 21);
+            this.txt特种专业技术用车实有数.Size = new System.Drawing.Size(99, 21);
             this.txt特种专业技术用车实有数.TabIndex = 100;
             this.txt特种专业技术用车实有数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txt特种专业技术用车实有数.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txt特种专业技术用车实有数_MouseDoubleClick);
             // 
             // txt公务用车编制数
             // 
             this.txt公务用车编制数.BackColor = System.Drawing.SystemColors.Control;
             this.txt公务用车编制数.ForeColor = System.Drawing.Color.Blue;
-            this.txt公务用车编制数.Location = new System.Drawing.Point(126, 114);
+            this.txt公务用车编制数.Location = new System.Drawing.Point(128, 114);
             this.txt公务用车编制数.Name = "txt公务用车编制数";
             this.txt公务用车编制数.ReadOnly = true;
-            this.txt公务用车编制数.Size = new System.Drawing.Size(121, 21);
+            this.txt公务用车编制数.Size = new System.Drawing.Size(99, 21);
             this.txt公务用车编制数.TabIndex = 98;
             this.txt公务用车编制数.Text = "0";
             this.txt公务用车编制数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -365,35 +358,35 @@
             // nud特种专业技术用车预报废数
             // 
             this.nud特种专业技术用车预报废数.ForeColor = System.Drawing.Color.Blue;
-            this.nud特种专业技术用车预报废数.Location = new System.Drawing.Point(433, 218);
+            this.nud特种专业技术用车预报废数.Location = new System.Drawing.Point(405, 219);
             this.nud特种专业技术用车预报废数.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nud特种专业技术用车预报废数.Name = "nud特种专业技术用车预报废数";
-            this.nud特种专业技术用车预报废数.Size = new System.Drawing.Size(121, 21);
+            this.nud特种专业技术用车预报废数.Size = new System.Drawing.Size(99, 21);
             this.nud特种专业技术用车预报废数.TabIndex = 6;
             this.nud特种专业技术用车预报废数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // nud特种专业技术用车预配置数
             // 
             this.nud特种专业技术用车预配置数.ForeColor = System.Drawing.Color.Blue;
-            this.nud特种专业技术用车预配置数.Location = new System.Drawing.Point(433, 183);
+            this.nud特种专业技术用车预配置数.Location = new System.Drawing.Point(405, 184);
             this.nud特种专业技术用车预配置数.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.nud特种专业技术用车预配置数.Name = "nud特种专业技术用车预配置数";
-            this.nud特种专业技术用车预配置数.Size = new System.Drawing.Size(121, 21);
+            this.nud特种专业技术用车预配置数.Size = new System.Drawing.Size(99, 21);
             this.nud特种专业技术用车预配置数.TabIndex = 3;
             this.nud特种专业技术用车预配置数.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(444, 81);
+            this.label36.Location = new System.Drawing.Point(407, 81);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(101, 12);
             this.label36.TabIndex = 91;
@@ -402,7 +395,7 @@
             // label35
             // 
             this.label35.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label35.Location = new System.Drawing.Point(415, 68);
+            this.label35.Location = new System.Drawing.Point(385, 68);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(1, 179);
             this.label35.TabIndex = 90;
@@ -410,7 +403,7 @@
             // label14
             // 
             this.label14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label14.Location = new System.Drawing.Point(263, 69);
+            this.label14.Location = new System.Drawing.Point(243, 69);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(1, 177);
             this.label14.TabIndex = 86;
@@ -445,7 +438,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("宋体", 9F);
-            this.label18.Location = new System.Drawing.Point(289, 81);
+            this.label18.Location = new System.Drawing.Point(260, 81);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(101, 12);
             this.label18.TabIndex = 74;
@@ -467,7 +460,7 @@
             this.txt备注.Location = new System.Drawing.Point(115, 247);
             this.txt备注.Multiline = true;
             this.txt备注.Name = "txt备注";
-            this.txt备注.Size = new System.Drawing.Size(455, 73);
+            this.txt备注.Size = new System.Drawing.Size(411, 77);
             this.txt备注.TabIndex = 7;
             // 
             // label15
@@ -523,37 +516,86 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.nud计划年度);
             this.panel2.Controls.Add(this.txt申请单位);
-            this.panel2.Controls.Add(this.txt计划年度);
             this.panel2.Location = new System.Drawing.Point(113, -1);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(466, 70);
             this.panel2.TabIndex = 69;
             // 
-            // label11
+            // nud计划年度
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(32, 81);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(53, 12);
-            this.label11.TabIndex = 105;
-            this.label11.Text = "资产类别";
+            this.nud计划年度.ForeColor = System.Drawing.Color.Blue;
+            this.nud计划年度.Location = new System.Drawing.Point(15, 7);
+            this.nud计划年度.Maximum = new decimal(new int[] {
+            2200,
+            0,
+            0,
+            0});
+            this.nud计划年度.Minimum = new decimal(new int[] {
+            1995,
+            0,
+            0,
+            0});
+            this.nud计划年度.Name = "nud计划年度";
+            this.nud计划年度.Size = new System.Drawing.Size(99, 21);
+            this.nud计划年度.TabIndex = 0;
+            this.nud计划年度.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nud计划年度.Value = new decimal(new int[] {
+            2013,
+            0,
+            0,
+            0});
+            // 
+            // btn提交
+            // 
+            this.btn提交.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn提交.Location = new System.Drawing.Point(378, 400);
+            this.btn提交.Name = "btn提交";
+            this.btn提交.Size = new System.Drawing.Size(121, 28);
+            this.btn提交.TabIndex = 8;
+            this.btn提交.Text = "提交(Ctrl+J)";
+            this.btn提交.UseVisualStyleBackColor = true;
+            this.btn提交.Click += new System.EventHandler(this.btn提交_Click);
+            // 
+            // btn保存
+            // 
+            this.btn保存.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn保存.Location = new System.Drawing.Point(231, 400);
+            this.btn保存.Name = "btn保存";
+            this.btn保存.Size = new System.Drawing.Size(121, 28);
+            this.btn保存.TabIndex = 9;
+            this.btn保存.Text = "暂存(Ctrl+S)";
+            this.btn保存.UseVisualStyleBackColor = true;
+            this.btn保存.Click += new System.EventHandler(this.btn保存_Click);
+            // 
+            // pnlTool
+            // 
+            this.pnlTool.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlTool.Controls.Add(this.btn取消);
+            this.pnlTool.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlTool.Location = new System.Drawing.Point(0, 385);
+            this.pnlTool.Name = "pnlTool";
+            this.pnlTool.Size = new System.Drawing.Size(612, 63);
+            this.pnlTool.TabIndex = 68;
             // 
             // OCC_更新计划_Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(674, 469);
+            this.ClientSize = new System.Drawing.Size(612, 448);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btn提交);
-            this.Controls.Add(this.btn取消);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btn提交);
+            this.Controls.Add(this.btn保存);
+            this.Controls.Add(this.pnlTool);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OCC_更新计划_Editor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.SP_年度计划_Editor_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OCC_更新计划_Editor_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.nud一般执法执勤用车预报废数)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud一般执法执勤用车预配置数)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud公务用车预配置数)).EndInit();
@@ -564,6 +606,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nud特种专业技术用车预配置数)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud计划年度)).EndInit();
+            this.pnlTool.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -571,7 +615,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn提交;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.NumericUpDown nud一般执法执勤用车预报废数;
         private System.Windows.Forms.NumericUpDown nud一般执法执勤用车预配置数;
@@ -583,7 +626,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btn取消;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt计划年度;
         private System.Windows.Forms.TextBox txt申请单位;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
@@ -611,6 +653,10 @@
         private System.Windows.Forms.TextBox txt特种专业技术用车实有数;
         private System.Windows.Forms.TextBox txt公务用车编制数;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown nud计划年度;
+        private System.Windows.Forms.Button btn提交;
+        private System.Windows.Forms.Button btn保存;
+        private System.Windows.Forms.Panel pnlTool;
 
     }
 }
