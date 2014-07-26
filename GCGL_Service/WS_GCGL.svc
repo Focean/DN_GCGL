@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="GCGL_Service.WS_GCGL" CodeBehind="WS_GCGL.svc.cs" %>

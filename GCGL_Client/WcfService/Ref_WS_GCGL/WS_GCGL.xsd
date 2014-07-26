@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GCGL_Service" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GCGL_Service" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DataType_User">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DeptCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GovCars" type="xs:int" />
+          <xs:element minOccurs="0" name="LawCars" type="xs:int" />
+          <xs:element minOccurs="0" name="LoginAddr" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LoginDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="LoginName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LoginPswd" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MobiPhone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OldUserPswd" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoleList" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UnitCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserEmail" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserPswd" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WorkName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="WorkPhone" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_User" nillable="true" type="tns:DataType_User" />
+  <xs:complexType name="ModelBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExAction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExResult" type="xs:int" />
+      <xs:element minOccurs="0" name="GridDefine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginUserCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginUserPswd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageCount" type="xs:int" />
+      <xs:element minOccurs="0" name="PageIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="PageRows" type="xs:int" />
+      <xs:element minOccurs="0" name="RowsCount" type="xs:int" />
+      <xs:element minOccurs="0" name="yRoleList" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ModelBase" nillable="true" type="tns:ModelBase" />
+  <xs:complexType name="DataType_Role">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RoleID" type="xs:int" />
+          <xs:element minOccurs="0" name="RoleMemo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoleMenu" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_Role" nillable="true" type="tns:DataType_Role" />
+  <xs:complexType name="DataType_Param">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AppName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CSVersion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DBVersion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DP_Money" type="xs:int" />
+          <xs:element minOccurs="0" name="DP_Number" type="xs:int" />
+          <xs:element minOccurs="0" name="WSVersion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公司传真" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公司名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公司地址" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公司电话" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公司负责人" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_Param" nillable="true" type="tns:DataType_Param" />
+  <xs:complexType name="DataType_Grid">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GridMemo" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GridName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="GridUser" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_Grid" nillable="true" type="tns:DataType_Grid" />
+  <xs:complexType name="DataType_CMN_车辆更新标准">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="使用年限" type="xs:int" />
+          <xs:element minOccurs="0" name="依据文件编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="是否生效" type="xs:boolean" />
+          <xs:element minOccurs="0" name="行驶里程" type="xs:int" />
+          <xs:element minOccurs="0" name="资产类别编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆类型编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_CMN_车辆更新标准" nillable="true" type="tns:DataType_CMN_车辆更新标准" />
+  <xs:complexType name="DataType_CMN_车辆配置标准">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="价格" type="xs:decimal" />
+          <xs:element minOccurs="0" name="依据文件编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="区划编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="排量" type="xs:decimal" />
+          <xs:element minOccurs="0" name="是否新能源汽车" type="xs:boolean" />
+          <xs:element minOccurs="0" name="是否生效" type="xs:boolean" />
+          <xs:element minOccurs="0" name="资产类别编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆类型编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_CMN_车辆配置标准" nillable="true" type="tns:DataType_CMN_车辆配置标准" />
+  <xs:complexType name="DataType_FZB_编码">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="上级编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="可选择项" type="xs:boolean" />
+          <xs:element minOccurs="0" name="处置形式名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="处置形式编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="资产类别名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="资产类别编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆品牌" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆类型名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆类型编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="采购形式名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="采购形式编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_FZB_编码" nillable="true" type="tns:DataType_FZB_编码" />
+  <xs:complexType name="DataType_CMN_行政区划">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="上级编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="区划名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="区划级次" type="xs:int" />
+          <xs:element minOccurs="0" name="区划编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="是否有效" type="xs:boolean" />
+          <xs:element minOccurs="0" name="是否本级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="是否行政省管县" type="xs:boolean" />
+          <xs:element minOccurs="0" name="是否财政省管县" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_CMN_行政区划" nillable="true" type="tns:DataType_CMN_行政区划" />
+  <xs:complexType name="DataType_CMN_单位">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="上级编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="传真" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="区划编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="单位名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="单位地址" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="单位性质编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="单位类型编码" type="xs:int" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="有效" type="xs:boolean" />
+          <xs:element minOccurs="0" name="电话" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="级别" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="组织代码证号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="联系人" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="邮编" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="部门预算处室编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="预算编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_CMN_单位" nillable="true" type="tns:DataType_CMN_单位" />
+  <xs:complexType name="DataType_CMN_单位_处室">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="处室名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="处室类型" type="xs:int" />
+          <xs:element minOccurs="0" name="处室编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="执法执勤类型" type="xs:int" />
+          <xs:element minOccurs="0" name="有效" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_CMN_单位_处室" nillable="true" type="tns:DataType_CMN_单位_处室" />
+  <xs:complexType name="DataType_CMN_单位_编制">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="一般公务用车编制数" type="xs:int" />
+          <xs:element minOccurs="0" name="一般执法执勤用车编制数" type="xs:int" />
+          <xs:element minOccurs="0" name="创建人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="审核人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="开始日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="是否审核" type="xs:boolean" />
+          <xs:element minOccurs="0" name="特种专业技术用车编制数" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_CMN_单位_编制" nillable="true" type="tns:DataType_CMN_单位_编制" />
+  <xs:complexType name="DataType_OCC_更新计划">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="一般执法执勤用车预报废数" type="xs:int" />
+          <xs:element minOccurs="0" name="一般执法执勤用车预配置数" type="xs:int" />
+          <xs:element minOccurs="0" name="公务用车预报废数" type="xs:int" />
+          <xs:element minOccurs="0" name="公务用车预配置数" type="xs:int" />
+          <xs:element minOccurs="0" name="创建人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="特种专业技术用车预报废数" type="xs:int" />
+          <xs:element minOccurs="0" name="特种专业技术用车预配置数" type="xs:int" />
+          <xs:element minOccurs="0" name="申请编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="计划年度" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_OCC_更新计划" nillable="true" type="tns:DataType_OCC_更新计划" />
+  <xs:complexType name="DataType_OCC_配置申请">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MxDataStr" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公务用车实有数" type="xs:int" />
+          <xs:element minOccurs="0" name="公务用车编制数" type="xs:int" />
+          <xs:element minOccurs="0" name="其中执法执勤用车实有数" type="xs:int" />
+          <xs:element minOccurs="0" name="其中执法执勤用车编制数" type="xs:int" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="申请原因" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="申请备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="申请编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="附件编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_OCC_配置申请" nillable="true" type="tns:DataType_OCC_配置申请" />
+  <xs:complexType name="DataType_OCC_公车入库">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="价值" type="xs:decimal" />
+          <xs:element minOccurs="0" name="价值类型" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="会计凭证号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="使用年限" type="xs:int" />
+          <xs:element minOccurs="0" name="使用方向" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="使用日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="保修截止日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="入库单编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="入库类型" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="出库单编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="厂牌型号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="发动机号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="取得方式" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="取得日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="型号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="处室编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="座位数" type="xs:int" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="折旧状态" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="排气量" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="申请序号" type="xs:int" />
+          <xs:element minOccurs="0" name="累计折旧" type="xs:decimal" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="规格型号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="计量单位" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="财政资产编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="账面净值" type="xs:decimal" />
+          <xs:element minOccurs="0" name="资产名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="资产状态编码" type="xs:int" />
+          <xs:element minOccurs="0" name="资产类别编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="资产编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车架号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车牌号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆产地" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆类型编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="配置申请编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="采购形式编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="附件编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="颜色" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_OCC_公车入库" nillable="true" type="tns:DataType_OCC_公车入库" />
+  <xs:complexType name="DataType_COS_使用申请">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ID" type="xs:int" />
+          <xs:element minOccurs="0" name="保养日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="保养经办人" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="保养行驶里程" type="xs:int" />
+          <xs:element minOccurs="0" name="保养记录" type="xs:boolean" />
+          <xs:element minOccurs="0" name="保养费用" type="xs:decimal" />
+          <xs:element minOccurs="0" name="保养项目" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="出车事由" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="出车人" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="出车批示人" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="出车日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="出车目的地" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="出车行驶里程" type="xs:int" />
+          <xs:element minOccurs="0" name="出车记录" type="xs:boolean" />
+          <xs:element minOccurs="0" name="创建人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="加油日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="加油行驶里程" type="xs:int" />
+          <xs:element minOccurs="0" name="加油记录" type="xs:boolean" />
+          <xs:element minOccurs="0" name="加油量" type="xs:decimal" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="油价" type="xs:decimal" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="维修日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="维修经办人" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="维修记录" type="xs:boolean" />
+          <xs:element minOccurs="0" name="维修费用" type="xs:decimal" />
+          <xs:element minOccurs="0" name="维修项目" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车牌号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="还车日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="预约日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="预约里程" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_COS_使用申请" nillable="true" type="tns:DataType_COS_使用申请" />
+  <xs:complexType name="DataType_COS_计提折旧">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="创建人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="折旧方式" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="折旧日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="折旧金额" type="xs:decimal" />
+          <xs:element minOccurs="0" name="编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="资产编号" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_COS_计提折旧" nillable="true" type="tns:DataType_COS_计提折旧" />
+  <xs:complexType name="DataType_OCC_处置申请">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MxDataStr" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="审批状态编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="总评估价值" type="xs:decimal" />
+          <xs:element minOccurs="0" name="申请原因" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="申请备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="申请序号" type="xs:int" />
+          <xs:element minOccurs="0" name="申请数量" type="xs:int" />
+          <xs:element minOccurs="0" name="申请编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="附件编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_OCC_处置申请" nillable="true" type="tns:DataType_OCC_处置申请" />
+  <xs:complexType name="DataType_OCC_公车出库">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="出库单编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="处置形式编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="处置收入" type="xs:decimal" />
+          <xs:element minOccurs="0" name="处置申请序号" type="xs:int" />
+          <xs:element minOccurs="0" name="处置申请编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="接收人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="接收单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="收购单位" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="本单位批准人" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="调拨日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="资产编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="附件编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_OCC_公车出库" nillable="true" type="tns:DataType_OCC_公车出库" />
+  <xs:complexType name="DataType_OCC_公车库存">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="价值" type="xs:decimal" />
+          <xs:element minOccurs="0" name="价值1" type="xs:decimal" />
+          <xs:element minOccurs="0" name="价值2" type="xs:decimal" />
+          <xs:element minOccurs="0" name="价值类型" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="会计凭证号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="使用年限" type="xs:int" />
+          <xs:element minOccurs="0" name="使用方向" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="使用日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="使用状况" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="保修截止日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="保修截止日期j" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="保修截止日期k" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="厂牌型号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="发动机号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="取得方式" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="取得日期" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="在编制" type="xs:boolean" />
+          <xs:element minOccurs="0" name="处室编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="已出售" type="xs:boolean" />
+          <xs:element minOccurs="0" name="已报废" type="xs:boolean" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="折旧状态" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="排气量" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="搜索内容" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="查询年度" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="累计折旧" type="xs:decimal" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="规格型号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="计量单位" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="财政资产编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="账面净值" type="xs:decimal" />
+          <xs:element minOccurs="0" name="账面净值1" type="xs:decimal" />
+          <xs:element minOccurs="0" name="账面净值2" type="xs:decimal" />
+          <xs:element minOccurs="0" name="资产名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="资产状态编码" type="xs:int" />
+          <xs:element minOccurs="0" name="资产类别编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="资产编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车架号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车牌号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆产地" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="车辆类型编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="配置申请编号" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="采购形式编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_OCC_公车库存" nillable="true" type="tns:DataType_OCC_公车库存" />
+  <xs:complexType name="DataType_NET_审批">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="exCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="exIndex" type="xs:int" />
+          <xs:element minOccurs="0" name="exOpinion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="exOpinionFlag" type="xs:int" />
+          <xs:element minOccurs="0" name="exState" type="xs:int" />
+          <xs:element minOccurs="0" name="exUnitCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="exUserCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="exUserType" type="xs:int" />
+          <xs:element minOccurs="0" name="flCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="仅未审批" type="xs:boolean" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_NET_审批" nillable="true" type="tns:DataType_NET_审批" />
+  <xs:complexType name="DataType_NET_附件管理">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="文件标识" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="附件备注" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="附件摘要" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="附件编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_NET_附件管理" nillable="true" type="tns:DataType_NET_附件管理" />
+  <xs:complexType name="DataType_NET_公文">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="仅显示我未接收" type="xs:boolean" />
+          <xs:element minOccurs="0" name="公文内容" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公文标题" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公文类型" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="公文编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="关键字" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="创建时间" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="接收人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="接收单位编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="接收意见" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="接收时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="查看次数" type="xs:int" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="附件编码" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_NET_公文" nillable="true" type="tns:DataType_NET_公文" />
+  <xs:complexType name="DataType_NET_论坛">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ModelBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="创建时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="包含下级" type="xs:boolean" />
+          <xs:element minOccurs="0" name="开始时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="版主人编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="版块名称" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="版块简介" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="版块编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="结束时间" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="贴子内容" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="贴子标题" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="贴子编码" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="附件内容" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DataType_NET_论坛" nillable="true" type="tns:DataType_NET_论坛" />
+</xs:schema>

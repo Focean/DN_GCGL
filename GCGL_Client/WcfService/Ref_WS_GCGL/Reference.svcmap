@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="36304802-91fc-4963-9b00-8efabe24dfd1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WS_GCGL1.disco" MetadataType="Disco" ID="c179e3be-28b4-47a8-aced-ddabd82cb12c" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?disco" />
+    <MetadataFile FileName="WS_GCGL.xsd" MetadataType="Schema" ID="6b5e2516-15b2-4074-9680-63e2cd0aa54f" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd3" />
+    <MetadataFile FileName="WS_GCGL1.xsd" MetadataType="Schema" ID="758c944d-7e35-466a-a55e-90b6b4b0db0d" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd2" />
+    <MetadataFile FileName="WS_GCGL2.xsd" MetadataType="Schema" ID="8636ae28-29be-473b-9e58-33f058163abb" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd5" />
+    <MetadataFile FileName="WS_GCGL3.xsd" MetadataType="Schema" ID="e8b467c6-97c2-48c6-a702-aa9d03f48cdd" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd4" />
+    <MetadataFile FileName="WS_GCGL4.xsd" MetadataType="Schema" ID="1cc31990-d962-40a3-b6dd-22e498115809" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd0" />
+    <MetadataFile FileName="WS_GCGL1.wsdl" MetadataType="Wsdl" ID="b2b1d695-78ec-4845-83e7-6dbc9293a460" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?wsdl" />
+    <MetadataFile FileName="WS_GCGL5.xsd" MetadataType="Schema" ID="a931b427-17c8-4243-8d2f-a2bd1d6f820d" SourceId="1" SourceUrl="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

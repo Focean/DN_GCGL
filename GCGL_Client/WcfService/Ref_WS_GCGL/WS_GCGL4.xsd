@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/GCGL_Service" />
+  <xs:import schemaLocation="http://127.0.0.1/dnsoft/gcgl/Service/WS_GCGL.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
+  <xs:element name="ExecuteDataSet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteDataSetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteDataSetResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteNoQuery">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sql" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteNoQueryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteNoQueryResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q1:DataType_User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_LoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SYS_LoginResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q2:DataType_User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Login_Menu">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q3:DataType_User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Login_MenuResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SYS_Login_MenuResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q4:DataType_User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_User_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q5:DataType_User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_User_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Sys_User_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_User_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q6:DataType_User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_User_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q7:DataType_User" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_Role_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q8:DataType_Role" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_Role_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Sys_Role_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_Role_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q9:DataType_Role" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_Role_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q10:DataType_Role" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_Menu_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ARoleID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sys_Menu_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Sys_Menu_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Param_Get">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q11:DataType_Param" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Param_GetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q12:DataType_Param" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Param_Set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q13:DataType_Param" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Param_SetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q14:DataType_Param" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Grid_Get">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q15:DataType_Grid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Grid_GetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q16:DataType_Grid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Grid_Set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q17:DataType_Grid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SYS_Grid_SetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q18:DataType_Grid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTableDef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tableid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTableDefResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTableDefResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_车辆更新标准_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q19:DataType_CMN_车辆更新标准" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_车辆更新标准_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CMN_车辆更新标准_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q20:DataType_CMN_车辆更新标准" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_车辆更新标准_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q21:DataType_CMN_车辆更新标准" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_车辆更新标准_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q22:DataType_CMN_车辆更新标准" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_车辆配置标准_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q23:DataType_CMN_车辆配置标准" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_车辆配置标准_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CMN_车辆配置标准_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q24:DataType_CMN_车辆配置标准" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_车辆配置标准_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q25:DataType_CMN_车辆配置标准" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_车辆配置标准_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q26:DataType_CMN_车辆配置标准" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_编码_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AExAction" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_编码_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FZB_编码_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_资产类别_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q27:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_资产类别_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q28:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_车辆类型_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q29:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_车辆类型_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q30:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_采购形式_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q31:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_采购形式_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q32:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_处置形式_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q33:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_处置形式_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q34:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_经费来源_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q35:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FZB_经费来源_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q36:DataType_FZB_编码" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_行政区划_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q37:DataType_CMN_行政区划" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_行政区划_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CMN_行政区划_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q38:DataType_CMN_行政区划" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_行政区划_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q39:DataType_CMN_行政区划" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_行政区划_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q40:DataType_CMN_行政区划" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q41:DataType_CMN_单位" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CMN_单位_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q42:DataType_CMN_单位" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q43:DataType_CMN_单位" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q44:DataType_CMN_单位" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_处室_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q45:DataType_CMN_单位_处室" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_处室_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CMN_单位_处室_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q46:DataType_CMN_单位_处室" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_处室_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q47:DataType_CMN_单位_处室" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_处室_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q48:DataType_CMN_单位_处室" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_编制_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q49:DataType_CMN_单位_编制" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_编制_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CMN_单位_编制_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q50:DataType_CMN_单位_编制" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_编制_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q51:DataType_CMN_单位_编制" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CMN_单位_编制_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q52:DataType_CMN_单位_编制" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_更新计划_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q53:DataType_OCC_更新计划" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_更新计划_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OCC_更新计划_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q54:DataType_OCC_更新计划" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_更新计划_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q55:DataType_OCC_更新计划" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_更新计划_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q56:DataType_OCC_更新计划" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_配置申请_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q57:DataType_OCC_配置申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_配置申请_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q58:DataType_OCC_配置申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_配置申请_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q59:DataType_OCC_配置申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_配置申请_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OCC_配置申请_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q60:DataType_OCC_配置申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车入库_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q61:DataType_OCC_公车入库" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车入库_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q62:DataType_OCC_公车入库" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车入库_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q63:DataType_OCC_公车入库" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车入库_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OCC_公车入库_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q64:DataType_OCC_公车入库" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COS_使用情况_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q65:DataType_COS_使用申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COS_使用情况_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q66:DataType_COS_使用申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COS_使用情况_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q67:DataType_COS_使用申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COS_使用情况_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="COS_使用情况_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q68:DataType_COS_使用申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COS_计提折旧_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q69:DataType_COS_计提折旧" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COS_计提折旧_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q70:DataType_COS_计提折旧" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COS_计提折旧_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q71:DataType_COS_计提折旧" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="COS_计提折旧_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="COS_计提折旧_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q72:DataType_COS_计提折旧" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_处置申请_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q73:DataType_OCC_处置申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_处置申请_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q74:DataType_OCC_处置申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_处置申请_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q75:DataType_OCC_处置申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_处置申请_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OCC_处置申请_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q76:DataType_OCC_处置申请" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车出库_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q77:DataType_OCC_公车出库" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车出库_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OCC_公车出库_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q78:DataType_OCC_公车出库" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车出库_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q79:DataType_OCC_公车出库" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车出库_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q80:DataType_OCC_公车出库" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车库存_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q81:DataType_OCC_公车库存" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OCC_公车库存_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="OCC_公车库存_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q82:DataType_OCC_公车库存" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_审批_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q83="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q83:DataType_NET_审批" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_审批_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NET_审批_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q84="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q84:DataType_NET_审批" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_审批_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q85="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q85:DataType_NET_审批" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_审批_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q86="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q86:DataType_NET_审批" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_附件管理_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q87="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q87:DataType_NET_附件管理" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_附件管理_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NET_附件管理_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q88="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q88:DataType_NET_附件管理" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_附件管理_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q89="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q89:DataType_NET_附件管理" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_附件管理_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q90="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q90:DataType_NET_附件管理" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_公文_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q91="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q91:DataType_NET_公文" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_公文_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NET_公文_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q92="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q92:DataType_NET_公文" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_公文_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q93="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q93:DataType_NET_公文" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_公文_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q94="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q94:DataType_NET_公文" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q95="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q95:DataType_NET_论坛" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NET_论坛_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q96="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q96:DataType_NET_论坛" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q97="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q97:DataType_NET_论坛" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q98="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q98:DataType_NET_论坛" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_版块_List">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q99="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q99:DataType_NET_论坛" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_版块_ListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NET_论坛_版块_ListResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:element ref="xs:schema" />
+              <xs:any />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q100="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q100:DataType_NET_论坛" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_版块_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q101="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q101:DataType_NET_论坛" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_版块_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q102="http://schemas.datacontract.org/2004/07/GCGL_Service" minOccurs="0" name="model" nillable="true" type="q102:DataType_NET_论坛" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_图片_Edit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q103="http://schemas.datacontract.org/2004/07/System.IO" minOccurs="0" name="ss" nillable="true" type="q103:MemoryStream" />
+        <xs:element minOccurs="0" name="Fileformat" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ip" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NET_论坛_图片_EditResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NET_论坛_图片_EditResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
